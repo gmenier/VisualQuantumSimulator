@@ -1,6 +1,7 @@
 // QSim : Simulateur Quantique
 // Gildas Ménier
 // 2020
+// SBT Version
 // gildas.menier@univ-ubs.fr
 
 
