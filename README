@@ -1,0 +1,4 @@
+VQS (c) G.Ménier 2020
+
+This is a Scala SBT Project.
+The dependencies are Pdfbox, fontbox and common-loggins
