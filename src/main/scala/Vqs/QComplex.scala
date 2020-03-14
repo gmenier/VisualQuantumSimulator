@@ -13,7 +13,7 @@ import io.AnsiColor._
 
 case class QComplex(val re: Double, val im: Double) {
 
-  val sSize = 17 // Size of the ascii / graphics
+  val sSize = 17 // toString : Size of the ascii / graphics
 
   lazy val conj: QComplex = QComplex(re, -im)
   lazy val norm2: Double = re * re + im * im // norme au carré
@@ -153,7 +153,6 @@ case class QComplex(val re: Double, val im: Double) {
 } // QComplex
 
 
-
 object QComplex {
 
   var isRadian = true;
@@ -233,7 +232,6 @@ object QComplex {
   def convertDecToRad(v: Double) = (v*Math.PI)/180
   def convertRadToDec(v: Double) = (v*180)/Math.PI
 
-
-} // QComplexe
+} // QComplex
 
 

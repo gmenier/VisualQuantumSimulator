@@ -4,18 +4,7 @@
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/GraphCanvas.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QPad.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QPad.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +41,6 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
@@ -62,6 +50,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -164,7 +153,8 @@
       <workItem from="1584119072282" duration="3246000" />
       <workItem from="1584122588382" duration="303000" />
       <workItem from="1584185292306" duration="939000" />
-      <workItem from="1584193390899" duration="1167000" />
+      <workItem from="1584193390899" duration="1785000" />
+      <workItem from="1584195210321" duration="528000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -180,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584122800158</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changed most of the (rare) comments to English">
+      <created>1584194610243</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584194610243</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,13 +186,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Commit for SBT" />
     <MESSAGE value="README" />
-    <option name="LAST_COMMIT_MESSAGE" value="README" />
+    <MESSAGE value="Changed most of the (rare) comments to English" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed most of the (rare) comments to English" />
   </component>
   <component name="WindowStateProjectService">
     <state x="351" y="31" key="#Project_Structure" timestamp="1584113962513">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="351" y="31" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1584113962513" />
+    <state x="351" y="31" key="#Scopes" timestamp="1584194952425">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="351" y="31" key="#Scopes/0.0.1920.1080@0.0.1920.1080" timestamp="1584194952425" />
     <state x="773" y="276" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1584119372527">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -204,10 +206,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="582" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584122717651" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584122799604">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584194609193">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584122799604" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584194609193" />
     <state x="633" y="176" key="FileChooserDialogImpl" timestamp="1584114258862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -228,9 +230,13 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1665" height="576" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584186232532" />
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584122802608">
+    <state x="220" y="0" key="SettingsEditor" timestamp="1584195378555">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584122802608" />
+    <state x="220" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584195378555" />
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584194613979">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584194613979" />
   </component>
 </project>
