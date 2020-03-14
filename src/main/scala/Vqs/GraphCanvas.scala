@@ -1,5 +1,8 @@
 package Vqs
-
+// VQS : Quantum Computing Simulation
+// Gildas Ménier
+// 2020
+// gildas.menier@univ-ubs.fr
 import java.awt.geom.{Arc2D, Ellipse2D, Line2D}
 import java.awt.image.BufferedImage
 import java.awt.{BasicStroke, Color, Font}
@@ -82,7 +85,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
                 qbState : List[Int] = List(),
                 qb0 : List[Int] = List(),
                 qb1 : List[Int] = List()
-               ): Unit = { // dessine un état dans une image
+               ): Unit = { // draws a state as a picture
 
     var ante = false;
     var red = paleRed;
@@ -92,7 +95,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
     (0 until nb).reverse.foreach(
       v => {
-        ante = true // false permet de ne dessiner les poids reels (>0)
+        ante = true // false for real
         if (lchanged.contains(v)) {
           red = hotRed; green = hotGreen;
         } else {
@@ -119,7 +122,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     else
       drawFilledCircle(x-(osize),y-(osize),osize*2, Color.BLACK)
 
-    // sqrt pour augmenter la taille
+    // sqrt to boost the size
     val camp = (math.sqrt(amplitude)*osize).toInt
     drawFilledCircle(x-(camp),y-(camp),camp*2, new Color(0,160,250))
 

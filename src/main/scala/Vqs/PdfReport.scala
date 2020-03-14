@@ -1,6 +1,6 @@
 package Vqs
 
-// QSim : Simulateur Quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
@@ -22,7 +22,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
   var fontSize = 10
   var numPage = 0
 
-  val calcW = 550 // taille limite pour les images pdf
+  val calcW = 550 // max size for the pictures
 
   def getPos = vpos
 
@@ -86,7 +86,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
     for( i <- 0 until 15) cr()
     endText()
 
-    // revoir les tailles d'image TODO
+    // fix the image size TODO
     val calcH = 5*3*14 + 40 //
     insertImage("trace_"+idxImage+".png", lgcar*7, getPos, calcW+40, calcH)
 

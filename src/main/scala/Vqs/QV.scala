@@ -1,12 +1,11 @@
 package Vqs
-// QSim : simulateur quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
-// 2010
+// 2020
+// gildas.menier@univ-ubs.fr
 
-import QComplex._
 
-// Vecteur complexe
-
+// complex vector
 case class QV(c_ : QComplex*) {
    lazy val coord: Array[QComplex] = c_.toArray[QComplex]
    lazy val norm = math.sqrt(getList.map( c => (c*c.conj).re).sum)

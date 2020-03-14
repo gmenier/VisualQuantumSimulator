@@ -1,4 +1,5 @@
-VQS (c) G.Ménier 2020
+VQS G.Ménier 2020 gildas.menier@univ-us.fr
+Laboratoire IRISA - Université de Bretagne Sud - France
 
-This is a Scala SBT Project.
-The dependencies are Pdfbox, fontbox and common-loggins
+Scala SBT Project with minimal dependencies (Pdfbox, fontbox and common-loggins)
+

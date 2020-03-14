@@ -1,7 +1,6 @@
-// QSim : Simulateur Quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
-// SBT Version
 // gildas.menier@univ-ubs.fr
 
 

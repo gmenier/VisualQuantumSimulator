@@ -1,5 +1,5 @@
 package Vqs
-// QSim : Simulateur Quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
@@ -82,7 +82,7 @@ case class |(nb : Int = 4) extends QOperator {
 
 
 // Hadamard
-// p = All pour tous les qbits
+// p = All for all QBits
 case class H(idx:Int = QReg.All) extends QOperator {
   val sq2 = sqrt(2)
 
@@ -299,7 +299,7 @@ case class CL(Qop: QOperator, condList: List[Int]) extends QOperator {
 } // C
 
 
-case class C(Qop: QOperator, cond: Int) extends QOperator {
+case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C(Not(Idx), idxp) -> C (X(idx), idxp)
 
   def render(pad: QPad): Unit = {
     val condList = List(cond)
@@ -316,7 +316,8 @@ case class C(Qop: QOperator, cond: Int) extends QOperator {
 
 
 
-// swap the qbits e1 et e2
+
+// Swaps the qbits e1 et e2
 case class Swap(e1: Int, e2: Int) extends QOperator {
 
   def render(pad: QPad): Unit = {
@@ -332,7 +333,7 @@ case class Swap(e1: Int, e2: Int) extends QOperator {
 
 
 // lecture d'un QBit (Détermination)
-// Mesure selon Z
+// Z Measure
 // idx = ALL pour tous les Qbits
 case class <(idx: Int = QReg.All) extends QOperator {
   def render(pad: QPad): Unit = {
@@ -363,6 +364,7 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 } // Label
 
 
+// Macros
 
 
 

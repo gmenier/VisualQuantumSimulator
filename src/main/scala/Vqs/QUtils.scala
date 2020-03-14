@@ -1,5 +1,8 @@
 package Vqs
-
+// VQS : Quantum Computing Simulation
+// Gildas Ménier
+// 2020
+// gildas.menier@univ-ubs.fr
 import java.io.File
 
 import scala.io.AnsiColor.{CYAN, GREEN, MAGENTA, RED, RESET, YELLOW}

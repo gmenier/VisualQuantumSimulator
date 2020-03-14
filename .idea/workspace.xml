@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/GraphCanvas.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QPad.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QPad.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +41,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
@@ -40,6 +55,7 @@
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -146,7 +162,9 @@
       <workItem from="1584113693140" duration="146000" />
       <workItem from="1584113929728" duration="1374000" />
       <workItem from="1584119072282" duration="3246000" />
-      <workItem from="1584122588382" duration="193000" />
+      <workItem from="1584122588382" duration="303000" />
+      <workItem from="1584185292306" duration="939000" />
+      <workItem from="1584193390899" duration="1167000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -155,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584122634088</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="README">
+      <created>1584122800158</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584122800158</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +188,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Commit for SBT" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Commit for SBT" />
+    <MESSAGE value="README" />
+    <option name="LAST_COMMIT_MESSAGE" value="README" />
   </component>
   <component name="WindowStateProjectService">
     <state x="351" y="31" key="#Project_Structure" timestamp="1584113962513">
@@ -178,33 +204,33 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="582" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584122717651" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584122633049">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584122799604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584122633049" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584122799604" />
     <state x="633" y="176" key="FileChooserDialogImpl" timestamp="1584114258862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="633" y="176" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1584114258862" />
-    <state width="1665" height="287" key="GridCell.Tab.0.bottom" timestamp="1584122554284">
+    <state width="1665" height="576" key="GridCell.Tab.0.bottom" timestamp="1584186232532">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1665" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584122554284" />
-    <state width="1665" height="287" key="GridCell.Tab.0.center" timestamp="1584122554284">
+    <state width="1665" height="576" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584186232532" />
+    <state width="1665" height="576" key="GridCell.Tab.0.center" timestamp="1584186232532">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1665" height="287" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584122554284" />
-    <state width="1665" height="287" key="GridCell.Tab.0.left" timestamp="1584122554284">
+    <state width="1665" height="576" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584186232532" />
+    <state width="1665" height="576" key="GridCell.Tab.0.left" timestamp="1584186232531">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1665" height="287" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584122554284" />
-    <state width="1665" height="287" key="GridCell.Tab.0.right" timestamp="1584122554284">
+    <state width="1665" height="576" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584186232531" />
+    <state width="1665" height="576" key="GridCell.Tab.0.right" timestamp="1584186232532">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1665" height="287" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584122554284" />
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584122637432">
+    <state width="1665" height="576" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584186232532" />
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584122802608">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584122637432" />
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584122802608" />
   </component>
 </project>

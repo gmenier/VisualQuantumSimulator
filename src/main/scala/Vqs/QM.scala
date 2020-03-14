@@ -1,11 +1,12 @@
-// QSim : simulateur quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
-// 2010
+// 2020
+// gildas.menier@univ-ubs.fr
+
 package Vqs
 
 
-// matrice dense complexe
-// Gildas Ménier
+// Dense complex matrix
 
 case class QM(l_ : QV*) {
   lazy val coord: Array[QV] = l_.toArray[QV]

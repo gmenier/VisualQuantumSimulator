@@ -1,6 +1,4 @@
-
-
-// QSim : Simulateur Quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
@@ -15,7 +13,7 @@ import io.AnsiColor._
 
 case class QComplex(val re: Double, val im: Double) {
 
-  val sSize = 17 // longueur des chaines graphiques (proba et phase)
+  val sSize = 17 // Size of the ascii / graphics
 
   lazy val conj: QComplex = QComplex(re, -im)
   lazy val norm2: Double = re * re + im * im // norme au carré
@@ -46,12 +44,12 @@ case class QComplex(val re: Double, val im: Double) {
 
   private lazy val df = new java.text.DecimalFormat("#.########  ")
 
-  def asEulerString(start: Double = 0.0): String = { // forme euler
+  def asEulerString(start: Double = 0.0): String = { //  euler
     val (r, thetap) = asEuler
     // val rStr = df.format(r)
     val rStr = r.toString()
 
-    // pour trouver un angle entre 0 et 2Pi, avec un offset/origine de start
+    // Finds and angle between 0 and 2Pi with Phase offset
     var ang_ = normalizeAngleOrigin(thetap, start)
     val ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
 
@@ -67,7 +65,7 @@ case class QComplex(val re: Double, val im: Double) {
 
   def asEuler:(Double, Double) = (norm, thetaP)
 
-  def probaString:String = { // image de la proba associée au complexe
+  def probaString:String = { // Drawing of proba
     var nb = (sSize*proba).toInt
     if ((proba >0)&&(nb==0))  nb = 1
     val res = if (proba < 1E-10) {
@@ -104,7 +102,7 @@ case class QComplex(val re: Double, val im: Double) {
 
     }
 
-    if ( math.abs((math.abs(p)-math.Pi)) < 0.00001 ) { // dephasage de Pi
+    if ( math.abs((math.abs(p)-math.Pi)) < 0.00001 ) { // phase managing
       for(i <- 1 until sSize-1 )
         if (i<= sSize/2) tabC(i) = '▓' else tabC(i)=charS
     }
@@ -142,7 +140,7 @@ case class QComplex(val re: Double, val im: Double) {
     }
 
     res.mkString
-  } // mélange les deux représentation proba et phase
+  } // mix the two drawing
 
   override def toString: String = {
     val reStr = formatNumber(re)
@@ -227,8 +225,6 @@ object QComplex {
 
 
   def normalizeAngleOrigin(ang_ : Double, start: Double = 0.0): Double = {
-    // normalise l'angle pour le ramener entre 0 et 2Pi
-    // avec un offset de départ indiqué par start
     var ang = (ang_ - start)+100*math.Pi
     while (math.abs(ang) >= 2*math.Pi-0.00001) ang = ang - 2*math.Pi;
     ang

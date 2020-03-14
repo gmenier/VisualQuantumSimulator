@@ -1,6 +1,10 @@
 package Vqs
+// VQS : Quantum Computing Simulation
+// Gildas Ménier
+// 2020
+// gildas.menier@univ-ubs.fr
 
-import QComplex._
+
 
 object QStudy {
 

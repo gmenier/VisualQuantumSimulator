@@ -1,4 +1,4 @@
-// QSim : Simulateur Quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
@@ -21,6 +21,8 @@ import io.AnsiColor._
 
 case class QReg(val nbQbits : Int) { //
 
+  val NOPURESTATE = -1
+
   // 2^nbQbits complex = 0
   val nbValues : Int = scala.math.pow(2, nbQbits).toInt
   val state: Array[QComplex] = Array.fill[QComplex](nbValues)(QComplex(0,0))
@@ -28,7 +30,7 @@ case class QReg(val nbQbits : Int) { //
   val qbitChanged: Array[Boolean] = Array.fill[Boolean](nbQbits)(false)
   this.state(0) = QComplex(1,0) // valeur 000 par défaut
 
-  val qbstate = Array.fill[Int](nbQbits)(-1) // pas de valeurs
+  val qbstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate
 
   var isError = false
 
@@ -42,9 +44,9 @@ case class QReg(val nbQbits : Int) { //
 
   var isShowRender : Boolean = true
 
-  var drawAllState : Boolean = false; // si faux, on ne dessine que les proba > 0
+  var drawAllState : Boolean = false; // if false only draw states with probability > 0
 
-  var phaseNormalization : Boolean = true // si vrai normalisation de la phase globale / 0
+  var phaseNormalization : Boolean = true // if true normalize the phases
 
   def resetChange(): Unit = {
     changed.indices.foreach( v => changed(v) = false)
@@ -106,7 +108,7 @@ case class QReg(val nbQbits : Int) { //
     qbstate(idx)
   }
 
-  def readQbit(idx: Int) = { // lecture d'un des Qbit (il faut D avant)
+  def readQbit(idx: Int) = { // reads a QBit value - should < before reading
     val r = getState(idx)
     if (r == -1) {
       notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try D())")
@@ -116,7 +118,7 @@ case class QReg(val nbQbits : Int) { //
     }
   } // readQbit
 
-  def readQbit: Int = { // lecture (il faut un D avant)
+  def readQbit: Int = { // Read the reg value - should < before
     val rl : List[Int] = (for (i <- 0 until nbQbits) yield readQbit(i)).toList
     rl.reverse.foldLeft(0)(
       (ac,v) => v + 2*ac
@@ -125,11 +127,11 @@ case class QReg(val nbQbits : Int) { //
 
   def setState(idx: Int, value: Int) { qbstate(idx) = value }
 
-  def drawOnlyPossible(): Unit = { // toString ne dessine pas les valeurs avec une proba de 0
+  def drawOnlyPossible(): Unit = { // only draws proba >0
     this.drawAllState = false
   } // drawOnlyPossible
 
-  def drawAll(): Unit = { // toString dessine toutes les valeurs
+  def drawAll(): Unit = { /// draws ALL states
     this.drawAllState = true;
   } // drawAll
 
@@ -143,7 +145,7 @@ case class QReg(val nbQbits : Int) { //
     this.update(QUtils.binaryToInt(idx), value)
   } // update
 
-  def write(value : Int) { // initialise avec la valeur indiquée
+  def write(value : Int) { // initialise the first register's value
     // TODO qbitchanged
     this.state.indices.foreach( v => this(v)= QComplex(0,0))
     this(value) = QComplex(1,0)
@@ -155,7 +157,7 @@ case class QReg(val nbQbits : Int) { //
     processTraceIfNecessary()
   }
 
-  def forceRead(idx: Int) { // lecture d'un QBit : Détermination !
+  def forceRead(idx: Int) { // Force the reading of a QBit
 
     if (idx == QReg.All) {
       (0 until nbQbits).foreach( v => forceRead(v))
@@ -166,17 +168,17 @@ case class QReg(val nbQbits : Int) { //
         v._2(nbQbits - 1 - idx)
       )
 
-      // on doit faire la somme des probas de chaque element, pas de l'amplitude de proba (nuance)
+      // Sum of all proba
 
       var proba0 = res('0').foldLeft(0.0)((a, v) => a + this (v._1).proba)
       // val proba1 = res('1').foldLeft(0.0)((a, v) => a + this(v._1).proba)
 
 
-      val f = flip(proba0) // tirage de 0 ?
+      val f = flip(proba0) // tries to get a 0
 
-      if (f) { // on a tiré un 0
+      if (f) { // a 0
         res('1').foreach(v => this (v._1) = QComplex(0, 0)) // on annule les probas de 1
-      } else { // on a tiré un 1
+      } else { // a 1
         res('0').foreach(v => this (v._1) = QComplex(0, 0)) // on annule les probas de 0
       }
 
@@ -192,9 +194,9 @@ case class QReg(val nbQbits : Int) { //
 
   def -(qop_ : QOperator): QReg =  {
 
-    this.resetChange() // pour garder une trace des qbits et valeurs modifiées
+    this.resetChange() // keeps a trace of the states
 
-    var condl = List[Int]() // liste des Qbits en condition
+    var condl = List[Int]() // Conditionnal QBit list
 
     if (!isError) {
       qop_.setRegister(this)
@@ -293,7 +295,7 @@ case class QReg(val nbQbits : Int) { //
       println(this.render)
       println(this)
       this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Trace : "+traceIdx, clist= condl)
-      if (this.myPdf != null) { // création d'un fichier pdf
+      if (this.myPdf != null) { // Creates a pdf file
           this.myPdf.writeReport(this, circuitSize, traceIdx)
       }
       traceIdx = traceIdx + 1
@@ -303,8 +305,7 @@ case class QReg(val nbQbits : Int) { //
   def applyOp(idxQBit : Int, masque : Int, qop : QOperator ) {
       qbitChanged(idxQBit) = true
 
-      // Conditionnal ou bien qbit simple
-      // on doit calculer les couples des coordonnées concernées
+      // Computes the couple of Qbits with only one V different
       val p = math.pow(2, idxQBit).toInt
       val s = (0 until nbValues).groupBy(_ / p).toList.sortBy(_._1).groupBy(_._1 % 2 == 0)
       val rp = s(true).flatMap(c => c._2.toList)
@@ -313,7 +314,7 @@ case class QReg(val nbQbits : Int) { //
 
       if (masque >= 0) vr = vr.filter(v => (v._1 & masque) > 0)
 
-      // puis appliquer l'opérateur sur ces couples et mettre à jour
+      // Applies the op on these states
       var f: QV => QV = qop.op _
 
       vr.foreach {
@@ -324,7 +325,7 @@ case class QReg(val nbQbits : Int) { //
       }
     }
 
-  def normalize() { // regle de Born
+  def normalize() { // Born rule
     val s = math.sqrt(this.state.foldLeft(0.0)( (a,c) => a+c.norm2))
     this.state.indices.foreach(
       i => this.state(i) = this.state(i)/s
@@ -390,7 +391,7 @@ case class QReg(val nbQbits : Int) { //
     val titrePhase = if (QComplex.isRadian) "Phase [-π 0 π]     " else "[-180°   0    180°]"
 
     if (phaseNormalization)
-        startAng = findPhaseOrg  // pour normaliser selon la phase de 0
+        startAng = findPhaseOrg  // Normalizes
 
     var elt : List[Int] = (0 until nbValues).toList
     
@@ -407,13 +408,13 @@ case class QReg(val nbQbits : Int) { //
     if (! isError) res+"\n" else "<*** Error ***>"
   } // toString
 
-  def findPhaseOrg: Double = { // trouve la phase de référence
+  def findPhaseOrg: Double = { // finds the phase reference
     var it = 0;
     while ((it < nbValues) && ( math.abs(this(it).proba)) < 0.000000001) it = it+1
     if ( it < nbValues) this(it).phase() else this(0).phase()
   }
 
-  def angle(a :Double) = { // convertir l'angle radian / degres
+  def angle(a :Double) = { // converts angle - all the computations are in Radians
       if (QReg.isRadian) a else convertDecToRad(a)
   }
 
@@ -424,7 +425,7 @@ case class QReg(val nbQbits : Int) { //
     drawOnlyPossible()
     var offset:Double = 0.0
     if (phaseNormalization)
-      offset = findPhaseOrg // pour normaliser selon la phase de 0
+      offset = findPhaseOrg // normalizes
 
     var elt : List[Int] = (0 until nbValues).toList
 
@@ -457,7 +458,7 @@ case class QReg(val nbQbits : Int) { //
 
     elt.foreach(v => { // v est l'indice de la valeur
       val (norm_, phase_) = this(v).asEuler
-      val proba = zoom*(norm_ * norm_)  // probabilité
+      val proba = zoom*(norm_ * norm_)  // probability
       val phase = normalizeAngleOrigin(phase_, offset) - math.Pi/2 // phase
       val x = (250 + 225*proba*math.cos(phase)).toInt
       val y = (250 + 225*proba*math.sin(phase)).toInt
@@ -483,17 +484,17 @@ case class QReg(val nbQbits : Int) { //
     this.drawAllState = svg
   } // drawImage
 
-  def drawStateImage(filename : String="state", // nom du fichier image (.png rajouté)
-                     text: String="", // texte à afficher
-                     numLines: Int = 1, // nombre de lignes d'états
-                     osize:Int = 30, // taille d'un des cercles
-                     clist : List[Int] = List() // liste des QBits en condition
+  def drawStateImage(filename : String="state", // name of the file + png
+                     text: String="", // text to draw
+                     numLines: Int = 1, // how many lines
+                     osize:Int = 30, // size of one circle
+                     clist : List[Int] = List() // Cond QBit list
                     ): Unit = {
-    val coln = nbValues/numLines // nombre de colonnes par ligne
+    val coln = nbValues/numLines // number of col
     val bord = 60
     val im = GraphCanvas( 100+(2*osize+bord)*coln, 100+ (2*osize+bord*2)*numLines)
     im.drawText(text, 6,20, c= new Color(255,255,255))
-    // on determine la liste des qbits qui ont changé
+    // List of the changed
     val lchanged = for( i <- qbitChanged.indices if (qbitChanged(i)) ) yield i
     val qbs = qbstate.indices.filter( v => qbstate(v) != -1).toList
     val qbs0 = qbs.filter(v => qbstate(v) == 0).toList
@@ -541,7 +542,7 @@ object QReg {
   val rn = new SecureRandom()
   val randomS :  SecureRandom = new SecureRandom(rn.generateSeed((40+ 30*math.random()).toInt))
 
-  def setRadians() { isRadian = true } // pour affichage et entrée de données
+  def setRadians() { isRadian = true }
   def setDegrees() { isRadian = false }
 
 

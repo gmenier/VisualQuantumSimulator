@@ -1,5 +1,5 @@
 package Vqs
-// QSim : Simulateur Quantique
+// VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
@@ -50,12 +50,12 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
   }
 
 
-  def infol(s : String): Unit = { // info dans les lignes sous le graphe
+  def infol(s : String): Unit = { // Line : info / status
      atAbs((nbQbits-1)*2+1, (s+" "*5).substring(0,5))
   }
 
 
-  def infoline(s : String): Unit = { // info dans les lignes sous le graphe
+  def infoline(s : String): Unit = { //
     atAbs((nbQbits-1)*2+2, s)
   }
 
@@ -107,7 +107,7 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
   }
 
   def pushNextCol( offset : Int): Unit = {
-    colonne = colonne+offset // prochaine colonne
+    colonne = colonne+offset // next col
   } // pushNextCol
 
   def nextCol(): Unit = {
