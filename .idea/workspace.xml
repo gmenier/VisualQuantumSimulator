@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/GraphCanvas$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/GraphCanvas$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/GraphCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/GraphCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$$anon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QOperator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
-    </list>
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -171,7 +151,7 @@
       <workItem from="1584185292306" duration="939000" />
       <workItem from="1584193390899" duration="1785000" />
       <workItem from="1584195210321" duration="2950000" />
-      <workItem from="1584375442847" duration="3206000" />
+      <workItem from="1584375442847" duration="3476000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -201,7 +181,28 @@
       <option name="project" value="LOCAL" />
       <updated>1584195766876</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="README Update">
+      <created>1584378669922</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584378669922</updated>
+    </task>
+    <task id="LOCAL-00006" summary="README Update2">
+      <created>1584378800796</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584378800796</updated>
+    </task>
+    <task id="LOCAL-00007" summary="README Update2">
+      <created>1584378891293</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584378891293</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +213,8 @@
     <MESSAGE value="README" />
     <MESSAGE value="Changed most of the (rare) comments to English" />
     <MESSAGE value="README Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="README Update" />
+    <MESSAGE value="README Update2" />
+    <option name="LAST_COMMIT_MESSAGE" value="README Update2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="351" y="31" key="#Project_Structure" timestamp="1584113962513">
@@ -231,10 +233,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="582" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584122717651" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584378799874">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584379060525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584378799874" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584379060525" />
     <state x="633" y="176" key="FileChooserDialogImpl" timestamp="1584114258862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -259,9 +261,13 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="220" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584197250440" />
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584378805470">
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584378892796">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584378805470" />
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584378892796" />
+    <state x="478" y="235" key="git4idea.merge.GitPullDialog" timestamp="1584378993391">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="478" y="235" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584378993391" />
   </component>
 </project>
