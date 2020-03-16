@@ -114,6 +114,20 @@ case class X(idx:Int = QReg.All) extends QOperator {
   ).mult(qbit)
 } // X
 
+case class Not(idx:Int = QReg.All) extends QOperator {
+  def render(pad: QPad): Unit = {
+    pad.at(idx, "X")
+    pad.nextCol2()
+  }
+
+  def idxBit = idx;
+
+  def op(qbit: QV) : QV = QM(
+    QV(0,1),
+    QV(1,0)
+  ).mult(qbit)
+} // X
+
 case class Y(idx:Int = QReg.All) extends QOperator {
   def render(pad: QPad): Unit = {
     pad.at(idx, "Y")
@@ -157,9 +171,9 @@ case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
   ).mult(qbit)
 } // S = Z90
 
-case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
+case class s(idx:Int = QReg.All) extends QOperator { // Z-90
   def render(pad: QPad): Unit = {
-    pad.at(idx, "S")
+    pad.at(idx, "s")
     pad.nextCol2()
   }
 
@@ -186,9 +200,9 @@ case class T(idx:Int = QReg.All) extends QOperator { // Z45
   ).mult(qbit)
 } // T = Z45
 
-case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
+case class t(idx:Int = QReg.All) extends QOperator { // Z-45
   def render(pad: QPad): Unit = {
-    pad.at(idx, "T")
+    pad.at(idx, "t")
     pad.nextCol2()
   }
 
@@ -316,7 +330,6 @@ case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C
 
 
 
-
 // Swaps the qbits e1 et e2
 case class Swap(e1: Int, e2: Int) extends QOperator {
 
@@ -363,9 +376,27 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
   def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
 
+object QOperator {
 
-// Macros
+  // QFT on all QBits
+  def qft(thisR: QReg): Unit = {
+    val s  = thisR.nbQbits -1
+    for( i <- 0 until s) {
+      thisR - H(s - i)
+      var minAngle: Double = (if (thisR.isInRadians) math.Pi/2 else 90)/math.pow(2,i)
+      for(j <- 0 to i) {
+        thisR - C(Rz(s-j, minAngle), s-i-1)
+        minAngle = minAngle + minAngle
+      }
+    }
+    thisR - H(0)
+    // swaps
+    for(i <- 0 until (s/2+1)) {
+      if (i != (s-i)) thisR - Swap(i, s-i)
+    }
+  }
 
+}
 
 
 

@@ -152,22 +152,6 @@ object QStudy {
 
   def caseQFT() {
 
-    def qft(myParam: Int)(thisR: QReg): Unit = {
-      val s  = thisR.nbQbits -1
-      for( i <- 0 until s) {
-        thisR - H(s - i)
-        var minAngle: Double = (if (thisR.isInRadians) math.Pi/2 else 90)/math.pow(2,i)
-        for(j <- 0 to i) {
-          thisR - C(Rz(s-j, minAngle), s-i-1)
-          minAngle = minAngle + minAngle
-        }
-      }
-      thisR - H(0)
-      // swaps
-      for(i <- 0 until (s/2+1)) {
-        if (i != (s-i)) thisR - Swap(i, s-i)
-      }
-    } // qft
 
     def test(): Unit = {
       val rr: QReg = QReg(5)
@@ -176,7 +160,7 @@ object QStudy {
       rr.trace(8)
       println("start")
       rr.init(2)
-      rr - F("QFT",  qft(myParam=25), "qft1", skipTrace = true)
+      rr - F("QFT",  QOperator.qft, "qft1", skipTrace = true)
       rr.end()
     }
     test()
