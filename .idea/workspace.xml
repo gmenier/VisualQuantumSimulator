@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/F.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/F.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +156,9 @@
       <workItem from="1584193390899" duration="1785000" />
       <workItem from="1584195210321" duration="2950000" />
       <workItem from="1584375442847" duration="3700000" />
+      <workItem from="1584524761481" duration="68000" />
+      <workItem from="1584648646515" duration="2225000" />
+      <workItem from="1584983868374" duration="109000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -211,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584379087783</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="General update">
+      <created>1584524801226</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584524801226</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +235,8 @@
     <MESSAGE value="Changed most of the (rare) comments to English" />
     <MESSAGE value="README Update" />
     <MESSAGE value="README Update2" />
-    <option name="LAST_COMMIT_MESSAGE" value="README Update2" />
+    <MESSAGE value="General update" />
+    <option name="LAST_COMMIT_MESSAGE" value="General update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="351" y="31" key="#Project_Structure" timestamp="1584113962513">
@@ -242,38 +255,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="582" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584122717651" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584379087072">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584524792854">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584379087072" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584524792854" />
     <state x="633" y="176" key="FileChooserDialogImpl" timestamp="1584114258862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="633" y="176" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1584114258862" />
-    <state width="926" height="266" key="GridCell.Tab.0.bottom" timestamp="1584379146784">
+    <state width="1852" height="604" key="GridCell.Tab.0.bottom" timestamp="1584650874069">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="926" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584379146784" />
-    <state width="926" height="266" key="GridCell.Tab.0.center" timestamp="1584379146784">
+    <state width="1852" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584650874069" />
+    <state width="1852" height="604" key="GridCell.Tab.0.center" timestamp="1584650874069">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="926" height="266" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584379146784" />
-    <state width="926" height="266" key="GridCell.Tab.0.left" timestamp="1584379146784">
+    <state width="1852" height="604" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584650874069" />
+    <state width="1852" height="604" key="GridCell.Tab.0.left" timestamp="1584650874069">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="926" height="266" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584379146784" />
-    <state width="926" height="266" key="GridCell.Tab.0.right" timestamp="1584379146784">
+    <state width="1852" height="604" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584650874069" />
+    <state width="1852" height="604" key="GridCell.Tab.0.right" timestamp="1584650874069">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="926" height="266" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584379146784" />
+    <state width="1852" height="604" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584650874069" />
     <state x="220" y="0" key="SettingsEditor" timestamp="1584197250440">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="220" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584197250440" />
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584379089006">
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584524805545">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584379089006" />
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584524805545" />
     <state x="478" y="235" key="git4idea.merge.GitPullDialog" timestamp="1584378993391">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

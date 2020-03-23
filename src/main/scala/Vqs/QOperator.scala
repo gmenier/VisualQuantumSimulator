@@ -171,10 +171,10 @@ case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
   ).mult(qbit)
 } // S = Z90
 
-case class s(idx:Int = QReg.All) extends QOperator { // Z-90
+case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
   def render(pad: QPad): Unit = {
-    pad.at(idx, "s")
-    pad.nextCol2()
+    pad.at(idx, "mS")
+    pad.nextCol2(); pad.nextCol()
   }
 
   def idxBit = idx;
@@ -200,10 +200,10 @@ case class T(idx:Int = QReg.All) extends QOperator { // Z45
   ).mult(qbit)
 } // T = Z45
 
-case class t(idx:Int = QReg.All) extends QOperator { // Z-45
+case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
   def render(pad: QPad): Unit = {
-    pad.at(idx, "t")
-    pad.nextCol2()
+    pad.at(idx, "mT")
+    pad.nextCol2(); pad.nextCol()
   }
 
   def idxBit = idx;
@@ -365,7 +365,7 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
   def render(pad: QPad): Unit = {
     pad.atAbs(0,"╓")
     for(i <- 1 to thisR.nbQbits*2) pad.atAbs(i,"║")
-    thisR.infoline(name +" : "+msg)
+    thisR.infoline(name + (if (msg.length > 0) " : " else "" ) + msg)
 
     pad.atAbs((thisR.nbQbits-1)*2+2, "╙")
     pad.nextCol(); pad.nextCol2();
