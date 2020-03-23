@@ -275,7 +275,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
   var o = angle
 
   override def init(): Unit = {
-    if ( (p < 0) ||
+    if ( ((p < 0) && (p != QReg.All)) ||
       (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Rx")
     o = thisR.angle(angle)
   }
@@ -303,7 +303,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
   var o = angle
 
   override def init(): Unit = {
-    if ( (p < 0) ||
+    if ( ((p < 0) && (p != QReg.All)) ||
       (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Ry")
     o = thisR.angle(angle)
   }
@@ -331,7 +331,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
   var o = angle
 
   override def init(): Unit = {
-    if ( (p < 0) ||
+    if ( ((p < 0) && (p != QReg.All)) ||
       (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Rz")
     o = thisR.angle(angle)
   }
