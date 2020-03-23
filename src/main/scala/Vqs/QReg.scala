@@ -32,7 +32,6 @@ case class QReg(val nbQbits : Int) { //
 
   val qbstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate
 
-  var isError = false
 
   def isInRadians = QReg.isRadian
 
@@ -89,10 +88,6 @@ case class QReg(val nbQbits : Int) { //
     phaseNormalization = true
   }
 
-  def notifyError(msg : String): Unit = {
-    isError = true
-    println("\n<*** Error: "+msg+" ***>\n")
-  }
 
   def drawNOPhaseNormalization(): Unit = {
     phaseNormalization = false
@@ -198,7 +193,7 @@ case class QReg(val nbQbits : Int) { //
 
     var condl = List[Int]() // Conditionnal QBit list
 
-    if (!isError) {
+
       qop_.setRegister(this)
       qop_.init()
       var qop: QOperator = qop_
@@ -283,7 +278,7 @@ case class QReg(val nbQbits : Int) { //
 
       if (qop_.leaveATrace) processTraceIfNecessary(condl)
 
-    } // (!isError...
+
 
     this
   }  // ~
@@ -405,7 +400,7 @@ case class QReg(val nbQbits : Int) { //
     ).mkString("\n")
     QComplex.isRadian = svgRadian
     res = QUtils.colorizeBinary(nbQbits, res)
-    if (! isError) res+"\n" else "<*** Error ***>"
+    res+"\n"
   } // toString
 
   def findPhaseOrg: Double = { // finds the phase reference
@@ -550,5 +545,9 @@ object QReg {
     this.randomS.nextDouble() < proba
   } // flip
 
+  def notifyError(msg : String): Unit = {
+    println("\n<*** Error: "+msg+" ***>\n")
+    System.exit(1)
+  }
 
 } // QReg
