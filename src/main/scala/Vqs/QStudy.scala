@@ -139,7 +139,7 @@ object QStudy {
   } // casTeleport
 
   def caseKickBack() {
-    def test(): Unit = {
+    def test(): Unit = { //
       val rr: QReg = QReg(3)
       rr.trace(2)
       rr.init(4)

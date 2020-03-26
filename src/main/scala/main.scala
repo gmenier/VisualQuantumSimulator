@@ -15,9 +15,11 @@ object main {
     // QStudy.caseQFT()
 
     import Vqs._
-    val rr = QReg(4)
-    rr - F("QFT",  QOperator.qft, expand = true)
+    val rr = QReg(2)
+    rr.init(2)
+    rr - Swap(0,1) - <()
     println(rr.render)
+    rr.end()
 
   } // main
 

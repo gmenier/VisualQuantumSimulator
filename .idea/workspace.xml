@@ -3,31 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$less$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$less$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$less.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$less.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/C$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/C$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/C.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/C.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/CL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/CL$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/CL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/CL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/F$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/F$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/H.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/H.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rx$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rx$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rx.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rx.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Ry$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Ry$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Ry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Ry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rz$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rz$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Swap$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Swap$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Swap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Swap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/X$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/X$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/X.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/X.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Y$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Y$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Y.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Y.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Z$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Z$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Z.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Z.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +34,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" root0="SKIP_INSPECTION" />
@@ -181,7 +164,10 @@
       <workItem from="1584375442847" duration="3700000" />
       <workItem from="1584524761481" duration="68000" />
       <workItem from="1584648646515" duration="2225000" />
-      <workItem from="1584983868374" duration="5877000" />
+      <workItem from="1584983868374" duration="5960000" />
+      <workItem from="1585061238917" duration="1262000" />
+      <workItem from="1585235764089" duration="1124000" />
+      <workItem from="1585237001017" duration="202000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -260,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584995775155</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added Tests of the #QBit in the Gate's calls + abort when error">
+      <created>1584995895321</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1584995895321</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,49 +287,57 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="582" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584122717651" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1584995773501">
+    <state x="633" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585236881423">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584995773501" />
+    <state x="633" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585236881423" />
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1585237246544">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585237246544" />
     <state x="633" y="176" key="FileChooserDialogImpl" timestamp="1584114258862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="633" y="176" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1584114258862" />
-    <state width="1852" height="175" key="GridCell.Tab.0.bottom" timestamp="1584995719285">
+    <state width="1852" height="310" key="GridCell.Tab.0.bottom" timestamp="1585063155003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1852" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584995719285" />
-    <state width="1852" height="175" key="GridCell.Tab.0.center" timestamp="1584995719284">
+    <state width="1852" height="310" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585063155003" />
+    <state width="1852" height="310" key="GridCell.Tab.0.center" timestamp="1585063155003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1852" height="175" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584995719284" />
-    <state width="1852" height="175" key="GridCell.Tab.0.left" timestamp="1584995719284">
+    <state width="1852" height="310" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585063155003" />
+    <state width="1852" height="310" key="GridCell.Tab.0.left" timestamp="1585063155003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1852" height="175" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584995719284" />
-    <state width="1852" height="175" key="GridCell.Tab.0.right" timestamp="1584995719284">
+    <state width="1852" height="310" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585063155003" />
+    <state width="1852" height="310" key="GridCell.Tab.0.right" timestamp="1585063155003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1852" height="175" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584995719284" />
+    <state width="1852" height="310" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585063155003" />
     <state x="220" y="0" key="SettingsEditor" timestamp="1584197250440">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="220" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584197250440" />
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584995777108">
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1584995897684">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584995777108" />
-    <state x="478" y="235" key="git4idea.merge.GitPullDialog" timestamp="1584378993391">
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584995897684" />
+    <state x="657" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585237376571">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="478" y="235" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584378993391" />
+    <state x="657" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1585237376571" />
+    <state x="478" y="235" key="git4idea.merge.GitPullDialog" timestamp="1585063096245">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="478" y="235" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585063096245" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala</url>
-          <line>196</line>
+          <line>195</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

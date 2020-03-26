@@ -88,7 +88,6 @@ case class QReg(val nbQbits : Int) { //
     phaseNormalization = true
   }
 
-
   def drawNOPhaseNormalization(): Unit = {
     phaseNormalization = false
   }
@@ -106,7 +105,7 @@ case class QReg(val nbQbits : Int) { //
   def readQbit(idx: Int) = { // reads a QBit value - should < before reading
     val r = getState(idx)
     if (r == -1) {
-      notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try D())")
+      notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try <())")
       0
     } else {
       r
