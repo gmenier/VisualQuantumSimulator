@@ -4,7 +4,7 @@
 		module="vqs-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20200313164930"
+		publication="20200326164416"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
