@@ -84,6 +84,7 @@ object QStudy {
       QUtils.drawIntHistogram(v, 8)
 
       println()
+
     } // test
 
     test()
@@ -103,6 +104,7 @@ object QStudy {
       rr - C(X(1),0)
 
       println(rr.render); println(rr)
+      rr.end()
     }
     test()
   }
@@ -113,6 +115,7 @@ object QStudy {
       rr.drawAll()
       rr.trace(2) // dessine la prog et les registres à chaque étape sur 2 lignes
       rr - H(1) - C(X(2), 1) - H(1)
+      rr.end()
     }
     test()
   }
@@ -146,6 +149,7 @@ object QStudy {
       rr - H(0) - H(1)
       rr - C(Rz(2,45), 0)
       rr - C(Rz(2,90), 1)
+      rr.end()
     }
     test()
   } // casDraft
@@ -154,13 +158,14 @@ object QStudy {
 
 
     def test(): Unit = {
-      val rr: QReg = QReg(5)
+      val rr: QReg = QReg(4)
       rr.pdf("qft.pdf","Quantum Fourier Transform")
       // rr.drawAll()
       rr.trace(8)
       println("start")
-      rr.init(2)
-      rr - F("QFT",  QOperator.qft, "qft1", skipTrace = true)
+      rr.init(1)
+      rr - F("QFT",  QOperator.qft, "qft", expand = true, skipTrace = true)
+      println(rr.renderWithoutAnsi)
       rr.end()
     }
     test()

@@ -348,7 +348,9 @@ case class QReg(val nbQbits : Int) { //
       .replaceAllLiterally("╜", s"${YELLOW}╜${RESET}")  +"\n"
   }
 
-
+  def renderWithoutAnsi : String = {
+    cutRenderWithoutAnsi(2000)
+  }
 
   def cutRenderWithoutAnsi(dSize : Int) : String = {
     var rend = this.render
