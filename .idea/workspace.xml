@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="" />
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/test.jpg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,6 +164,7 @@
       <workItem from="1585237001017" duration="1284000" />
       <workItem from="1585668350763" duration="78000" />
       <workItem from="1585668459020" duration="3789000" />
+      <workItem from="1585753644017" duration="281000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -281,13 +285,22 @@
       <option name="project" value="LOCAL" />
       <updated>1585672243257</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Images dir / Wiki">
+      <created>1585753812545</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1585753812545</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="New Commit for SBT" />
     <MESSAGE value="README" />
     <MESSAGE value="Changed most of the (rare) comments to English" />
@@ -298,7 +311,8 @@
     <MESSAGE value="Added Tests of the #QBit in the Gate's calls + abort when error" />
     <MESSAGE value="updated gitignore" />
     <MESSAGE value="RenderwithoutAnsi" />
-    <option name="LAST_COMMIT_MESSAGE" value="RenderwithoutAnsi" />
+    <MESSAGE value="Images dir / Wiki" />
+    <option name="LAST_COMMIT_MESSAGE" value="Images dir / Wiki" />
   </component>
   <component name="WindowStateProjectService">
     <state x="351" y="31" key="#Project_Structure" timestamp="1584113962513">
@@ -321,10 +335,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="633" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585668373322" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1585753732423">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1585753949015">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585753732423" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585753949015" />
     <state x="255" y="85" key="DiffContextDialog" timestamp="1585237605111">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -369,10 +383,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="220" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584197250440" />
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1585672245868">
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2" timestamp="1585753814408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1585672245868" />
+    <state x="348" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1585753814408" />
     <state x="657" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585237376571">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
