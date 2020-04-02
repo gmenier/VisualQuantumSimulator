@@ -45,6 +45,8 @@ case class QReg(val nbQbits : Int) { //
 
   var drawAllState : Boolean = false; // if false only draw states with probability > 0
 
+  var lastOp:String =""
+
   var phaseNormalization : Boolean = true // if true normalize the phases
 
   def resetChange(): Unit = {
@@ -73,11 +75,11 @@ case class QReg(val nbQbits : Int) { //
     isTrace = true
     traceIdx = 0
     traceSize = traceSize_
-    println(">QSim : Tracing init")
+    println(">QSim : Starting trace")
     println(this.render)
     println(this)
     this.resetChange()
-    this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Trace : init")
+    this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Starting trace")
     if (this.myPdf != null) { // création d'un fichier pdf
       this.myPdf.writeReport(this, circuitSize, traceIdx)
     }
@@ -147,6 +149,7 @@ case class QReg(val nbQbits : Int) { //
   } // write
 
   def init(value: Int): Unit = {
+    lastOp = "init("+value+")"
     this.write(value)
     processTraceIfNecessary()
   }
@@ -285,10 +288,10 @@ case class QReg(val nbQbits : Int) { //
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
-      println("Trace : "+traceIdx)
+      println("Trace : "+traceIdx+ "  ... "+lastOp)
       println(this.render)
       println(this)
-      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Trace : "+traceIdx, clist= condl)
+      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Trace : "+traceIdx+ "   ... "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
           this.myPdf.writeReport(this, circuitSize, traceIdx)
       }
@@ -298,6 +301,8 @@ case class QReg(val nbQbits : Int) { //
 
   def applyOp(idxQBit : Int, masque : Int, qop : QOperator ) {
       qbitChanged(idxQBit) = true
+
+      lastOp = qop.opLabel
 
       // Computes the couple of Qbits with only one V different
       val p = math.pow(2, idxQBit).toInt

@@ -11,8 +11,17 @@ import Vqs._
 object main {
 
   def main(args : Array[String]): Unit = {
-    QUtils.removeImages
-    QStudy.caseQFT()
+    //QUtils.removeImages
+    //QStudy.caseQFT()
+
+    val rr: QReg = QReg(1)
+    rr.trace(2)
+
+    rr.init(1)
+
+    rr - H()
+
+    rr.end()
 
   } // main
 
