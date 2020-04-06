@@ -137,6 +137,7 @@ case class QReg(val nbQbits : Int) { //
     this.changed(idx) = true
   } // update
 
+
   def update(idx : String, value: QComplex) {
     this.update(QUtils.binaryToInt(idx), value)
   } // update
@@ -150,6 +151,7 @@ case class QReg(val nbQbits : Int) { //
 
   def init(value: Int): Unit = {
     lastOp = "init("+value+")"
+    qbitChanged.indices.foreach( i => qbitChanged(i)=true )
     this.write(value)
     processTraceIfNecessary()
   }

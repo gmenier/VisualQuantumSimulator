@@ -14,8 +14,8 @@ object main {
     //QUtils.removeImages
     //QStudy.caseQFT()
 
-    val rr: QReg = QReg(1)
-    rr.trace(2)
+    val rr: QReg = QReg(2)
+    rr.trace(1)
 
     rr.init(1)
 

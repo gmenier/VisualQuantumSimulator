@@ -47,7 +47,7 @@ case class QComplex(val re: Double, val im: Double) {
   def asEulerString(start: Double = 0.0): String = { //  euler
     val (r, thetap) = asEuler
     // val rStr = df.format(r)
-    val rStr = r.toString()
+    val rStr = formatNumber(r)
 
     // Finds and angle between 0 and 2Pi with Phase offset
     var ang_ = normalizeAngleOrigin(thetap, start)
