@@ -19,13 +19,18 @@ trait QOperator {
 
   def render(pad: QPad);
   def idxBit : Int;
-  def op(qbit : QV):QV ;
+
+  def op(qbit: QV) : QV = Id.mult(qbit) // identity
 
   def opLabel : String = "?" ;
 
   var leaveATrace : Boolean = true
 
-  def init() {}
+  val NoIdx = -1
+
+  def init() {} // called to set thisR
+
+  def alias = this // so you can rename the operator
 
   def setRegister(thisR_ : QReg): Unit = {
     thisR = thisR_
@@ -38,6 +43,8 @@ trait QOperator {
 }
 
 
+// screen composition
+
 case class Label(label:String) extends QOperator {
 
   leaveATrace = false
@@ -47,9 +54,8 @@ case class Label(label:String) extends QOperator {
     (label+"  ").indices.foreach( _ => pad.nextCol())
   }
 
-  def idxBit = -1 // label
+  def idxBit = NoIdx // label
 
-  def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
 
 case class VLabel(label:String) extends QOperator {
@@ -61,11 +67,9 @@ case class VLabel(label:String) extends QOperator {
     pad.nextCol2();
   }
 
-  def idxBit = -1 // label
+  def idxBit = NoIdx // label
 
-  def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
-
 
 case class |(nb : Int = 4) extends QOperator {
 
@@ -75,9 +79,8 @@ case class |(nb : Int = 4) extends QOperator {
     for (i <- (0 until nb)) pad.nextCol();
   }
 
-  def idxBit = -1 // label
+  def idxBit = NoIdx // label
 
-  def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
 
 
@@ -103,7 +106,7 @@ case class H(idx:Int = QReg.All) extends QOperator {
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override def op(qbit: QV) : QV = QM(
     QV(1/sq2,1/sq2),
     QV(1/sq2,-1/sq2)
   ).mult(qbit)
@@ -127,7 +130,7 @@ case class X(idx:Int = QReg.All) extends QOperator {
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override   def op(qbit: QV) : QV = QM(
     QV(0,1),
     QV(1,0)
   ).mult(qbit)
@@ -150,7 +153,7 @@ case class Not(idx:Int = QReg.All) extends QOperator {
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override   def op(qbit: QV) : QV = QM(
     QV(0,1),
     QV(1,0)
   ).mult(qbit)
@@ -172,7 +175,7 @@ case class Y(idx:Int = QReg.All) extends QOperator {
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override  def op(qbit: QV) : QV = QM(
     QV(0, -i),
     QV(i, 0)
   ).mult(qbit)
@@ -194,7 +197,7 @@ case class Z(idx:Int = QReg.All) extends QOperator {
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override   def op(qbit: QV) : QV = QM(
     QV(1, 0),
     QV(0, -1)
   ).mult(qbit)
@@ -217,7 +220,7 @@ case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override  def op(qbit: QV) : QV = QM(
     QV(1, 0),
     QV(0, i)
   ).mult(qbit)
@@ -240,7 +243,7 @@ case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override  def op(qbit: QV) : QV = QM(
     QV(1, 0),
     QV(0, -i)
   ).mult(qbit)
@@ -263,7 +266,7 @@ case class T(idx:Int = QReg.All) extends QOperator { // Z45
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override   def op(qbit: QV) : QV = QM(
     QV(1, 0),
     QV(0, cos(Pi/4)+i*sin(Pi/4))
   ).mult(qbit)
@@ -285,7 +288,7 @@ case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = QM(
+  override  def op(qbit: QV) : QV = QM(
     QV(1, 0),
     QV(0, cos(-Pi/4)+i*sin(-Pi/4))
   ).mult(qbit)
@@ -314,7 +317,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
 
   def idxBit: Int = p;
 
-  def op(qbit : QV):QV = { // Rx
+  override  def op(qbit : QV):QV = { // Rx
     QM(
       QV(cos(o/2), -i*sin(o/2)),
       QV(-i*sin(o/2), cos(o/2))
@@ -343,7 +346,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
 
   def idxBit: Int = p;
 
-  def op(qbit : QV):QV = { // Ry
+  override  def op(qbit : QV):QV = { // Ry
     QM(
       QV(cos(o/2), -sin(o/2)),
       QV(sin(o/2), cos(o/2))
@@ -372,7 +375,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
 
   def idxBit: Int = p;
 
-  def op(qbit : QV):QV = { // Rz
+  override   def op(qbit : QV):QV = { // Rz
     /*
     QM(
       QV(cos(-o/2)-i*sin(o/2) , 0                   ),
@@ -407,7 +410,7 @@ case class CL(Qop: QOperator, condList_ : List[Int]) extends QOperator {
     Qop.render(pad)
   }
   def idxBit: Int = Qop.idxBit;
-  def op( qbit : QV):QV = Qop.op(qbit)
+  override   def op( qbit : QV):QV = Qop.op(qbit)
 } // C
 
 
@@ -429,7 +432,7 @@ case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C
     Qop.render(pad)
   }
   def idxBit: Int = Qop.idxBit;
-  def op( qbit : QV):QV = Qop.op(qbit)
+  override   def op( qbit : QV):QV = Qop.op(qbit)
 } // C
 
 
@@ -451,8 +454,8 @@ case class Swap(e1: Int, e2: Int) extends QOperator {
     pad.at(e2,"x")
     pad.nextCol2()
   }
-  def idxBit: Int = -1;
-  def op( qbit : QV):QV = Id.mult(qbit)
+  def idxBit: Int = NoIdx;
+  override   def op( qbit : QV):QV = Id.mult(qbit)
 } // Swap
 
 
@@ -476,7 +479,7 @@ case class <(idx: Int = QReg.All) extends QOperator {
 
   def idxBit = idx;
 
-  def op(qbit: QV) : QV = Id.mult(qbit)
+  override   def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
 
 // function
@@ -494,11 +497,17 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 
   def idxBit = 0
 
-  def op(qbit: QV) : QV = Id.mult(qbit)
+  override   def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
 
 
+// Alias based operators (mostly Functions)
 
+case class QFT(name:String="QFT", msg : String ="", expand : Boolean = false, skipTrace : Boolean = true) extends QOperator {
+  override def alias = F(msg,  QOperator.qft, msg, expand = expand, skipTrace = skipTrace)
+  def render(pad: QPad): Unit = {}
+  def idxBit = NoIdx
+} // Label
 
 
 object QOperator {

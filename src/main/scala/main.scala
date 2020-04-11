@@ -14,14 +14,17 @@ object main {
     //QUtils.removeImages
     //QStudy.caseQFT()
 
-    val rr: QReg = QReg(2)
-    rr.trace(1)
+    val rr: QReg = QReg(4)
+    rr.trace(2)
 
     rr.init(1)
 
-    rr - H()
+    rr - QFT()
 
     rr.end()
+
+
+
 
   } // main
 

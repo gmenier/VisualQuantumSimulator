@@ -191,12 +191,14 @@ case class QReg(val nbQbits : Int) { //
     this.pad.infoline("  "+s)
   } //infoline
 
-  def -(qop_ : QOperator): QReg =  {
 
+
+  def -(qop_p : QOperator): QReg =  {
+
+    var qop_ = qop_p.alias
     this.resetChange() // keeps a trace of the states
 
     var condl = List[Int]() // Conditionnal QBit list
-
 
       qop_.setRegister(this)
       qop_.init()
