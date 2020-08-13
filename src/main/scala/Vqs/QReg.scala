@@ -4,22 +4,24 @@
 // gildas.menier@univ-ubs.fr
 package Vqs
 
-
 import java.awt.geom.Ellipse2D
 import java.awt.image.BufferedImage
 import java.awt.{Color, Image}
 import java.io.File
 import java.security.SecureRandom
 
-
 import QComplex._
 import QReg._
+import QUtils._
 
 import io.AnsiColor._
 
-
-
-case class QReg(val nbQbits : Int) { //
+/** Quantum Register
+ *
+ *  @constructor creates a Quantum register
+ *  @param nbQbits size of the register (in QBits)
+ */
+case class QReg(val nbQbits : Int = 1) { //
 
   val NOPURESTATE = -1
 
@@ -176,9 +178,9 @@ case class QReg(val nbQbits : Int) { //
       val f = flip(proba0) // tries to get a 0
 
       if (f) { // a 0
-        res('1').foreach(v => this (v._1) = QComplex(0, 0)) // on annule les probas de 1
+        res('1').foreach(v => this (v._1) = QComplex(0, 0)) // cancels probabilities for 1
       } else { // a 1
-        res('0').foreach(v => this (v._1) = QComplex(0, 0)) // on annule les probas de 0
+        res('0').foreach(v => this (v._1) = QComplex(0, 0)) // cancels probabilities for 0
       }
 
       normalize()
@@ -303,30 +305,35 @@ case class QReg(val nbQbits : Int) { //
     }
   }
 
-  def applyOp(idxQBit : Int, masque : Int, qop : QOperator ) {
-      qbitChanged(idxQBit) = true
 
-      lastOp = qop.opLabel
+  def applyOp(idxQBit : Int, mask : Int, qop : QOperator ) {
+    // applies the qop on the Qbit idxQBit
+    // conditionnal to the idxQbit in  the mask (if mask >0)
+
+      qbitChanged(idxQBit) = true // tags this Qbit as changed
+
+      lastOp = qop.opLabel // last op applied (this one)
 
       // Computes the couple of Qbits with only one V different
-      val p = math.pow(2, idxQBit).toInt
+      val p = math.pow(2, idxQBit).toInt // 2^idxQbit
       val s = (0 until nbValues).groupBy(_ / p).toList.sortBy(_._1).groupBy(_._1 % 2 == 0)
       val rp = s(true).flatMap(c => c._2.toList)
       val ri = s(false).flatMap(c => c._2.toList)
       var vr = rp.zip(ri)
 
-      if (masque >= 0) vr = vr.filter(v => (v._1 & masque) > 0)
+      if (mask > 0) vr = vr.filter(v => (v._1 & mask) > 0)
 
       // Applies the op on these states
       var f: QV => QV = qop.op _
 
       vr.foreach {
         case (i1, i2) =>
-          val v = f(QV(this (i1), this (i2)))
+          val v = f(QV(this (i1), this (i2))) // matrix *
           this (i1) = v(0);
           this (i2) = v(1)
       }
-    }
+    } // applyOp
+
 
   def normalize() { // Born rule
     val s = math.sqrt(this.state.foldLeft(0.0)( (a,c) => a+c.norm2))
@@ -420,7 +427,7 @@ case class QReg(val nbQbits : Int) { //
   }
 
   def angle(a :Double) = { // converts angle - all the computations are in Radians
-      if (QReg.isRadian) a else convertDecToRad(a)
+      if (QReg.isRadian) a else convertDegToRad(a)
   }
 
   def drawCircleImage(filename : String ="registre", zoom : Double = 1.0, text: String = ""): Unit = {

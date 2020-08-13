@@ -3,4 +3,12 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="ScaladocSettings">
+    <option name="outputDir" value="D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\scaladoc" />
+    <option name="additionalFlags" value="-feature" />
+    <option name="maxHeapSize" value="" />
+    <option name="docTitle" value="vqs documentation" />
+    <option name="verbose" value="false" />
+    <option name="openInBrowser" value="true" />
+  </component>
 </project>

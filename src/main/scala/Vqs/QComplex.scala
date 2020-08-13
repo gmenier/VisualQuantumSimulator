@@ -4,53 +4,102 @@
 // gildas.menier@univ-ubs.fr
 package Vqs
 
-
+import scala.language.implicitConversions
 import scala.math._
-
 import QComplex._
 import io.AnsiColor._
+import QUtils._
 
+/** complex number
+ *
+ *  @constructor creates a Complex number
+ *  @param re real value
+ *  @param im imaginary value
+ */
 
 case class QComplex(val re: Double, val im: Double) {
 
-  val sSize = 17 // toString : Size of the ascii / graphics
-
+  /** conjugate (lazy)*/
   lazy val conj: QComplex = QComplex(re, -im)
+
+  /** squared norm (lazy)*/
   lazy val norm2: Double = re * re + im * im // norme au carré
+
+  /** norm (lazy)*/
+  lazy val norm : Double = sqrt(norm2)
+
+  /** thetaP (lazy)*/
+  lazy val thetaP : Double = atan2(im, re)
+
+
+
+  /** (quantum) proba as norm (lazy)*/
   lazy val proba = { if (norm2 > 0.9999999999) 1.0 else norm2 }
+
+  /** (quantum) bphase (lazy)*/
   lazy val bphase = {
     val (_, theta) = asEuler
     theta
   }
-  lazy val norm : Double = sqrt(norm2)
-  lazy val module : Double = norm
 
-  lazy val thetaP : Double = atan2(im, re)
-
-  def phase(origine : Double = 0.0) = {
-    val v = normalizeAngleOrigin(bphase, origine)
+  /** (quantum) returns phase with an origin shift
+   *  @param origin org shift (0.0 as default value)
+   */
+  def phase(origin : Double = 0.0) = {
+    val v = normalizeAngleOrigin(bphase, origin)
     if (math.abs(v) < 0.00000001) 0.0 else v
   } // phase
 
+  /** returns a new complex as sum of THIS and another complex
+   *  @param z complex to add
+   */
   def +(z: QComplex): QComplex = QComplex(re + z.re, im + z.im)
+
+  /** returns a new complex as difference of THIS and another complex
+   *  @param z complex for the difference
+   */
   def -(z: QComplex): QComplex = QComplex(re - z.re, im - z.im)
+
+  /** returns a new complex as product of THIS and a double
+   *  @param x double to *
+   */
   def *(x: Double): QComplex = QComplex(re * x, im * x)
+
+  /** returns a new complex as negate (* -1)
+   */
   def unary_- : QComplex = this * -1.0
+
+  /** returns a new complex as product of THIS and another complex
+   *  @param z complex to *
+   */
   def *(z: QComplex): QComplex = QComplex(re * z.re - im * z.im, re * z.im + im * z.re)
 
+  /** returns a new complex as div of THIS and a double
+   *  @param z complex to div
+   */
   def /(x: Double): QComplex = QComplex(re / x, im / x)
+
+  /** returns a new complex as div of THIS and another complex
+   *  @param z complex to div
+   */
   def /(z: QComplex): QComplex = (this * z.conj) / (z * z.conj).re
+
+  /** returns a new complex as rot
+   *  @param thetac angle to rotate (in radians)
+   */
   def rot(thetac: Double): QComplex = this * QComplex(math.cos(thetac), math.sin(thetac))
 
-  private lazy val df = new java.text.DecimalFormat("#.########  ")
+  val sSize = 17 // toString : Size of the ascii / graphics
 
-  def asEulerString(start: Double = 0.0): String = { //  euler
+  /** returns a complex number as a string with Euler formatting
+   *  @param origin phase shift (0.0 by default)
+   */
+  def asEulerString(origin: Double = 0.0): String = { //  euler
     val (r, thetap) = asEuler
-    // val rStr = df.format(r)
     val rStr = formatNumber(r)
 
     // Finds and angle between 0 and 2Pi with Phase offset
-    var ang_ = normalizeAngleOrigin(thetap, start)
+    var ang_ = normalizeAngleOrigin(thetap, origin)
     val ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
 
     val angstr = formatAngle(ang)
@@ -60,11 +109,16 @@ case class QComplex(val re: Double, val im: Double) {
       else if (abs(r) < 1E-20) "0"
       else s"(| $rStr| ei $angstr)"
 
-    res.replaceAll("0,70711","1/√2")
+    res.replaceAll("0,70711","1/√2") // todo adds automatic symbolic reformating
   } // asEulerString
 
+
+  /** returns the complex as Euler
+   */
   def asEuler:(Double, Double) = (norm, thetaP)
 
+  /** (quantum) draws the complex as a string depicting a probability
+   */
   def probaString:String = { // Drawing of proba
     var nb = (sSize*proba).toInt
     if ((proba >0)&&(nb==0))  nb = 1
@@ -81,11 +135,14 @@ case class QComplex(val re: Double, val im: Double) {
     else res
   } // probaString
 
-  def phaseString(offset : Double):String = {
+  /** (quantum) draws the complex as a string depicting the phase
+   *  @param origin shift for the phase
+   *  */
+  def phaseString(origin : Double):String = {
     val (amplitude, phase_) = this.asEuler
     val miniA = if (Math.abs(amplitude) < 1E-10) true else false
 
-    val phase = normalizeAngleOrigin(phase_, offset)
+    val phase = normalizeAngleOrigin(phase_, origin)
 
     val tabC = ("║"+  ("▒"* sSize) +"║").toCharArray
     val p = (if (phase <= math.Pi) phase else math.Pi -phase)
@@ -98,8 +155,6 @@ case class QComplex(val re: Double, val im: Double) {
       for( i <- 0 until ofs) tabC(sSize/2+i+1) = charS
     } else if (ofs <0) {
       for( i <- ofs until 0) tabC(sSize/2+i+1) = charS
-    } else {
-
     }
 
     if ( math.abs((math.abs(p)-math.Pi)) < 0.00001 ) { // phase managing
@@ -113,9 +168,12 @@ case class QComplex(val re: Double, val im: Double) {
       tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
   } // ThetaString
 
-  def probaPhaseString(offset : Double): String = {
+  /** (quantum) String drawing with both probability and phase
+   *  @param origin shift for the phase
+   *  */
+  def probaPhaseString(origin : Double): String = {
     val proba: String = probaString
-    val phase: String = phaseString(offset)
+    val phase: String = phaseString(origin)
 
     val res = ( " " * (proba.length)).toCharArray
 
@@ -140,7 +198,10 @@ case class QComplex(val re: Double, val im: Double) {
     }
 
     res.mkString
-  } // mix the two drawing
+  } // blends the two drawing
+
+
+  /** Complex as a 'a+ib' string */
 
   override def toString: String = {
     val reStr = formatNumber(re)
@@ -153,37 +214,74 @@ case class QComplex(val re: Double, val im: Double) {
 } // QComplex
 
 
+
+/** Factory for mini Complex DSL */
+
 object QComplex {
 
+  // current radian / degrees state
   var isRadian = true;
 
+  /** Implicit Creates a complex from i
+   *
+   *  @param x
+   */
   implicit def toImaginary(x: Double) = new {
     def i = new QComplex(0.0, x)
   }
+
+  /** Implicit Creates a complex from i
+   *
+   *  @param x
+   */
   implicit def toComplex(x: Double) = new QComplex(x, 0.0)
 
+  /** Creates a complex from Euler  r.ei(theta)
+   *
+   *  @param r norm
+   *  @param theta angle
+   */
   def ComplexEuler(r: Double, theta : Double) = QComplex(r*cos(theta), r*sin(theta))
 
+  /** Constant i */
   val i = new QComplex(0.0, 1.0)
+
+  /** Constant 1 */
   val one = new QComplex(1.0, 0.0)
+
+  /** Constant 0 */
   val zero = new QComplex(0.0, 0.0)
 
+  /** returns a new complex as sum of two complex
+   *  @param x
+   *  @param y
+   */
   def plus(x: QComplex, y: QComplex) = x + y
+
+  /** returns a new complex as product of two complex
+   *  @param x
+   *  @param y
+   */
   def mult(x: QComplex, y: QComplex) = x * y
 
+  lazy val df = new java.text.DecimalFormat("#.##### ")
+
+  /** converts a number n to a string
+   *  @param n number to format
+   */
   def formatNumber(n: Double) : String = {
-    val df = new java.text.DecimalFormat("#.##### ")
     var res = df.format(n)
     res = if (res(0) != '-') " "+res else res
-    res.replaceAll("0,70711","1/√2")
+    res.replaceAll("0,70711","1/√2") // todo 1/2
   } // formatNumber
 
-
+  /** converts an angle ang to a string
+   *  @param ang angle to format
+   */
   def formatAngle(ang : Double) : String = {
     var strAng = ""
 
     if (QComplex.isRadian) {
-      val df = new java.text.DecimalFormat("#.##### ")
       val thetapStr = df.format(ang / Pi)
 
       strAng = s"$thetapStr" + " π"
@@ -193,9 +291,9 @@ object QComplex {
       }
       if (math.abs(ang / Pi) < 0.00001) strAng = "0"
     } else {
-      val cvt = convertRadToDec(ang)
-      val df = new java.text.DecimalFormat("##°")
-      val thetapStr = df.format(cvt)
+      val cvt = convertRadToDeg(ang)
+      val df2 = new java.text.DecimalFormat("##°")
+      val thetapStr = df2.format(cvt)
       strAng = thetapStr.replaceAll("-0°","0°")
     }
 
@@ -203,34 +301,7 @@ object QComplex {
   } // formatAngle
 
 
-  def convertDecimalToFraction(x: Double): (Int, Int) = {
-    if (x < 0) {
-      val r = convertDecimalToFraction(-x)
-      (-r._1, r._2)
-    } else {
-      val tolerance = 1.0E-6
-      var h1 = 1.0; var h2 = 0.0; var k1 = 0.0; var k2 = 1.0; var b = x
-      do {
-        val a = Math.floor(b); var aux = h1;
-        h1 = a * h1 + h2; h2 = aux;
-        aux = k1; k1 = a * k1 + k2;
-        k2 = aux; b = 1 / (b - a);
-      } while ( {
-        Math.abs(x - h1 / k1) > x * tolerance
-      })
-      (h1.toInt,k1.toInt)
-    }
-  } // convertDecimalToFraction
 
-
-  def normalizeAngleOrigin(ang_ : Double, start: Double = 0.0): Double = {
-    var ang = (ang_ - start)+100*math.Pi
-    while (math.abs(ang) >= 2*math.Pi-0.00001) ang = ang - 2*math.Pi;
-    ang
-  } // normalizeAngleOrigin
-
-  def convertDecToRad(v: Double) = (v*Math.PI)/180
-  def convertRadToDec(v: Double) = (v*180)/Math.PI
 
 } // QComplex
 

@@ -5,21 +5,41 @@ package Vqs
 // gildas.menier@univ-ubs.fr
 
 
-// complex vector
+/** manages a vector of complex numbers
+ *
+ *  @constructor creates a vector of complex numbers
+ *  @param c_ Collection of complex as parameters
+ */
+
 case class QV(c_ : QComplex*) {
+
+   /** values as an array (lazy)*/
    lazy val coord: Array[QComplex] = c_.toArray[QComplex]
-   lazy val norm = math.sqrt(getList.map( c => (c*c.conj).re).sum)
 
-   def length()= coord.length
-   def apply(a: Int)= coord(a)
-   def getList = coord.toList
-   def getArray  = coord
+   /** norm (lazy) */
+   lazy val norm = math.sqrt(coord.map( c => (c*c.conj).re).sum)
 
-   def normalize : QV = { // normalize les probabilités
-      QV(coord.map( v => v/norm) : _*)
+   /** length / size of vector */
+   def length= this.c_.length
+
+   /** access to one coord value at index idx
+    *  @param idx index
+    */
+   def apply(idx: Int)= this.coord(idx)
+
+   /** gets the collection of complex as a list */
+   def asList = this.coord.toList
+
+   /** gets the collection of complex as an array */
+   def asArray  = this.coord
+
+   /** creates a new normalized vector */
+   def normalize : QV = { 
+      QV(this.coord.map( _ /this.norm) : _*)
    }
 
-  override def toString: String = this.coord.mkString("(",",\t\t",")")
-}
+   /** vector as String */
+   override def toString: String = this.coord.mkString("(",",\t\t",")")
+} // QV
 
 
