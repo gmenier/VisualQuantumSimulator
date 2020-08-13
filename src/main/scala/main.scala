@@ -6,6 +6,7 @@
 
 
 import Vqs._
+import Vqs.operators._
 
 
 object main {

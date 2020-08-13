@@ -4,7 +4,7 @@ package Vqs
 // 2020
 // gildas.menier@univ-ubs.fr
 
-
+import Vqs.operators._
 
 object QStudy {
 
@@ -18,7 +18,7 @@ object QStudy {
       val rr = QReg(1)
       // Hadamard + read QBit 0
       rr - H(0) - <(0)
-      rr.readQbit(0)
+      rr.readMQbit(0)
     }
 
     def test(): Unit = {
@@ -47,7 +47,7 @@ object QStudy {
       // println(rr)
       // println(rr.render)
 
-      QUtils.binaryToInt(s"${rr.readQbit(2)}${rr.readQbit(1)}${rr.readQbit(0)}")
+      QUtils.binaryToInt(s"${rr.readMQbit(2)}${rr.readMQbit(1)}${rr.readMQbit(0)}")
 
     } // threeBit
 
@@ -73,7 +73,7 @@ object QStudy {
       (0 until 8) foreach ( i => rr - <(i))
      // println(rr)
      // println(rr.render)
-      rr.readQbit
+      rr.getMQbit
     } //
 
     def test(): Unit = {
@@ -130,8 +130,8 @@ object QStudy {
       rr - H(0) - Rz(0, 45) - H(0)
       rr - C(X(1), 0) - H(0)
       rr - <(0) - <(1)
-      val alice = rr.readQbit(0)
-      val ep = rr.readQbit(1)
+      val alice = rr.readMQbit(0)
+      val ep = rr.readMQbit(1)
       if (ep == 1) rr - X(2)
       if (alice == 1) rr - Z(2)
       rr - H(2) - Rz(2, -45) - H(2)

@@ -1,4 +1,4 @@
-package Vqs
+package Vqs.output
 
 // VQS : Quantum Computing Simulation
 // Gildas Ménier
@@ -10,6 +10,8 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle
 import org.apache.pdfbox.pdmodel.font.PDType1Font
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject
 import org.apache.pdfbox.pdmodel.{PDDocument, PDPage, PDPageContentStream}
+
+import Vqs._
 
 class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 

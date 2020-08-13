@@ -4,28 +4,83 @@
     <option name="SCOPE_TYPE" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="main with example">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Vqs/Package.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QM.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QV.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/GraphCanvas.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/GraphCanvas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/PdfReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/PdfReport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/QPad.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/QPad.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/QReg$.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/QReg$.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/QReg.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/QReg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/QStudy$.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/QStudy$.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/QUtils$.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/QUtils$.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/Vqs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/Vqs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scaladoc/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scaladoc/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/GraphCanvas.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/Package.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/PdfReport.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QM.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QPad.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/QPad.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QV.scala" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$$anon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$$anon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$bar$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$bar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$less$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/$less.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/C$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/C.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/CL$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/CL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/F$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/F.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/GraphCanvas$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/GraphCanvas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/H$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/H.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Label$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Label.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/PdfReport$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/PdfReport$rvb$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/PdfReport$rvb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/PdfReport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$$anon$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QComplex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QOperator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QPad.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QV.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rx$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rx.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Ry$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Ry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rz$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Rz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/S$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/S.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Swap$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Swap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/T$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/T.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/VLabel$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/VLabel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/X$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/X.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Y$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Y.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Z$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/Z.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,9 +102,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Scala Class" />
         <option value="Scala Object" />
         <option value="Package Object" />
+        <option value="Scala Class" />
       </list>
     </option>
   </component>
@@ -58,9 +113,9 @@
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/PdfReport.scala" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/output/PdfReport.scala" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/QComplex.scala" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/scala/main.scala" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
@@ -219,7 +274,7 @@
       <workItem from="1594321439978" duration="428000" />
       <workItem from="1594796760223" duration="44000" />
       <workItem from="1597309721456" duration="3978000" />
-      <workItem from="1597322707821" duration="7137000" />
+      <workItem from="1597322707821" duration="12625000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -389,7 +444,21 @@
       <option name="project" value="LOCAL" />
       <updated>1589038947859</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="main with example">
+      <created>1597330249809</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1597330249809</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Building Scaladoc&#10;Cleaning the code">
+      <created>1597330366791</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1597330366791</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,46 +483,48 @@
     <MESSAGE value="format number in output (Euler)" />
     <MESSAGE value="Advanced operators support (alias method in QOperator)" />
     <MESSAGE value="main with example" />
-    <option name="LAST_COMMIT_MESSAGE" value="main with example" />
+    <MESSAGE value="Building Scaladoc&#10;Cleaning the code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Building Scaladoc&#10;Cleaning the code" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="657" y="259" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597329418319">
+    <state x="657" y="259" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597335125876">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="657" y="259" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1597329418319" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1597330291521">
+    <state x="657" y="259" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1597335125876" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1597330364008">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.1024@0.0.1280.1024" timestamp="1589485622781" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597330291521" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597330364008" />
     <state x="686" y="236" key="FileChooserDialogImpl" timestamp="1597311707760">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="686" y="236" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597311707760" />
-    <state width="1864" height="286" key="GridCell.Tab.0.bottom" timestamp="1597330130105">
+    <state width="1864" height="178" key="GridCell.Tab.0.bottom" timestamp="1597335125922">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1224" height="568" key="GridCell.Tab.0.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="286" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597330130105" />
-    <state width="1864" height="286" key="GridCell.Tab.0.center" timestamp="1597330130105">
+    <state width="1864" height="178" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597335125922" />
+    <state width="1864" height="178" key="GridCell.Tab.0.center" timestamp="1597335125919">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1224" height="568" key="GridCell.Tab.0.center/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="286" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597330130105" />
-    <state width="1864" height="286" key="GridCell.Tab.0.left" timestamp="1597330130105">
+    <state width="1864" height="178" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597335125919" />
+    <state width="1864" height="178" key="GridCell.Tab.0.left" timestamp="1597335125919">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1224" height="568" key="GridCell.Tab.0.left/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="286" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597330130105" />
-    <state width="1864" height="286" key="GridCell.Tab.0.right" timestamp="1597330130105">
+    <state width="1864" height="178" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597335125919" />
+    <state width="1864" height="178" key="GridCell.Tab.0.right" timestamp="1597335125922">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1224" height="568" key="GridCell.Tab.0.right/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="286" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597330130105" />
-    <state x="62" y="136" key="Vcs.Push.Dialog.v2" timestamp="1589038950387">
-      <screen x="0" y="0" width="1280" height="1024" />
+    <state width="1864" height="178" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597335125922" />
+    <state x="93" y="143" key="Vcs.Push.Dialog.v2" timestamp="1597330373533">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="62" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.1024@0.0.1280.1024" timestamp="1589038950387" />
+    <state x="93" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1597330373533" />
     <state x="0" y="142" key="new project wizard" timestamp="1591896421347">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

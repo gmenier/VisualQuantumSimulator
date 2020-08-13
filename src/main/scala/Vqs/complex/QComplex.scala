@@ -2,13 +2,15 @@
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
-package Vqs
+package Vqs.complex
 
+import Vqs.complex.QComplex._
+
+import Vqs.QUtils._
+
+import scala.io.AnsiColor._
 import scala.language.implicitConversions
 import scala.math._
-import QComplex._
-import io.AnsiColor._
-import QUtils._
 
 /** complex number
  *

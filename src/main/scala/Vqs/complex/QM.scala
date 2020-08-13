@@ -1,12 +1,4 @@
-// VQS : Quantum Computing Simulation
-// Gildas Ménier
-// 2020
-// gildas.menier@univ-ubs.fr
-
-package Vqs
-
-
-// Dense complex matrix
+package Vqs.complex
 
 /** complex matrix (dense)
  *
@@ -38,4 +30,4 @@ case class QM(l_ : QV*) {
 
   /** as string */
   override def toString: String = this.coord.mkString("|","\n|","|")
-} // MatC
+}

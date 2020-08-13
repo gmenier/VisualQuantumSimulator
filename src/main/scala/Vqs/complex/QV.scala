@@ -1,9 +1,4 @@
-package Vqs
-// VQS : Quantum Computing Simulation
-// Gildas Ménier
-// 2020
-// gildas.menier@univ-ubs.fr
-
+package Vqs.complex
 
 /** manages a vector of complex numbers
  *
@@ -34,12 +29,10 @@ case class QV(c_ : QComplex*) {
    def asArray  = this.coord
 
    /** creates a new normalized vector */
-   def normalize : QV = { 
+   def normalize : QV = {
       QV(this.coord.map( _ /this.norm) : _*)
    }
 
    /** vector as String */
    override def toString: String = this.coord.mkString("(",",\t\t",")")
-} // QV
-
-
+}

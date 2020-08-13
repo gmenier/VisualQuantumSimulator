@@ -10,7 +10,9 @@ import java.awt.{Color, Image}
 import java.io.File
 import java.security.SecureRandom
 
-import QComplex._
+import complex._
+import operators._
+import output._
 import QReg._
 import QUtils._
 
@@ -23,54 +25,71 @@ import io.AnsiColor._
  */
 case class QReg(val nbQbits : Int = 1) { //
 
-  val NOPURESTATE = -1
-
-  // 2^nbQbits complex = 0
+  // how many different values
   val nbValues : Int = scala.math.pow(2, nbQbits).toInt
+
+  // Array of states (each initialized to 0+0i)
   val state: Array[QComplex] = Array.fill[QComplex](nbValues)(QComplex(0,0))
+
+  // to keep track of the states that may have changed
   val changed: Array[Boolean] = Array.fill[Boolean](nbValues)(false)
+
+  // to keep track of the QBits that have changed
   val qbitChanged: Array[Boolean] = Array.fill[Boolean](nbQbits)(false)
+
+  // by default, the first QBit is 1, so the only state if 0 with a full probability
   this.state(0) = QComplex(1,0) // valeur 000 par défaut
 
-  val qbstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate
+  val NOPURESTATE = -1
+  // a pure state is 0 or 1 (after measure)
+  val qbMstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate, since no measure yet
 
 
-  def isInRadians = QReg.isRadian
+  def isInRadians = QReg.isRadian // true if this reg is in radian
 
-  var isTrace = false
+  var isTrace = false // no trace yet
+
   var traceIdx = 0
   var traceSize = 0
 
   val circuitSize = 30
 
-  var isShowRender : Boolean = true
+  var isShowRender : Boolean = true // renders or not
 
   var drawAllState : Boolean = false; // if false only draw states with probability > 0
 
-  var lastOp:String =""
+  var lastOp : String ="" // last operator used (trace)
 
   var phaseNormalization : Boolean = true // if true normalize the phases
 
+  // Resets the system that keeps track of the changed Qbits and values
   def resetChange(): Unit = {
     changed.indices.foreach( v => changed(v) = false)
     qbitChanged.indices.foreach( v => qbitChanged(v) = false)
   }
 
+  /** State : starts the trace */
   def traceOn() { this.isTrace = true }
+  /** State : stops the trace */
   def traceOff() { this.isTrace = false }
 
+  /** State : no rendering (during trace) */
   def hideRender() { this.isShowRender = false }
+  /** State : rendering (during trace) */
   def showRender() { this.isShowRender = true }
 
+  // The object used to output pdf
   var myPdf: PdfReport = null
 
-
+  // builds the pdf object used
   def pdf(fn : String, docLabel: String=""): Unit = {
     this.myPdf = new PdfReport(fn, docLabel)
     this.myPdf.newPage()
   }
 
 
+
+  /** Begins the trace */
   def trace(traceSize_ : Int = 2): Unit = {
     QUtils.createImagesDirectoryIfNecessary
     QUtils.removeImages
@@ -88,26 +107,55 @@ case class QReg(val nbQbits : Int = 1) { //
     traceIdx = traceIdx+1
   }
 
+
+  /** State : the drawing displays the normalized phase */
   def drawPhaseNormalization(): Unit = {
     phaseNormalization = true
   }
 
+  /** State : the drawing does not display the normalized phase */
   def drawNOPhaseNormalization(): Unit = {
     phaseNormalization = false
   }
 
+
+  // is an ascii graphic pad to display the circuit
   val pad = new QPad(nbQbits, this)
 
-  // get the states
-  def apply(idx : Int): QComplex = this.state(idx)
-  def apply(idx : String) : QComplex = this.state(QUtils.binaryToInt(idx))
 
-  def getState(idx : Int) = {
-    qbstate(idx)
+
+
+  // get the states
+  /** Gets the state for a reg value (non pure)
+   *  @param idx_ of the value
+   *  @return 0, 1 or -1 (not measured)
+   */
+  def apply(idx : Int): QComplex = this.state(idx)
+
+  /** Gets the state for a reg value (non pure) in binary
+   *  @param idx_ of the value (binary)
+   *  @return 0, 1 or -1 (not measured)
+   */
+  def apply(idx : String) : QComplex = this(QUtils.binaryToInt(idx))
+
+
+
+
+  /** Gets the measured state for a reg value (pure)
+   *  @param idx_ of the value
+   *  @return 0, 1 or -1 (not measured)
+   */
+  def getMState(idx : Int) = {
+    qbMstate(idx)
   }
 
-  def readQbit(idx: Int) = { // reads a QBit value - should < before reading
-    val r = getState(idx)
+
+  /** Gets the measured state for a reg value (pure) - raises an internal error
+   *  @param idx_ of the value
+   *  @return 0, 1 or -1 (not measured)
+   */
+  def readMQbit(idx: Int) = { // reads a QBit value - should < before reading
+    val r = getMState(idx)
     if (r == -1) {
       notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try <())")
       0
@@ -116,34 +164,50 @@ case class QReg(val nbQbits : Int = 1) { //
     }
   } // readQbit
 
-  def readQbit: Int = { // Read the reg value - should < before
-    val rl : List[Int] = (for (i <- 0 until nbQbits) yield readQbit(i)).toList
+
+  /** Gets the measured state for the full register (should < before)
+   */
+  def getMQbit: Int = { // Read the reg value - should < before
+    val rl : List[Int] = (for (i <- 0 until nbQbits) yield readMQbit(i)).toList
     rl.reverse.foldLeft(0)(
       (ac,v) => v + 2*ac
     )
   } // readQbit
 
-  def setState(idx: Int, value: Int) { qbstate(idx) = value }
+  /** Sets the measured state for a value in the register
+   */
+  def setMState(idx: Int, value: Int) { qbMstate(idx) = value }
 
+
+
+
+
+  /** State : Only draws values if state has a non null amplitude */
   def drawOnlyPossible(): Unit = { // only draws proba >0
     this.drawAllState = false
   } // drawOnlyPossible
 
+  /** State : draws all (even if null) */
   def drawAll(): Unit = { /// draws ALL states
     this.drawAllState = true;
   } // drawAll
 
-  // change the states
+
+
+  // Changes the state and tracks the change
   def update(idx : Int, value: QComplex) {
     this.state(idx) = value
     this.changed(idx) = true
   } // update
 
-
+  // updates with binary idx
   def update(idx : String, value: QComplex) {
     this.update(QUtils.binaryToInt(idx), value)
   } // update
 
+
+
+  // writes a value in the reg
   def write(value : Int) { // initialise the first register's value
     // TODO qbitchanged
     this.state.indices.foreach( v => this(v)= QComplex(0,0))
@@ -151,6 +215,8 @@ case class QReg(val nbQbits : Int = 1) { //
     pad.writeValue(value) // valeur courante
   } // write
 
+
+  /** inner OP : Write a value in the Reg. Should be done at the start only */
   def init(value: Int): Unit = {
     lastOp = "init("+value+")"
     qbitChanged.indices.foreach( i => qbitChanged(i)=true )
@@ -158,6 +224,9 @@ case class QReg(val nbQbits : Int = 1) { //
     processTraceIfNecessary()
   }
 
+
+
+  /** inner OP : Performs a measure on a value or of all is QReg.All */
   def forceRead(idx: Int) { // Force the reading of a QBit
 
     if (idx == QReg.All) {
@@ -185,15 +254,19 @@ case class QReg(val nbQbits : Int = 1) { //
 
       normalize()
       val vf = if (f) 0 else 1
-      setState(idx, vf)
+      setMState(idx, vf)
     }
   } // read
 
+
+// displays a string on the pad's infoline
   def infoline(s: String): Unit = {
     this.pad.infoline("  "+s)
   } //infoline
 
 
+// main op invocation system
+  // - is the wire and the qop_p is applied on the current register
 
   def -(qop_p : QOperator): QReg =  {
 
@@ -273,7 +346,7 @@ case class QReg(val nbQbits : Int = 1) { //
           if (idxQBit == All) { // Multiple QBits (all QBits)
             (0 until nbQbits). foreach( v => applyOp(v, masque, qop) )
           } else {
-            if (getState(idxQBit) != -1) {
+            if (getMState(idxQBit) != -1) {
               notifyError("QBit "+idxQBit+" is flat")
             } else {
               applyOp(idxQBit, masque, qop)
@@ -286,11 +359,10 @@ case class QReg(val nbQbits : Int = 1) { //
 
       if (qop_.leaveATrace) processTraceIfNecessary(condl)
 
-
-
     this
   }  // ~
 
+  // utility to perform trace if the state(s) allows it and when the state(s) allows it
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
@@ -305,7 +377,7 @@ case class QReg(val nbQbits : Int = 1) { //
     }
   }
 
-
+// performs an op
   def applyOp(idxQBit : Int, mask : Int, qop : QOperator ) {
     // applies the qop on the Qbit idxQBit
     // conditionnal to the idxQbit in  the mask (if mask >0)
@@ -335,6 +407,7 @@ case class QReg(val nbQbits : Int = 1) { //
     } // applyOp
 
 
+  // performs a normalization on the Qreg
   def normalize() { // Born rule
     val s = math.sqrt(this.state.foldLeft(0.0)( (a,c) => a+c.norm2))
     this.state.indices.foreach(
@@ -342,6 +415,7 @@ case class QReg(val nbQbits : Int = 1) { //
     )
   } // normalize
 
+  // generates a drawing in an ASCII colored ANSI code list
   def render : String = {
     var r = pad.render()
 
@@ -364,6 +438,9 @@ case class QReg(val nbQbits : Int = 1) { //
       .replaceAllLiterally("╜", s"${YELLOW}╜${RESET}")  +"\n"
   }
 
+
+  // renders without ANSI
+  // handy for pdf generation for instance
   def renderWithoutAnsi : String = {
     cutRenderWithoutAnsi(2000)
   }
@@ -393,6 +470,9 @@ case class QReg(val nbQbits : Int = 1) { //
     }
   } // cutRender
 
+
+  /** outputs a string with the current state of the register
+    */
   override def toString : String = {
 
     var startAng:Double = 0.0
@@ -406,7 +486,7 @@ case class QReg(val nbQbits : Int = 1) { //
         startAng = findPhaseOrg  // Normalizes
 
     var elt : List[Int] = (0 until nbValues).toList
-    
+
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
     var res ="Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t    α\t\t\t\t\t\t\t\t|r|ei Θ" +"\n"+
       elt.map(v => this(v).probaString+" "+this(v).phaseString(startAng)+"\t\t"+
@@ -420,16 +500,22 @@ case class QReg(val nbQbits : Int = 1) { //
     res+"\n"
   } // toString
 
+
+  // looks for a phase origin
   def findPhaseOrg: Double = { // finds the phase reference
     var it = 0;
     while ((it < nbValues) && ( math.abs(this(it).proba)) < 0.000000001) it = it+1
     if ( it < nbValues) this(it).phase() else this(0).phase()
   }
 
+
+  // convert an angle to Deg if needed
   def angle(a :Double) = { // converts angle - all the computations are in Radians
       if (QReg.isRadian) a else convertDegToRad(a)
   }
 
+
+  // creates an image and saves it
   def drawCircleImage(filename : String ="registre", zoom : Double = 1.0, text: String = ""): Unit = {
     val im = GraphCanvas()
     var svg = this.drawAllState
@@ -496,6 +582,8 @@ case class QReg(val nbQbits : Int = 1) { //
     this.drawAllState = svg
   } // drawImage
 
+
+
   def drawStateImage(filename : String="state", // name of the file + png
                      text: String="", // text to draw
                      numLines: Int = 1, // how many lines
@@ -508,9 +596,9 @@ case class QReg(val nbQbits : Int = 1) { //
     im.drawText(text, 6,20, c= new Color(255,255,255))
     // List of the changed
     val lchanged = for( i <- qbitChanged.indices if (qbitChanged(i)) ) yield i
-    val qbs = qbstate.indices.filter( v => qbstate(v) != -1).toList
-    val qbs0 = qbs.filter(v => qbstate(v) == 0).toList
-    val qbs1 = qbs.filter(v => qbstate(v) == 1).toList
+    val qbs = qbMstate.indices.filter(v => qbMstate(v) != -1).toList
+    val qbs0 = qbs.filter(v => qbMstate(v) == 0).toList
+    val qbs1 = qbs.filter(v => qbMstate(v) == 1).toList
 
       //indices.map(v => if qbitChanged(v) v else -1 ).filter(_ > -1).toList
     val phaseOrg = findPhaseOrg
@@ -532,14 +620,21 @@ case class QReg(val nbQbits : Int = 1) { //
     im.save(filename)
   } // drawStateImage
 
+
+
+  /** inner Op : ends the processing on a register */
   def end(): Unit = {
     if (this.myPdf != null) {
       myPdf.allCircuit(this)
       this.myPdf.closePdf()
+      this.myPdf = null
     }
   }
 
 } // QReg
+
+
+
 
 
 

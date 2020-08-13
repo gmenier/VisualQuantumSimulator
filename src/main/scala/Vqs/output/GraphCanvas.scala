@@ -1,8 +1,5 @@
-package Vqs
-// VQS : Quantum Computing Simulation
-// Gildas Ménier
-// 2020
-// gildas.menier@univ-ubs.fr
+package Vqs.output
+
 import java.awt.geom.{Arc2D, Ellipse2D, Line2D}
 import java.awt.image.BufferedImage
 import java.awt.{BasicStroke, Color, Font}
@@ -137,8 +134,8 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     val cy2 = (y+amplitude*osize*math.sin(phase- math.Pi/2)).toInt
 
     if (amplitude > 1E-10) {
-      import java.awt.{BasicStroke, Color, Graphics2D}
       import java.awt.geom.Line2D
+      import java.awt.{BasicStroke, Color, Graphics2D}
 
       val g2 = g.asInstanceOf[Graphics2D]
       g2.setPaint(new Color(255, 255, 240))

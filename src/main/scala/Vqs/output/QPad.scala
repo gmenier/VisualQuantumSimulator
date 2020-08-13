@@ -1,4 +1,4 @@
-package Vqs
+package Vqs.output
 // VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
@@ -6,17 +6,17 @@ package Vqs
 
 
 import scala.collection.mutable
-import scala.collection.mutable.ArrayBuffer
-import scala.math.abs
+import scala.io.AnsiColor._
 
-import QReg._
-
-import io.AnsiColor._
+import Vqs._
+import Vqs.operators._
 
 class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
 
   val lggrille: Int = 2000
   var currentValue: Int = 0
+
+  val All = -1
 
   var myQReg = Qreg_
 
@@ -33,7 +33,7 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
   writeValue(0)
 
   def getState(idx:  Int): Int = {
-    myQReg.getState(idx)
+    myQReg.getMState(idx)
   }
 
   def DRenderAt(idx: Int): Unit = {

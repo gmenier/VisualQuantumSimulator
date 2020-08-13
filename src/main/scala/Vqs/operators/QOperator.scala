@@ -1,15 +1,16 @@
-package Vqs
+package Vqs.operators
 // VQS : Quantum Computing Simulation
 // Gildas Ménier
 // 2020
 // gildas.menier@univ-ubs.fr
 
 
-import QComplex._
-import QV._
-import QM._
+import Vqs.complex._
+import Vqs.complex.QComplex._
+import Vqs._
+import Vqs.output._
+
 import scala.math._
-import io.AnsiColor._
 
 
 
