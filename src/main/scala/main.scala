@@ -12,10 +12,11 @@ import Vqs.operators._
 object main {
 
   def main(args : Array[String]): Unit = {
-    //QUtils.removeImages
+    // QUtils.removeImages
     //QStudy.caseQFT()
 
-    
+
+
 
     val rr: QReg = QReg(2)
     rr.drawAll()
@@ -26,6 +27,10 @@ object main {
     rr - H(0) - C(X(1),0)
 
     rr.end()
+
+
+
+
 
 
 

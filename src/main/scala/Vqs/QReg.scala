@@ -489,11 +489,18 @@ case class QReg(val nbQbits : Int = 1) { //
 
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
     var res ="Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t    α\t\t\t\t\t\t\t\t|r|ei Θ" +"\n"+
-      elt.map(v => this(v).probaString+" "+this(v).phaseString(startAng)+"\t\t"+
+      elt.map(v => this(v).probaString+" "+
+        { if (this(v).norm == 0.0) this(v).phaseString(startAng,0)
+        else this(v).phaseString(startAng)
+        } +
+        "\t\t"+
         (v.toString+"     ").substring(0,5)+
                               "\t|"+(QUtils.toBinary(v,nbQbits)+">\t"+" "*10).substring(0,12) +
-        (this(v).toString+" "*30).substring(0,30) +
-                              "\t= "+this(v).asEulerString(startAng)
+        {
+          if (this(v).norm == 0.0)  "."+" "*29 else (this(v).toString+" "*30).substring(0,30)
+        } + {
+        "\t= " + (if (this(v).norm == 0.0) "." else this(v).asEulerString(startAng))
+        }
     ).mkString("\n")
     QComplex.isRadian = svgRadian
     res = QUtils.colorizeBinary(nbQbits, res)
@@ -641,8 +648,8 @@ case class QReg(val nbQbits : Int = 1) { //
 object QReg {
 
   val LabelInfo = "VQS (G.Ménier)"
-  val All = -2 // indicateur idx pour sélectionner tous les Qbits
-  val Index = -1 // idx pour label
+  val All = -2 // For All QBits
+  val Index = -1 // Idx for labels
 
   var isRadian = false
 

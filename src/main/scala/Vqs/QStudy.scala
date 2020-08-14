@@ -159,6 +159,7 @@ object QStudy {
 
     def test(): Unit = {
       val rr: QReg = QReg(4)
+
       rr.pdf("qft.pdf","Quantum Fourier Transform")
       // rr.drawAll()
       rr.trace(8)

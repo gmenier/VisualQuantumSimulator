@@ -140,13 +140,13 @@ case class QComplex(val re: Double, val im: Double) {
   /** (quantum) draws the complex as a string depicting the phase
    *  @param origin shift for the phase
    *  */
-  def phaseString(origin : Double):String = {
+  def phaseString(origin : Double, notEmpty : Int = 1):String = {
     val (amplitude, phase_) = this.asEuler
     val miniA = if (Math.abs(amplitude) < 1E-10) true else false
 
     val phase = normalizeAngleOrigin(phase_, origin)
 
-    val tabC = ("║"+  ("▒"* sSize) +"║").toCharArray
+    val tabC = if (notEmpty == 0) ("║"+  (" "* sSize) +"║").toCharArray else ("║"+  ("▒"* sSize) +"║").toCharArray
     val p = (if (phase <= math.Pi) phase else math.Pi -phase)
 
     val ofs = ((p/math.Pi)*sSize/2+1).toInt
@@ -156,14 +156,14 @@ case class QComplex(val re: Double, val im: Double) {
     if (ofs >0) {
       for( i <- 0 until ofs) tabC(sSize/2+i+1) = charS
     } else if (ofs <0) {
-      for( i <- ofs until 0) tabC(sSize/2+i+1) = charS
+      for( i <- ofs to 0) tabC(sSize/2+i) = charS
     }
 
     if ( math.abs((math.abs(p)-math.Pi)) < 0.00001 ) { // phase managing
-      for(i <- 1 until sSize-1 )
+      for(i <- 1 to sSize )
         if (i<= sSize/2) tabC(i) = '▓' else tabC(i)=charS
     }
-    tabC(sSize/2+1) = '║'
+    if (notEmpty==1) tabC(sSize/2+1) = '█' else tabC(sSize/2+1) = ' '
     if (! miniA)
       tabC.mkString.replaceAllLiterally(charS.toString, s"${YELLOW}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
     else

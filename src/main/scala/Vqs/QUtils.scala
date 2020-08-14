@@ -86,8 +86,9 @@ object QUtils {
 
   /** utility to normalize an angle */
   def normalizeAngleOrigin(ang_ : Double, origin: Double = 0.0): Double = {
-    var ang = (ang_ - origin)+100*math.Pi
-    while (math.abs(ang) >= 2*math.Pi-0.00001) ang = ang - 2*math.Pi;
+    var ang = (ang_ + 2*2*math.Pi - origin)+2*50*math.Pi
+    while ( math.abs(ang) >= math.Pi) ang = ang - 2*math.Pi;
+    // println("NormaizeAngleOrigin : " +(ang_ *180)/math.Pi + "  "+ (ang*180)/math.Pi)
     ang
   } // normalizeAngleOrigin
 

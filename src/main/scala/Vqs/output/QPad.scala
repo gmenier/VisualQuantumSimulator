@@ -16,7 +16,7 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
   val lggrille: Int = 2000
   var currentValue: Int = 0
 
-  val All = -1
+  val All = -2
 
   var myQReg = Qreg_
 

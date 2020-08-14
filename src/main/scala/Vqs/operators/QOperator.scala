@@ -16,14 +16,14 @@ import scala.math._
 
 trait QOperator {
 
-  var thisR : QReg = _
+  var thisR : QReg = _ // pointer to the current QRegister
 
-  def render(pad: QPad);
+  def render(pad: QPad); // dedicated renderer
   def idxBit : Int;
 
   def op(qbit: QV) : QV = Id.mult(qbit) // identity
 
-  def opLabel : String = "?" ;
+  def opLabel : String = "?" ; // label
 
   var leaveATrace : Boolean = true
 
@@ -40,12 +40,13 @@ trait QOperator {
   val Id = QM(
     QV(1,0),
     QV(0,1)
-  )
+  ) // by default, Identity
 }
 
 
 // screen composition
 
+/** not an operator : inserts a tab and a string in the rendering */
 case class Label(label:String) extends QOperator {
 
   leaveATrace = false
@@ -59,6 +60,7 @@ case class Label(label:String) extends QOperator {
 
 } // Label
 
+/** not an operator : inserts a vertical string in the rendering */
 case class VLabel(label:String) extends QOperator {
 
   leaveATrace = false
@@ -72,6 +74,7 @@ case class VLabel(label:String) extends QOperator {
 
 } // Label
 
+/** not an operator : inserts a tab in the rendering */
 case class |(nb : Int = 4) extends QOperator {
 
   leaveATrace = false
@@ -87,8 +90,7 @@ case class |(nb : Int = 4) extends QOperator {
 
 
 
-// Hadamard
-// p = All for all QBits
+/**  Hadamard operator. By defaut, applies on Qreg.all (on all QBits) */
 case class H(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
@@ -113,7 +115,7 @@ case class H(idx:Int = QReg.All) extends QOperator {
   ).mult(qbit)
 } // H
 
-
+/**  Inversion operator (X). By defaut, applies on Qreg.all (on all QBits) */
 case class X(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
@@ -137,6 +139,7 @@ case class X(idx:Int = QReg.All) extends QOperator {
   ).mult(qbit)
 } // X
 
+/**  Inversion operator (X). By defaut, applies on Qreg.all (on all QBits) */
 case class Not(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
@@ -160,6 +163,7 @@ case class Not(idx:Int = QReg.All) extends QOperator {
   ).mult(qbit)
 } // X
 
+/**  Pauli Y. By defaut, applies on Qreg.all (on all QBits) */
 case class Y(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
@@ -182,6 +186,7 @@ case class Y(idx:Int = QReg.All) extends QOperator {
   ).mult(qbit)
 } // Y = Y180
 
+/**  Pauli Z - Phase. By defaut, applies on Qreg.all (on all QBits) */
 case class Z(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
@@ -204,7 +209,7 @@ case class Z(idx:Int = QReg.All) extends QOperator {
   ).mult(qbit)
 } // Z = Z180
 
-
+/**  Half Z. By defaut, applies on Qreg.all (on all QBits) */
 case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
 
   override def init(): Unit = {
@@ -227,6 +232,7 @@ case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
   ).mult(qbit)
 } // S = Z90
 
+/**  -Half Z. By defaut, applies on Qreg.all (on all QBits) */
 case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
 
   override def init(): Unit = {
@@ -250,7 +256,7 @@ case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
   ).mult(qbit)
 } // S = Z-90
 
-
+/**  1/4 Z. By defaut, applies on Qreg.all (on all QBits) */
 case class T(idx:Int = QReg.All) extends QOperator { // Z45
 
   override def init(): Unit = {
@@ -273,6 +279,7 @@ case class T(idx:Int = QReg.All) extends QOperator { // Z45
   ).mult(qbit)
 } // T = Z45
 
+/**  -1/4 Z. By defaut, applies on Qreg.all (on all QBits) */
 case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
 
   override def init(): Unit = {
@@ -296,7 +303,7 @@ case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
 } // T = Z-45
 
 
-
+/**  Rotate X */
 case class Rx(p:Int, angle :Double) extends QOperator {
 
   var o = angle
@@ -326,6 +333,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
   } // Rx
 } // Rx
 
+/**  Rotate Y */
 case class Ry(p:Int, angle :Double) extends QOperator {
 
   var o = angle
@@ -355,6 +363,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
   } // Ry
 } // Ry
 
+/**  Rotate Z */
 case class Rz(p:Int, angle : Double) extends QOperator {
 
   var o = angle
@@ -391,7 +400,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
   } // Rz
 } // Rz
 
-
+/**  Conditionnal operator on list */
 case class CL(Qop: QOperator, condList_ : List[Int]) extends QOperator {
 
   val condList: List[Int] = condList_.distinct
@@ -414,7 +423,7 @@ case class CL(Qop: QOperator, condList_ : List[Int]) extends QOperator {
   override   def op( qbit : QV):QV = Qop.op(qbit)
 } // C
 
-
+/**  Conditionnal Operator */
 case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C(Not(Idx), idxp) -> C (X(idx), idxp)
 
   override def init(): Unit = {
@@ -438,7 +447,7 @@ case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C
 
 
 
-// Swaps the qbits e1 et e2
+/**  Swap deux Qbitsr */
 case class Swap(e1: Int, e2: Int) extends QOperator {
 
   override def init(): Unit = {
@@ -460,9 +469,7 @@ case class Swap(e1: Int, e2: Int) extends QOperator {
 } // Swap
 
 
-// lecture d'un QBit (Détermination)
-// Z Measure
-// idx = ALL pour tous les Qbits
+/** Measure along Z */
 case class <(idx: Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
@@ -483,7 +490,7 @@ case class <(idx: Int = QReg.All) extends QOperator {
   override   def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
 
-// function
+/**  Function Operator */
 case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean = false, skipTrace: Boolean = true ) extends QOperator {
   def render(pad: QPad): Unit = {
     pad.atAbs(0,"╓")
@@ -504,6 +511,7 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 
 // Alias based operators (mostly Functions)
 
+/**  Quantum Fourier Transform */
 case class QFT(name:String="QFT", msg : String ="", expand : Boolean = false, skipTrace : Boolean = true) extends QOperator {
   override def alias = F(msg,  QOperator.qft, msg, expand = expand, skipTrace = skipTrace)
   def render(pad: QPad): Unit = {}
