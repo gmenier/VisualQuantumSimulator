@@ -45,7 +45,10 @@ case class QReg(val nbQbits : Int = 1) { //
   val qbMstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate, since no measure yet
 
 
-  def isInRadians = QReg.isRadian // true if this reg is in radian
+  var isInRadians = false // true if this reg is in radian
+
+  def setRadians() { this.isInRadians = true }
+  def setDegrees() { this.isInRadians = false }
 
   var isTrace = false // no trace yet
 
@@ -478,9 +481,10 @@ case class QReg(val nbQbits : Int = 1) { //
     var startAng:Double = 0.0
 
     var svgRadian = QComplex.isRadian
-    QComplex.isRadian = QReg.isRadian
 
-    val titrePhase = if (QComplex.isRadian) "Phase [-π 0 π]     " else "[-180°   0    180°]"
+    QComplex.isRadian = this.isInRadians
+
+    val titrePhase = if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
 
     if (phaseNormalization)
         startAng = findPhaseOrg  // Normalizes
@@ -518,7 +522,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
   // convert an angle to Deg if needed
   def angle(a :Double) = { // converts angle - all the computations are in Radians
-      if (QReg.isRadian) a else convertDegToRad(a)
+      if (this.isInRadians) a else convertDegToRad(a)
   }
 
 
@@ -651,14 +655,8 @@ object QReg {
   val All = -2 // For All QBits
   val Index = -1 // Idx for labels
 
-  var isRadian = false
-
   val rn = new SecureRandom()
   val randomS :  SecureRandom = new SecureRandom(rn.generateSeed((40+ 30*math.random()).toInt))
-
-  def setRadians() { isRadian = true }
-  def setDegrees() { isRadian = false }
-
 
   def flip(proba: Double): Boolean = {
     this.randomS.nextDouble() < proba

@@ -13,10 +13,9 @@ object main {
 
   def main(args : Array[String]): Unit = {
     // QUtils.removeImages
-    //QStudy.caseQFT()
+    QStudy.caseQFT()
 
-
-
+    /*
 
     val rr: QReg = QReg(2)
     rr.drawAll()
@@ -29,7 +28,7 @@ object main {
     rr.end()
 
 
-
+*/
 
 
 
