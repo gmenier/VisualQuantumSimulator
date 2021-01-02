@@ -8,27 +8,36 @@
 import Vqs._
 import Vqs.operators._
 
+/*
+import Vqs.complex.QComplex.i
+import Vqs.complex.{QM, QV}
+import Vqs.operators._
+
+import scala.math.{cos, sin}
+*/
+
+
 
 object main {
 
   def main(args : Array[String]): Unit = {
     // QUtils.removeImages
-    QStudy.caseQFT()
+    // QStudy.caseQFT()
 
-    /*
 
-    val rr: QReg = QReg(2)
-    rr.drawAll()
-    rr.trace(2)
 
-    rr.init(1)
+    val rr: QReg = QReg(1)
+    // rr.drawAll()
+    rr.trace()
 
-    rr - H(0) - C(X(1),0)
+    // rr.init()
+
+    rr - H(0) - <() //- C(X(1),0)
 
     rr.end()
 
 
-*/
+
 
 
 

@@ -1,1 +1,7 @@
-setRadian (Qreg ->)
+Refactor the pad (beware of type size limit)
+Refactor the pdf ouput (so it fits better given the trace size)
+See the normalize for Born Rule (only for measurement)
+Check the origin choice for the phase offset (not so obvious) with CAS
+
+Create a Tensor Algebra DSL
+  Tensor support

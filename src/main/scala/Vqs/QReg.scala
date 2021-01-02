@@ -220,7 +220,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
 
   /** inner OP : Write a value in the Reg. Should be done at the start only */
-  def init(value: Int): Unit = {
+  def init(value: Int = 0): Unit = {
     lastOp = "init("+value+")"
     qbitChanged.indices.foreach( i => qbitChanged(i)=true )
     this.write(value)
@@ -480,9 +480,6 @@ case class QReg(val nbQbits : Int = 1) { //
 
     var startAng:Double = 0.0
 
-    var svgRadian = QComplex.isRadian
-
-    QComplex.isRadian = this.isInRadians
 
     val titrePhase = if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
 
@@ -503,10 +500,10 @@ case class QReg(val nbQbits : Int = 1) { //
         {
           if (this(v).norm == 0.0)  "."+" "*29 else (this(v).toString+" "*30).substring(0,30)
         } + {
-        "\t= " + (if (this(v).norm == 0.0) "." else this(v).asEulerString(startAng))
+        "\t= " + (if (this(v).norm == 0.0) "." else this(v).asEulerString(this.isInRadians,startAng))
         }
     ).mkString("\n")
-    QComplex.isRadian = svgRadian
+
     res = QUtils.colorizeBinary(nbQbits, res)
     res+"\n"
   } // toString

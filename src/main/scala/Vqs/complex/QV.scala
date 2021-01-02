@@ -33,6 +33,11 @@ case class QV(c_ : QComplex*) {
       QV(this.coord.map( _ /this.norm) : _*)
    }
 
+   /** conjugate  */
+   def conjugate : QV = {
+      QV(this.coord.map( _.conj ) : _*)
+   }
+
    /** vector as String */
    override def toString: String = this.coord.mkString("(",",\t\t",")")
 }

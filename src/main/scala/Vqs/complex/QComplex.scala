@@ -96,7 +96,7 @@ case class QComplex(val re: Double, val im: Double) {
   /** returns a complex number as a string with Euler formatting
    *  @param origin phase shift (0.0 by default)
    */
-  def asEulerString(origin: Double = 0.0): String = { //  euler
+  def asEulerString(isRadian : Boolean, origin: Double = 0.0): String = { //  euler
     val (r, thetap) = asEuler
     val rStr = formatNumber(r)
 
@@ -104,7 +104,7 @@ case class QComplex(val re: Double, val im: Double) {
     var ang_ = normalizeAngleOrigin(thetap, origin)
     val ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
 
-    val angstr = formatAngle(ang)
+    val angstr = formatAngle(isRadian, ang)
 
     val res =
       if (abs((abs(r)-1.0))<0.0001) s"ei $angstr"
@@ -221,8 +221,6 @@ case class QComplex(val re: Double, val im: Double) {
 
 object QComplex {
 
-  // current radian / degrees state
-  var isRadian = true;
 
   /** Implicit Creates a complex from i
    *
@@ -280,10 +278,10 @@ object QComplex {
   /** converts an angle ang to a string
    *  @param ang angle to format
    */
-  def formatAngle(ang : Double) : String = {
+  def formatAngle(isRadian : Boolean, ang : Double) : String = {
     var strAng = ""
 
-    if (QComplex.isRadian) {
+    if (isRadian) {
       val thetapStr = df.format(ang / Pi)
 
       strAng = s"$thetapStr" + " π"

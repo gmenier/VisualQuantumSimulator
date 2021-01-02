@@ -87,7 +87,8 @@ object QUtils {
   /** utility to normalize an angle */
   def normalizeAngleOrigin(ang_ : Double, origin: Double = 0.0): Double = {
     var ang = (ang_ + 2*2*math.Pi - origin)+2*50*math.Pi
-    while ( math.abs(ang) >= math.Pi) ang = ang - 2*math.Pi;
+    while ( math.abs(ang) > math.Pi) ang = ang - 2*math.Pi;
+    if ( math.abs(math.abs(ang)-math.Pi) < 0.01 ) ang = math.Pi
     // println("NormaizeAngleOrigin : " +(ang_ *180)/math.Pi + "  "+ (ang*180)/math.Pi)
     ang
   } // normalizeAngleOrigin
@@ -98,7 +99,7 @@ object QUtils {
   /** utility to convert rad to deg */
   def convertRadToDeg(v: Double) = (v*180)/Math.PI
 
-  /** utility to convert a Dec to fraction */
+  /** utility to (try to) convert a Dec to a fraction */
   def convertDecimalToFraction(x: Double): (Int, Int) = {
     if (x < 0) {
       val r = convertDecimalToFraction(-x)

@@ -7,10 +7,16 @@
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QM.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QM.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QV.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QV.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/notes" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/notes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/META-INF/vqs.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QUtils$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +70,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/scaladoc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../java/metro" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -209,7 +215,19 @@
       <workItem from="1597412304083" duration="2195000" />
       <workItem from="1597419998002" duration="1053000" />
       <workItem from="1597421120665" duration="225000" />
-      <workItem from="1597429065473" duration="4622000" />
+      <workItem from="1597429065473" duration="5847000" />
+      <workItem from="1597490794570" duration="2904000" />
+      <workItem from="1597660156417" duration="539000" />
+      <workItem from="1598207329166" duration="5245000" />
+      <workItem from="1598214868722" duration="2018000" />
+      <workItem from="1598350454943" duration="394000" />
+      <workItem from="1598373197390" duration="1480000" />
+      <workItem from="1598459031613" duration="3897000" />
+      <workItem from="1600070962885" duration="2174000" />
+      <workItem from="1600943292704" duration="11000" />
+      <workItem from="1601219910172" duration="100000" />
+      <workItem from="1602497485811" duration="41000" />
+      <workItem from="1609571980638" duration="698000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -407,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597430790344</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixed setRadians/setDegrees&#10;Scaladoc still in progress">
+      <created>1597435626254</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1597435626254</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,55 +460,29 @@
     <MESSAGE value="Building Scaladoc&#10;Cleaning the code" />
     <MESSAGE value="Scaladoc in progress&#10;Cleaning up the code" />
     <MESSAGE value="Scaladoc still in progress&#10;Fixed bug in Phase display&#10;Cleaning up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scaladoc still in progress&#10;Fixed bug in Phase display&#10;Cleaning up code" />
+    <MESSAGE value="Fixed setRadians/setDegrees&#10;Scaladoc still in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed setRadians/setDegrees&#10;Scaladoc still in progress" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="698" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597420985097">
+    <state x="612" y="262" key="FileChooserDialogImpl" timestamp="1602497526719">
+      <screen x="62" y="0" width="1538" height="1200" />
+    </state>
+    <state x="612" y="262" key="FileChooserDialogImpl/62.0.1538.1200@62.0.1538.1200" timestamp="1602497526719" />
+    <state width="1864" height="449" key="GridCell.Tab.0.bottom" timestamp="1609572567644">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="698" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1597420985097" />
-    <state x="657" y="259" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597341521025">
+    <state width="1864" height="449" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609572567644" />
+    <state width="1864" height="449" key="GridCell.Tab.0.center" timestamp="1609572567644">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="657" y="259" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1597341521025" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1597430789458">
+    <state width="1864" height="449" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609572567644" />
+    <state width="1864" height="449" key="GridCell.Tab.0.left" timestamp="1609572567644">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.1024@0.0.1280.1024" timestamp="1589485622781" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597430789458" />
-    <state x="686" y="236" key="FileChooserDialogImpl" timestamp="1597311707760">
+    <state width="1864" height="449" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609572567644" />
+    <state width="1864" height="449" key="GridCell.Tab.0.right" timestamp="1609572567644">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="686" y="236" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597311707760" />
-    <state width="1864" height="260" key="GridCell.Tab.0.bottom" timestamp="1597435564150">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1224" height="568" key="GridCell.Tab.0.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597435564150" />
-    <state width="1864" height="260" key="GridCell.Tab.0.center" timestamp="1597435564149">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1224" height="568" key="GridCell.Tab.0.center/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="260" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597435564149" />
-    <state width="1864" height="260" key="GridCell.Tab.0.left" timestamp="1597435564149">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1224" height="568" key="GridCell.Tab.0.left/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="260" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597435564149" />
-    <state width="1864" height="260" key="GridCell.Tab.0.right" timestamp="1597435564149">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1224" height="568" key="GridCell.Tab.0.right/0.0.1280.1024@0.0.1280.1024" timestamp="1589556291966" />
-    <state width="1864" height="260" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597435564149" />
-    <state x="93" y="143" key="Vcs.Push.Dialog.v2" timestamp="1597430792509">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="62" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.1024@0.0.1280.1024" timestamp="1589038950387" />
-    <state x="93" y="143" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1597430792509" />
-    <state x="0" y="142" key="new project wizard" timestamp="1591896421347">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="0" y="140" key="new project wizard/0.0.1280.1024@0.0.1280.1024" timestamp="1589035795777" />
-    <state x="0" y="142" key="new project wizard/0.0.1920.1080@0.0.1920.1080" timestamp="1591896421347" />
+    <state width="1864" height="449" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609572567644" />
   </component>
 </project>
