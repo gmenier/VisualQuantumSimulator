@@ -28,11 +28,16 @@ object main {
 
     val rr: QReg = QReg(1)
     // rr.drawAll()
-    rr.trace()
+
+
+    rr.trace(useASCII = true)
+
 
     // rr.init()
 
-    rr - H(0) - <() //- C(X(1),0)
+    rr - H(0) - X() - <() //- C(X(1),0)
+
+
 
     rr.end()
 

@@ -106,9 +106,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
           if ((i*lg+lg) <= l.length) l.substring(i*lg,i*lg+lg) else l.substring(i*lg, l.length)
           )
       }.filter(_.length>0).zipWithIndex
-    ).groupBy(_._2).toList.sortBy(_._1).map(
-      e => e._2
-    )
+    ).groupBy(_._2).toList.sortBy(_._1).map( e => e._2 )
 
     beginText()
     e1.foreach( pack => {
@@ -141,16 +139,15 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 
   case class rvb(r: Int, v: Int, b: Int);
 
-  val hotRed    = rvb(255,100,80)
-  val paleRed   = rvb(150, 0,0)
-  val hotGreen  = rvb(50,255,50)
-  val paleGreen = rvb(0, 120, 0)
-  val black     = rvb(0,0,0)
-  val magenta   = rvb(150,0,150)
-  val palemagenta= rvb(50,5,50)
-  val paleblue= rvb(0,0,180)
-  val backBlue = rvb(0,0,150)
-
+  val hotRed       = rvb(255,100,80)
+  val paleRed      = rvb(150, 0,0)
+  val hotGreen     = rvb(50,255,50)
+  val paleGreen    = rvb(0, 120, 0)
+  val black        = rvb(0,0,0)
+  val magenta      = rvb(150,0,150)
+  val palemagenta  = rvb(50,5,50)
+  val paleblue     = rvb(0,0,180)
+  val backBlue     = rvb(0,0,150)
 
 
   def insertImage(fn : String, x: Int, y:Int, w_ : Int, h_ : Int) {
@@ -168,13 +165,13 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
         val ccol = rvb(col.getRed, col.getGreen, col.getBlue)
         val rvb(r,v,b) = ccol match {
           case rvb(255, 255, 240) => rvb(0,0,0)
-          case rvb(0, 0, 10) => rvb(0,0,0)
-          case rvb(0,0,0)       => rvb(255,255,255)
-          case rvb(150, 0,0) /* paleRed */ => rvb(210,210,210)
+          case rvb(0, 0, 10)      => rvb(0,0,0)
+          case rvb(0,0,0)         => rvb(255,255,255)
+          case rvb(150, 0,0) /* paleRed */  => rvb(210,210,210)
           case rvb(255,100,80) /* hotRed */ => rvb(210,210,210)
-          case rvb(255,255,255) => rvb(0,0,0)
-          case rvb(0,0,150)     => rvb(255,255,255)
-          case rvb(r,v,b)       => rvb(r, v,  b)
+          case rvb(255,255,255)   => rvb(0,0,0)
+          case rvb(0,0,150)       => rvb(255,255,255)
+          case rvb(r,v,b)         => rvb(r, v,  b)
         }
         col = new Color(r,v,b)
         inputFile.setRGB(x, y, col.getRGB)

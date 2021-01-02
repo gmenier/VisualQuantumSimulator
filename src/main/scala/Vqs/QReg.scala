@@ -65,6 +65,14 @@ case class QReg(val nbQbits : Int = 1) { //
 
   var phaseNormalization : Boolean = true // if true normalize the phases
 
+  var renderConsoleIDEA = true
+  var onlyAscii = false
+
+  def useOnlyASCII(v : Boolean): Unit = {
+    this.renderConsoleIDEA = ! v
+    this.onlyAscii = v
+  }
+
   // Resets the system that keeps track of the changed Qbits and values
   def resetChange(): Unit = {
     changed.indices.foreach( v => changed(v) = false)
@@ -93,14 +101,15 @@ case class QReg(val nbQbits : Int = 1) { //
 
 
   /** Begins the trace */
-  def trace(traceSize_ : Int = 2): Unit = {
+  def trace(sizeOfTrace : Int = 2, useASCII : Boolean = false): Unit = {
+    this.useOnlyASCII(useASCII)
     QUtils.createImagesDirectoryIfNecessary
     QUtils.removeImages
     isTrace = true
     traceIdx = 0
-    traceSize = traceSize_
-    println(">QSim : Starting trace")
-    println(this.render)
+    traceSize = sizeOfTrace
+    println("\n>VQS: Starting trace of Size "+sizeOfTrace + (if (useASCII) " with ASCII") )
+    println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
     println(this)
     this.resetChange()
     this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Starting trace")
@@ -285,7 +294,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
       qop match {
 
-        case <(idx)     => forceRead(idx)
+        case <(idx)     => {lastOp = "< (measure)"; forceRead(idx)}
 
         case F(_, fct, _, expand, skipTrace) =>
           var svgTrace = isTrace
@@ -369,8 +378,8 @@ case class QReg(val nbQbits : Int = 1) { //
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
-      println("Trace : "+traceIdx+ "  ... "+lastOp)
-      println(this.render)
+      println(" Step("+traceIdx+ ")   ... after "+lastOp)
+      println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
       this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Trace : "+traceIdx+ "   ... "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
@@ -448,12 +457,17 @@ case class QReg(val nbQbits : Int = 1) { //
     cutRenderWithoutAnsi(2000)
   }
 
-  def cutRenderWithoutAnsi(dSize : Int) : String = {
+  def renderWithoutAnsiClean : String = {
+    cutRenderWithoutAnsi(2000, "|", lg="-", llg="-")
+  }
+
+  def cutRenderWithoutAnsi(dSize : Int, bv: String ="|", lg : String ="-", llg : String ="—") : String = {
     var rend = this.render
       .replaceAll("\\x1B...?m", "")
-      .replaceAll("│", "|")
-      .replaceAll("║", "|").replaceAll("╓", "|")
-      .replaceAll("╜", "|").replaceAll("╖", "|").replaceAll("╙","-")
+      .replaceAll("│", bv)
+      .replaceAll("—", llg)
+      .replaceAll("║", bv).replaceAll("╓", bv)
+      .replaceAll("╜", bv).replaceAll("╖", bv).replaceAll("╙",lg)
     val maxSize = rend.split("\n").map(_.length).max
     // rend has been stripped from ANSI Chars
     var from = 10+ maxSize-dSize
@@ -480,7 +494,6 @@ case class QReg(val nbQbits : Int = 1) { //
 
     var startAng:Double = 0.0
 
-
     val titrePhase = if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
 
     if (phaseNormalization)
@@ -490,9 +503,9 @@ case class QReg(val nbQbits : Int = 1) { //
 
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
     var res ="Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t    α\t\t\t\t\t\t\t\t|r|ei Θ" +"\n"+
-      elt.map(v => this(v).probaString+" "+
-        { if (this(v).norm == 0.0) this(v).phaseString(startAng,0)
-        else this(v).phaseString(startAng)
+      elt.map(v => this(v).probaString(ascii = this.onlyAscii)+" "+
+        { if (this(v).norm == 0.0) this(v).phaseString(startAng,0, ascii = this.onlyAscii)
+        else this(v).phaseString(startAng, ascii = this.onlyAscii)
         } +
         "\t\t"+
         (v.toString+"     ").substring(0,5)+

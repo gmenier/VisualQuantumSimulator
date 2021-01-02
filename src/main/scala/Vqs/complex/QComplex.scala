@@ -121,17 +121,31 @@ case class QComplex(val re: Double, val im: Double) {
 
   /** (quantum) draws the complex as a string depicting a probability
    */
-  def probaString:String = { // Drawing of proba
+  def probaString(ascii : Boolean = false):String = { // Drawing of proba
     var nb = (sSize*proba).toInt
     if ((proba >0)&&(nb==0))  nb = 1
     val res = if (proba < 1E-10) {
-      ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
-        .replaceAllLiterally("█", s"${MAGENTA}▓${RESET}")
-        .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+
+      if (!ascii) {
+        ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
+          .replaceAllLiterally("█", s"${MAGENTA}▓${RESET}")
+          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+      } else {
+        ("|" + ("*" * (nb)) + " " * (sSize - nb) + "|")
+          .replaceAllLiterally("*", s"${MAGENTA}*${RESET}")
+          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+      }
+
     } else {
-      ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
-        .replaceAllLiterally("█", s"${BLUE}█${RESET}")
-        .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+      if (!ascii) {
+        ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
+          .replaceAllLiterally("█", s"${BLUE}█${RESET}")
+          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+      } else {
+        ("|" + ("*" * (nb)) + " " * (sSize - nb) + "│")
+          .replaceAllLiterally("*", s"${BLUE}*${RESET}")
+          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+      }
     }
     if (proba < 1E-20) res.replaceAllLiterally("▒", " ")
     else res
@@ -140,18 +154,28 @@ case class QComplex(val re: Double, val im: Double) {
   /** (quantum) draws the complex as a string depicting the phase
    *  @param origin shift for the phase
    *  */
-  def phaseString(origin : Double, notEmpty : Int = 1):String = {
+  def phaseString(origin : Double, notEmpty : Int = 1, ascii : Boolean = false):String = {
     val (amplitude, phase_) = this.asEuler
     val miniA = if (Math.abs(amplitude) < 1E-10) true else false
 
     val phase = normalizeAngleOrigin(phase_, origin)
 
-    val tabC = if (notEmpty == 0) ("║"+  (" "* sSize) +"║").toCharArray else ("║"+  ("▒"* sSize) +"║").toCharArray
+    val tabC =
+      if (! ascii)
+        if (notEmpty == 0) ("║"+  (" "* sSize) +"║").toCharArray else ("║"+  ("▒"* sSize) +"║").toCharArray
+      else
+        if (notEmpty == 0) ("["+  (" "* sSize) +"]").toCharArray else ("["+  (" "* sSize) +"]").toCharArray
+
+
     val p = (if (phase <= math.Pi) phase else math.Pi -phase)
 
     val ofs = ((p/math.Pi)*sSize/2+1).toInt
     var charS = ' '
-    if (miniA) charS = '▓' else charS = '█'
+    if (!ascii)
+      if (miniA) charS = '▓' else charS = '█'
+    else
+      if (miniA) charS = ' ' else charS = '*'
+
 
     if (ofs >0) {
       for( i <- 0 until ofs) tabC(sSize/2+i+1) = charS
@@ -161,20 +185,36 @@ case class QComplex(val re: Double, val im: Double) {
 
     if ( math.abs((math.abs(p)-math.Pi)) < 0.00001 ) { // phase managing
       for(i <- 1 to sSize )
-        if (i<= sSize/2) tabC(i) = '▓' else tabC(i)=charS
+        if (! ascii)
+          if (i<= sSize/2) tabC(i) = '▓' else tabC(i)=charS
+        else
+          if (i<= sSize/2) tabC(i) = ' ' else tabC(i)=charS
     }
-    if (notEmpty==1) tabC(sSize/2+1) = '█' else tabC(sSize/2+1) = ' '
-    if (! miniA)
-      tabC.mkString.replaceAllLiterally(charS.toString, s"${YELLOW}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
+    if (notEmpty==1)
+      if (! ascii) tabC(sSize/2+1) = '█' else tabC(sSize/2+1) = '*'
     else
-      tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
+      if (! ascii) tabC(sSize/2+1) = '*' else tabC(sSize/2+1) = ' '
+
+    if (!ascii) {
+      if (!miniA)
+        tabC.mkString.replaceAllLiterally(charS.toString, s"${YELLOW}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
+      else
+        tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
+    } else {
+      if (!miniA)
+        tabC.mkString.replaceAllLiterally(charS.toString, s"${YELLOW}$charS${RESET}").replaceAllLiterally("|", s"${YELLOW}|${RESET}")
+      else
+        tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA}$charS${RESET}").replaceAllLiterally("|", s"${YELLOW}|${RESET}")
+    }
+
+
   } // ThetaString
 
   /** (quantum) String drawing with both probability and phase
    *  @param origin shift for the phase
    *  */
-  def probaPhaseString(origin : Double): String = {
-    val proba: String = probaString
+  def probaPhaseString(origin : Double, ascii_ : Boolean = false): String = {
+    val proba: String = probaString()
     val phase: String = phaseString(origin)
 
     val res = ( " " * (proba.length)).toCharArray
@@ -272,7 +312,7 @@ object QComplex {
   def formatNumber(n: Double) : String = {
     var res = df.format(n)
     res = if (res(0) != '-') " "+res else res
-    res.replaceAll("0,70711","1/√2") // todo 1/2
+    res.replaceAll("0,70711","1/v2") // todo 1/2
   } // formatNumber
 
   /** converts an angle ang to a string
@@ -299,8 +339,6 @@ object QComplex {
 
     strAng
   } // formatAngle
-
-
 
 
 } // QComplex
