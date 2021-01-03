@@ -492,9 +492,12 @@ case class QReg(val nbQbits : Int = 1) { //
     */
   override def toString : String = {
 
-    var startAng:Double = 0.0
+    var startAng : Double = 0.0
 
-    val titrePhase = if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
+    val titrePhase =
+      if (! this.onlyAscii)
+               if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
+      else     if (this.isInRadians) "Phase [-Pi 0 Pi] " else "[-180    0    180 ]"
 
     if (phaseNormalization)
         startAng = findPhaseOrg  // Normalizes
@@ -502,7 +505,13 @@ case class QReg(val nbQbits : Int = 1) { //
     var elt : List[Int] = (0 until nbValues).toList
 
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
-    var res ="Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t    α\t\t\t\t\t\t\t\t|r|ei Θ" +"\n"+
+
+    var title = if (! this.onlyAscii)
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t    α\t\t\t\t\t\t\t\t|r|ei Θ"
+    else
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*9+ "V\tBin\t\t  a\t\t\t\t    |r|ei Theta"
+
+    var res = title +"\n"+
       elt.map(v => this(v).probaString(ascii = this.onlyAscii)+" "+
         { if (this(v).norm == 0.0) this(v).phaseString(startAng,0, ascii = this.onlyAscii)
         else this(v).phaseString(startAng, ascii = this.onlyAscii)
@@ -513,7 +522,7 @@ case class QReg(val nbQbits : Int = 1) { //
         {
           if (this(v).norm == 0.0)  "."+" "*29 else (this(v).toString+" "*30).substring(0,30)
         } + {
-        "\t= " + (if (this(v).norm == 0.0) "." else this(v).asEulerString(this.isInRadians,startAng))
+        "\t= " + (if (this(v).norm == 0.0) "." else this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii))
         }
     ).mkString("\n")
 

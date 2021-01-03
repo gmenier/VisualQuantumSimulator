@@ -96,7 +96,7 @@ case class QComplex(val re: Double, val im: Double) {
   /** returns a complex number as a string with Euler formatting
    *  @param origin phase shift (0.0 by default)
    */
-  def asEulerString(isRadian : Boolean, origin: Double = 0.0): String = { //  euler
+  def asEulerString(isRadian : Boolean, origin: Double = 0.0, ascii_ : Boolean = false): String = { //  euler
     val (r, thetap) = asEuler
     val rStr = formatNumber(r)
 
@@ -104,7 +104,7 @@ case class QComplex(val re: Double, val im: Double) {
     var ang_ = normalizeAngleOrigin(thetap, origin)
     val ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
 
-    val angstr = formatAngle(isRadian, ang)
+    val angstr = formatAngle(isRadian, ang, ascii_)
 
     val res =
       if (abs((abs(r)-1.0))<0.0001) s"ei $angstr"
@@ -142,7 +142,7 @@ case class QComplex(val re: Double, val im: Double) {
           .replaceAllLiterally("█", s"${BLUE}█${RESET}")
           .replaceAllLiterally("│", s"${BLUE}│${RESET}")
       } else {
-        ("|" + ("*" * (nb)) + " " * (sSize - nb) + "│")
+        ("|" + ("*" * (nb)) + " " * (sSize - nb) + "|")
           .replaceAllLiterally("*", s"${BLUE}*${RESET}")
           .replaceAllLiterally("│", s"${BLUE}│${RESET}")
       }
@@ -318,7 +318,7 @@ object QComplex {
   /** converts an angle ang to a string
    *  @param ang angle to format
    */
-  def formatAngle(isRadian : Boolean, ang : Double) : String = {
+  def formatAngle(isRadian : Boolean, ang : Double, ascii : Boolean = false) : String = {
     var strAng = ""
 
     if (isRadian) {
@@ -326,13 +326,13 @@ object QComplex {
 
       strAng = s"$thetapStr" + " π"
       if (thetapStr.length > 2) {
-        if (thetapStr.substring(0, 2) == "1 ") strAng = "π"
-        if (thetapStr.substring(0, 3) == "-1 ") strAng = "-π"
+        if (thetapStr.substring(0, 2) == "1 ") if (!ascii) strAng = "π" else strAng = "P"
+        if (thetapStr.substring(0, 3) == "-1 ") if (!ascii) strAng = "π" else strAng = "-P"
       }
       if (math.abs(ang / Pi) < 0.00001) strAng = "0"
     } else {
       val cvt = convertRadToDeg(ang)
-      val df2 = new java.text.DecimalFormat("##°")
+      val df2 = if (!ascii) new java.text.DecimalFormat("##°") else new java.text.DecimalFormat("##")
       val thetapStr = df2.format(cvt)
       strAng = thetapStr.replaceAll("-0°","0°")
     }
