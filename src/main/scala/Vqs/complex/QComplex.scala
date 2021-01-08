@@ -102,9 +102,13 @@ case class QComplex(val re: Double, val im: Double) {
 
     // Finds and angle between 0 and 2Pi with Phase offset
     var ang_ = normalizeAngleOrigin(thetap, origin)
-    val ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
+    var ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
+
+    if (abs(ang) < 0.0001) ang = 0
 
     val angstr = formatAngle(isRadian, ang, ascii_)
+
+
 
     val res =
       if (abs((abs(r)-1.0))<0.0001) s"ei $angstr"
@@ -121,7 +125,7 @@ case class QComplex(val re: Double, val im: Double) {
 
   /** (quantum) draws the complex as a string depicting a probability
    */
-  def probaString(ascii : Boolean = false):String = { // Drawing of proba
+  def probaString(isEmpty : Boolean = false, ascii : Boolean = false):String = { // Drawing of proba
     var nb = (sSize*proba).toInt
     if ((proba >0)&&(nb==0))  nb = 1
     val res = if (proba < 1E-10) {
@@ -147,8 +151,10 @@ case class QComplex(val re: Double, val im: Double) {
           .replaceAllLiterally("│", s"${BLUE}│${RESET}")
       }
     }
-    if (proba < 1E-20) res.replaceAllLiterally("▒", " ")
-    else res
+    val result = if (proba < 1E-20) res.replaceAllLiterally("▒", " ")  else res
+    if (! isEmpty) result else {
+      ("." + ("." * (sSize)) + ".")
+    }
   } // probaString
 
   /** (quantum) draws the complex as a string depicting the phase
@@ -162,10 +168,12 @@ case class QComplex(val re: Double, val im: Double) {
 
     val tabC =
       if (! ascii)
-        if (notEmpty == 0) ("║"+  (" "* sSize) +"║").toCharArray else ("║"+  ("▒"* sSize) +"║").toCharArray
+        if (notEmpty == 0) ("."+  ("."* sSize) +".").toCharArray else ("║"+  ("▒"* sSize) +"║").toCharArray
       else
-        if (notEmpty == 0) ("["+  (" "* sSize) +"]").toCharArray else ("["+  (" "* sSize) +"]").toCharArray
+        if (notEmpty == 0) ("."+  ("."* sSize) +".").toCharArray else ("["+  (" "* sSize) +"]").toCharArray
 
+
+      if (notEmpty == 0) return tabC.mkString
 
     val p = (if (phase <= math.Pi) phase else math.Pi -phase)
 
@@ -248,7 +256,7 @@ case class QComplex(val re: Double, val im: Double) {
   override def toString: String = {
     val reStr = formatNumber(re)
     val imStr = formatNumber(im) +"i"
-    if (math.abs(im) < 0.00001) reStr
+    if (math.abs(im) < 0.00001) " "+reStr
     else if (math.abs(re) < 0.00001) s"($imStr)"
     else s"($reStr+ $imStr)"
   } // toString

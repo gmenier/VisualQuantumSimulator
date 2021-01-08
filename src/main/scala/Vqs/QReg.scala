@@ -45,7 +45,8 @@ case class QReg(val nbQbits : Int = 1) { //
   val qbMstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate, since no measure yet
 
 
-  var isInRadians = false // true if this reg is in radian
+  // by default, gets the value from Companion Object
+  var isInRadians = QReg.DefaultObjIsInRadians // true if this reg is in radian
 
   def setRadians() { this.isInRadians = true }
   def setDegrees() { this.isInRadians = false }
@@ -59,19 +60,20 @@ case class QReg(val nbQbits : Int = 1) { //
 
   var isShowRender : Boolean = true // renders or not
 
-  var drawAllState : Boolean = false; // if false only draw states with probability > 0
+  var drawAllState : Boolean = QReg.DefaultDrawAllState; // if false only draw states with probability > 0
 
   var lastOp : String ="" // last operator used (trace)
 
-  var phaseNormalization : Boolean = true // if true normalize the phases
+  var phaseNormalization : Boolean = QReg.DefaultObjPhaseNormalization // if true normalize the phases
 
-  var renderConsoleIDEA = true
-  var onlyAscii = false
+  var renderConsoleIDEA = ! QReg.DefaultObjUseASCII
+  var onlyAscii = QReg.DefaultObjUseASCII
 
   def useOnlyASCII(v : Boolean): Unit = {
     this.renderConsoleIDEA = ! v
     this.onlyAscii = v
   }
+
 
   // Resets the system that keeps track of the changed Qbits and values
   def resetChange(): Unit = {
@@ -101,14 +103,14 @@ case class QReg(val nbQbits : Int = 1) { //
 
 
   /** Begins the trace */
-  def trace(sizeOfTrace : Int = 2, useASCII : Boolean = false): Unit = {
+  def trace(sizeOfTrace : Int = 2, useASCII : Boolean = this.onlyAscii): Unit = {
     this.useOnlyASCII(useASCII)
     QUtils.createImagesDirectoryIfNecessary
     QUtils.removeImages
     isTrace = true
     traceIdx = 0
     traceSize = sizeOfTrace
-    println("\n>VQS: Starting trace of Size "+sizeOfTrace + (if (useASCII) " with ASCII") )
+    println("\n>VQS: Starting trace "+ (if (useASCII) " with ASCII output" else "") )
     println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
     println(this)
     this.resetChange()
@@ -378,10 +380,10 @@ case class QReg(val nbQbits : Int = 1) { //
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
-      println(" Step("+traceIdx+ ")   ... after "+lastOp)
+      println(" Step("+traceIdx+ ") after "+lastOp)
       println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
-      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Trace : "+traceIdx+ "   ... "+lastOp, clist= condl)
+      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="("+traceIdx+ ") after "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
           this.myPdf.writeReport(this, circuitSize, traceIdx)
       }
@@ -497,7 +499,7 @@ case class QReg(val nbQbits : Int = 1) { //
     val titrePhase =
       if (! this.onlyAscii)
                if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
-      else     if (this.isInRadians) "Phase [-Pi 0 Pi] " else "[-180    0    180 ]"
+      else     if (this.isInRadians) "Phase [-Pi 0 Pi] "   else "[-180    0    180 ]"
 
     if (phaseNormalization)
         startAng = findPhaseOrg  // Normalizes
@@ -507,22 +509,22 @@ case class QReg(val nbQbits : Int = 1) { //
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
 
     var title = if (! this.onlyAscii)
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t    α\t\t\t\t\t\t\t\t|r|ei Θ"
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t   α\t\t\t\t\t\t\t\t|r|ei Θ"
     else
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*9+ "V\tBin\t\t  a\t\t\t\t    |r|ei Theta"
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*9+ "V\tBin\t\t   a\t\t\t\t        |r|ei Theta"
 
     var res = title +"\n"+
-      elt.map(v => this(v).probaString(ascii = this.onlyAscii)+" "+
-        { if (this(v).norm == 0.0) this(v).phaseString(startAng,0, ascii = this.onlyAscii)
-        else this(v).phaseString(startAng, ascii = this.onlyAscii)
+      elt.map(v => this(v).probaString(isEmpty = (this(v).norm < QReg.MinNorm), ascii = this.onlyAscii)+" "+
+        { if (this(v).norm < QReg.MinNorm) this(v).phaseString(startAng,0, ascii = this.onlyAscii)
+        else                               this(v).phaseString(startAng, ascii = this.onlyAscii)
         } +
         "\t\t"+
         (v.toString+"     ").substring(0,5)+
                               "\t|"+(QUtils.toBinary(v,nbQbits)+">\t"+" "*10).substring(0,12) +
         {
-          if (this(v).norm == 0.0)  "."+" "*29 else (this(v).toString+" "*30).substring(0,30)
+          if (this(v).norm < QReg.MinNorm)  "  ."+" "*29 else (this(v).toString+" "*30).substring(0,30)
         } + {
-        "\t= " + (if (this(v).norm == 0.0) "." else this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii))
+        (if (this(v).norm < QReg.MinNorm) "\t= ." else "\t\t= "+this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii))
         }
     ).mkString("\n")
 
@@ -578,8 +580,12 @@ case class QReg(val nbQbits : Int = 1) { //
 
     im.drawText("+1", 250,100, c= new Color(200,200,200) )
     im.drawText("-1", 250,400, c= new Color(200,200,200) )
-    im.drawText("-i", 90 ,250, c= new Color(200,200,200) )
-    im.drawText("+i", 400,250, c= new Color(200,200,200) )
+
+    if (QReg.DefaultObjIsAntiClock)  im.drawText("+i", 90 ,250, c= new Color(200,200,200) )
+      else im.drawText("-i", 90 ,250, c= new Color(200,200,200) )
+
+    if (QReg.DefaultObjIsAntiClock)  im.drawText("-i", 400,250, c= new Color(200,200,200) )
+      else im.drawText("+i", 400,250, c= new Color(200,200,200) )
 
     if (phaseNormalization)
       im.drawText("Phase norm", 380,20, c= new Color(200,200,200) )
@@ -587,7 +593,8 @@ case class QReg(val nbQbits : Int = 1) { //
     elt.foreach(v => { // v est l'indice de la valeur
       val (norm_, phase_) = this(v).asEuler
       val proba = zoom*(norm_ * norm_)  // probability
-      val phase = normalizeAngleOrigin(phase_, offset) - math.Pi/2 // phase
+      var phase = normalizeAngleOrigin(phase_, offset) - math.Pi/2 // phase
+      if (QReg.DefaultObjIsAntiClock) phase = -phase -math.Pi
       val x = (250 + 225*proba*math.cos(phase)).toInt
       val y = (250 + 225*proba*math.sin(phase)).toInt
       im.drawLine(250,250,x,y, new Color(255,255,255))
@@ -638,7 +645,7 @@ case class QReg(val nbQbits : Int = 1) { //
         val cy = bord+(2*osize+bord*2)*((v / coln).toInt)
         val amp = this(v).proba;
         val phase = this(v).phase(phaseOrg);
-        im.drawState(50+cx,50+cy,amp,phase,osize, v, nbQbits, lchanged.toList, clist, qbs, qbs0, qbs1)
+        im.drawState(50+cx,50+cy,amp,phase,osize, v, nbQbits, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock)
         im.drawText(text = v.toString, 50+cx-5,40+cy+osize+bord, c= new Color(255,255,255))
         if (this.changed(v)) {
           //im.drawFilledCircle(50+cx-5+3,48+cy+osize+bord, 5, c= new Color(250,250,250))
@@ -674,6 +681,9 @@ object QReg {
   val All = -2 // For All QBits
   val Index = -1 // Idx for labels
 
+
+  val MinNorm = 0.00001  // if norm < MinNorm, use 0 instead
+
   val rn = new SecureRandom()
   val randomS :  SecureRandom = new SecureRandom(rn.generateSeed((40+ 30*math.random()).toInt))
 
@@ -684,6 +694,65 @@ object QReg {
   def notifyError(msg : String): Unit = {
     println("\n<*** Error: "+msg+" ***>\n")
     System.exit(1)
+  }
+
+  // Initializing variables
+  var DefaultObjIsInRadians = false;
+
+  def setDefaultRadians() { DefaultObjIsInRadians = true }
+  def setDefaultDegrees() { DefaultObjIsInRadians = false }
+
+
+  // Global phase normalization for the displays, or not ?
+  var DefaultObjPhaseNormalization = true;
+
+  /** State : the drawing displays the normalized phase */
+  def setDefaultDrawPhaseNormalization(): Unit = {
+    DefaultObjPhaseNormalization = true
+  }
+
+  /** State : the drawing does not display the normalized phase */
+  def setDefaultDrawNOPhaseNormalization(): Unit = {
+    DefaultObjPhaseNormalization = false
+  }
+
+
+  // When states are depicted as circle, should the phase go counterWise or anticounterwise
+  var DefaultObjIsAntiClock = false
+  def setDefaultDrawPhaseAntiClock(): Unit = {
+    DefaultObjIsAntiClock = true
+  }
+
+  def setDefaultDrawPhaseClock(): Unit = {
+    DefaultObjIsAntiClock = false
+  }
+
+
+
+
+  // If the console doesn't manage special characters,
+  // switch to full aSCII
+  var DefaultObjUseASCII = false
+
+  def setDefaultUseASCII(): Unit = {
+    DefaultObjUseASCII = true
+  }
+
+  def setDefaultUseNOASCII(): Unit = {
+    DefaultObjUseASCII = false
+  }
+
+
+  // draw only possible state (proba > 0)
+  // or save some space for display
+  var DefaultDrawAllState: Boolean = false
+
+  def setDefaultDrawAll(): Unit = {
+    DefaultDrawAllState = true
+  }
+
+  def setDefaultDrawOnlyPossible(): Unit = {
+    DefaultDrawAllState = false
   }
 
 } // QReg

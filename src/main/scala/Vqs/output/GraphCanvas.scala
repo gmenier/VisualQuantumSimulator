@@ -73,7 +73,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
 
   def drawState(x : Int, y : Int,
-                amplitude: Double, phase : Double,
+                amplitude: Double, phase_ : Double,
                 osize: Int =20,
                 v_ : Int,
                 nb: Int,
@@ -81,9 +81,11 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
                 lcond: List[Int] = List(),
                 qbState : List[Int] = List(),
                 qb0 : List[Int] = List(),
-                qb1 : List[Int] = List()
+                qb1 : List[Int] = List(),
+                isAnticlock_ : Boolean = false
                ): Unit = { // draws a state as a picture
 
+    var phase: Double = if (isAnticlock_) -phase_ else phase_
     var ante = false;
     var red = paleRed;
     var green = paleGreen;
@@ -142,6 +144,11 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
       g2.setStroke(new BasicStroke(5))
       g2.draw(new Line2D.Float(x,y,cx,cy))
       g2.setStroke(new BasicStroke(1))
+
+      g2.setPaint(new Color(0, 200, 240))
+      if (isAnticlock_)
+           g2.draw(new Line2D.Float(x - osize, y - osize+5, x - osize +5, y - osize ))
+      else g2.draw(new Line2D.Float(x + osize-5, y - osize, x + osize, y - osize+5))
 
       //drawLine(x, y, cx2, cy2, new Color(0, 0, 0))
       //drawLine(cx2, cy2, cx, cy, new Color(0, 0, 0))

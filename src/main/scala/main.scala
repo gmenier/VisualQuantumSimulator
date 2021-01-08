@@ -21,30 +21,28 @@ import scala.math.{cos, sin}
 object main {
 
   def main(args : Array[String]): Unit = {
-    // QUtils.removeImages
+
+    QUtils.removeImages
+
+    // QReg.setDefaultDrawPhaseAntiClock()
     // QStudy.caseQFT()
 
-
+    QReg.setDefaultDrawPhaseAntiClock()
+    // QReg.setDefaultDrawAll()
+    // QReg.setDefaultUseASCII()
 
     val rr: QReg = QReg(1)
     // rr.drawAll()
 
-
-    rr.trace(useASCII = true)
+    rr.trace()
 
 
     // rr.init()
 
-    rr - H(0) - X() - <() //- C(X(1),0)
-
+    rr - H(0) - X() - Rz(0,45)- <() //- C(X(1),0)
 
 
     rr.end()
-
-
-
-
-
 
 
 

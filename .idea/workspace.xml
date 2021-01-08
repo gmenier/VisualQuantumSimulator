@@ -4,12 +4,16 @@
     <option name="SCOPE_TYPE" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -229,7 +233,13 @@
       <workItem from="1609592192891" duration="6062000" />
       <workItem from="1609610583113" duration="1704000" />
       <workItem from="1609618880821" duration="4304000" />
-      <workItem from="1609668601507" duration="3447000" />
+      <workItem from="1609668601507" duration="4924000" />
+      <workItem from="1609786682399" duration="987000" />
+      <workItem from="1609882077649" duration="152000" />
+      <workItem from="1610020918067" duration="119000" />
+      <workItem from="1610058522195" duration="2016000" />
+      <workItem from="1610096640330" duration="5197000" />
+      <workItem from="1610108636623" duration="8775000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -448,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609623108522</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab">
+      <created>1609672229414</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1609672229414</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,40 +496,41 @@
     <MESSAGE value="Fixed setRadians/setDegrees&#10;Scaladoc still in progress" />
     <MESSAGE value="Back to dev&#10;Maintenance fixes" />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. (Windows for instance) This outputs only ascii characters..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Use rr.trace(useASCII = true) to avoid the console problems. (Windows for instance) This outputs only ascii characters..." />
+    <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="468" y="54" key="CommitChangelistDialog2" timestamp="1609623107518">
+    <state x="438" y="54" key="CommitChangelistDialog2" timestamp="1610123815863">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="468" y="54" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609623107518" />
+    <state x="438" y="54" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1610123815863" />
     <state x="612" y="262" key="FileChooserDialogImpl" timestamp="1602497526719">
       <screen x="62" y="0" width="1538" height="1200" />
     </state>
     <state x="612" y="262" key="FileChooserDialogImpl/62.0.1538.1200@62.0.1538.1200" timestamp="1602497526719" />
-    <state width="1011" height="272" key="GridCell.Tab.0.bottom" timestamp="1609671307200">
+    <state width="1596" height="337" key="GridCell.Tab.0.bottom" timestamp="1610124610875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1011" height="272" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609671307200" />
-    <state width="1011" height="272" key="GridCell.Tab.0.center" timestamp="1609671307199">
+    <state width="1596" height="337" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
+    <state width="1596" height="337" key="GridCell.Tab.0.center" timestamp="1610124610875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1011" height="272" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609671307199" />
-    <state width="1011" height="272" key="GridCell.Tab.0.left" timestamp="1609671307199">
+    <state width="1596" height="337" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
+    <state width="1596" height="337" key="GridCell.Tab.0.left" timestamp="1610124610875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1011" height="272" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609671307199" />
-    <state width="1011" height="272" key="GridCell.Tab.0.right" timestamp="1609671307199">
+    <state width="1596" height="337" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
+    <state width="1596" height="337" key="GridCell.Tab.0.right" timestamp="1610124610875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1011" height="272" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609671307199" />
+    <state width="1596" height="337" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
     <state x="352" y="82" key="SettingsEditor" timestamp="1609592491827">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="352" y="82" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609592491827" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1609623111471">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1609672237068">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609623111471" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609672237068" />
   </component>
 </project>
