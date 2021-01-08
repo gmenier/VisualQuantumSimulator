@@ -318,7 +318,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Rx");
-    pad.infol(angle.toString)
+    pad.infol((angle.toString+" ").replaceAll(".0 ",""))
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }
@@ -348,7 +348,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Ry");
-    pad.infol(angle.toString)
+    pad.infol((angle.toString+" ").replaceAll(".0 ",""))
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }
@@ -378,7 +378,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Rz");
-    pad.infol(angle.toString)
+    pad.infol((angle.toString+" ").replaceAll(".0 ",""))
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }

@@ -2,7 +2,7 @@ package Vqs.output
 
 import java.awt.geom.{Arc2D, Ellipse2D, Line2D}
 import java.awt.image.BufferedImage
-import java.awt.{BasicStroke, Color, Font}
+import java.awt.{BasicStroke, Color, Font, Graphics2D}
 
 case class GraphCanvas(w: Int=500, h: Int=500) {
 
@@ -11,14 +11,14 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
   var g = canvas.createGraphics()
 
-  val hotRed    = new Color(255,100,80)
-  val paleRed   = new Color(150, 0,0)
-  val hotGreen  = new Color(50,255,50)
-  val paleGreen = new Color(0, 120, 0)
-  val black     = new Color(0,0,0)
-  val magenta   = new Color(150,0,150)
+  val hotRed     = new Color(255,100,80)
+  val paleRed    = new Color(150, 0,0)
+  val hotGreen   = new Color(50,255,50)
+  val paleGreen  = new Color(0, 120, 0)
+  val black      = new Color(0,0,0)
+  val magenta    = new Color(150,0,150)
   val palemagenta= new Color(50,5,50)
-  val paleblue= new Color(0,0,180)
+  val paleblue   = new Color(0,0,180)
 
   // clear background
   g.setColor(Color.BLACK)
@@ -116,8 +116,18 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
       }
     )
 
+
+    val g2 = g.asInstanceOf[Graphics2D]
+    g2.setPaint(new Color(255, 255, 240))
+    g2.setStroke(new BasicStroke(1))
+
+    if (isAnticlock_)
+      g2.draw(new Line2D.Float(x - osize - nb*s/2, y - osize+5 - nb*s/2, x - osize +5 - nb*s/2, y - osize - nb*s/2 ))
+    else g2.draw(new Line2D.Float(x + osize-5 + nb*s/2, y - osize - nb*s/2, x + osize + nb*s/2, y - osize+5 - nb*s/2))
+
+
     if (amplitude > 0.000001)
-      drawFilledCircle(x-(osize),y-(osize),osize*2, new Color(0,0,150))
+      drawFilledCircle(x-(osize),y-(osize),osize*2, new Color(0,0,130))
     else
       drawFilledCircle(x-(osize),y-(osize),osize*2, Color.BLACK)
 
@@ -141,14 +151,12 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
       val g2 = g.asInstanceOf[Graphics2D]
       g2.setPaint(new Color(255, 255, 240))
-      g2.setStroke(new BasicStroke(5))
+      g2.setStroke(new BasicStroke(3))
       g2.draw(new Line2D.Float(x,y,cx,cy))
       g2.setStroke(new BasicStroke(1))
 
       g2.setPaint(new Color(0, 200, 240))
-      if (isAnticlock_)
-           g2.draw(new Line2D.Float(x - osize, y - osize+5, x - osize +5, y - osize ))
-      else g2.draw(new Line2D.Float(x + osize-5, y - osize, x + osize, y - osize+5))
+
 
       //drawLine(x, y, cx2, cy2, new Color(0, 0, 0))
       //drawLine(cx2, cy2, cx, cy, new Color(0, 0, 0))

@@ -4,11 +4,11 @@
     <option name="SCOPE_TYPE" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab">
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
@@ -239,7 +239,8 @@
       <workItem from="1610020918067" duration="119000" />
       <workItem from="1610058522195" duration="2016000" />
       <workItem from="1610096640330" duration="5197000" />
-      <workItem from="1610108636623" duration="8775000" />
+      <workItem from="1610108636623" duration="9517000" />
+      <workItem from="1610132539556" duration="5998000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -465,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609672229414</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added config for QReg.DefaultDrawAllState, &#10;QReg.DefaultObjIsAntiClock, &#10;QReg.DefaultObjIsInRadians, &#10;QReg.DefaultObjPhaseNormalization, QReg.DefaultObjUseASCII &#10;+ fixed ASCII&#10;+ added support for counterclockwise or clockwise phase&#10;+ added visual hints for the way it goes&#10;+ added support in the flower drawing&#10;+ fixed some bugs (offsets in display)">
+      <created>1610124823205</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1610124823205</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,40 +505,45 @@
     <MESSAGE value="Back to dev&#10;Maintenance fixes" />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. (Windows for instance) This outputs only ascii characters..." />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
+    <MESSAGE value="Added config for QReg.DefaultDrawAllState, &#10;QReg.DefaultObjIsAntiClock, &#10;QReg.DefaultObjIsInRadians, &#10;QReg.DefaultObjPhaseNormalization, QReg.DefaultObjUseASCII &#10;+ fixed ASCII&#10;+ added support for counterclockwise or clockwise phase&#10;+ added visual hints for the way it goes&#10;+ added support in the flower drawing&#10;+ fixed some bugs (offsets in display)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added config for QReg.DefaultDrawAllState, &#10;QReg.DefaultObjIsAntiClock, &#10;QReg.DefaultObjIsInRadians, &#10;QReg.DefaultObjPhaseNormalization, QReg.DefaultObjUseASCII &#10;+ fixed ASCII&#10;+ added support for counterclockwise or clockwise phase&#10;+ added visual hints for the way it goes&#10;+ added support in the flower drawing&#10;+ fixed some bugs (offsets in display)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="438" y="54" key="CommitChangelistDialog2" timestamp="1610123815863">
+    <state x="695" y="288" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1610137028593">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="438" y="54" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1610123815863" />
+    <state x="695" y="288" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610137028593" />
+    <state x="438" y="54" key="CommitChangelistDialog2" timestamp="1610124821957">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="438" y="54" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1610124821957" />
     <state x="612" y="262" key="FileChooserDialogImpl" timestamp="1602497526719">
       <screen x="62" y="0" width="1538" height="1200" />
     </state>
     <state x="612" y="262" key="FileChooserDialogImpl/62.0.1538.1200@62.0.1538.1200" timestamp="1602497526719" />
-    <state width="1596" height="337" key="GridCell.Tab.0.bottom" timestamp="1610124610875">
+    <state width="1596" height="308" key="GridCell.Tab.0.bottom" timestamp="1610137462306">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1596" height="337" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
-    <state width="1596" height="337" key="GridCell.Tab.0.center" timestamp="1610124610875">
+    <state width="1596" height="308" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610137462306" />
+    <state width="1596" height="308" key="GridCell.Tab.0.center" timestamp="1610137462306">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1596" height="337" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
-    <state width="1596" height="337" key="GridCell.Tab.0.left" timestamp="1610124610875">
+    <state width="1596" height="308" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610137462306" />
+    <state width="1596" height="308" key="GridCell.Tab.0.left" timestamp="1610137462306">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1596" height="337" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
-    <state width="1596" height="337" key="GridCell.Tab.0.right" timestamp="1610124610875">
+    <state width="1596" height="308" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610137462306" />
+    <state width="1596" height="308" key="GridCell.Tab.0.right" timestamp="1610137462306">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1596" height="337" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610124610875" />
+    <state width="1596" height="308" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610137462306" />
     <state x="352" y="82" key="SettingsEditor" timestamp="1609592491827">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="352" y="82" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609592491827" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1609672237068">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1610124826122">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609672237068" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610124826122" />
   </component>
 </project>

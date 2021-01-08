@@ -578,14 +578,14 @@ case class QReg(val nbQbits : Int = 1) { //
     im.drawText("3/4", (250-3*250*zoom/4).toInt+40,(250-3*250*zoom/4).toInt+40, c= new Color(180,180,180) )
     im.drawText("1/4", (250-250*zoom/4).toInt+40,(250-250*zoom/4).toInt+40, c= new Color(180,180,180) )
 
-    im.drawText("+1", 250,100, c= new Color(200,200,200) )
-    im.drawText("-1", 250,400, c= new Color(200,200,200) )
+    im.drawText("+1", 260,100, c= new Color(200,200,200) )
+    im.drawText("-1", 260,400, c= new Color(200,200,200) )
 
-    if (QReg.DefaultObjIsAntiClock)  im.drawText("+i", 90 ,250, c= new Color(200,200,200) )
-      else im.drawText("-i", 90 ,250, c= new Color(200,200,200) )
+    if (QReg.DefaultObjIsAntiClock)  im.drawText("+i", 90 ,240, c= new Color(200,200,200) )
+      else im.drawText("-i", 90 ,240, c= new Color(200,200,200) )
 
-    if (QReg.DefaultObjIsAntiClock)  im.drawText("-i", 400,250, c= new Color(200,200,200) )
-      else im.drawText("+i", 400,250, c= new Color(200,200,200) )
+    if (QReg.DefaultObjIsAntiClock)  im.drawText("-i", 400,240, c= new Color(200,200,200) )
+      else im.drawText("+i", 400,240, c= new Color(200,200,200) )
 
     if (phaseNormalization)
       im.drawText("Phase norm", 380,20, c= new Color(200,200,200) )
@@ -605,11 +605,23 @@ case class QReg(val nbQbits : Int = 1) { //
       im.drawText(v.toString, xr+x-6,yr+y+8)
     })
 
-    im.drawText("π", 250,485, c= new Color(250,250,100))
-    im.drawText("0", 250,22, c= new Color(250,250,100))
+    if (this.isInRadians) {
+      im.drawText("π", 250, 485, c = new Color(250, 250, 100))
+      if (!QReg.DefaultObjIsAntiClock) im.drawText("π/2", 460, 230, c = new Color(250, 250, 100))
+      else im.drawText("3π/2", 460, 230, c = new Color(250, 250, 100))
+      if (!QReg.DefaultObjIsAntiClock) im.drawText("3π/2", 10, 230, c = new Color(250, 250, 100))
+      else im.drawText("π/2", 10, 230, c = new Color(250, 250, 100))
+    } else {
+      im.drawText("180", 230, 490, c = new Color(250, 250, 100))
+      if (!QReg.DefaultObjIsAntiClock) im.drawText("90", 460, 230, c = new Color(250, 250, 100))
+      else im.drawText("270", 460, 230, c = new Color(250, 250, 100))
+      if (!QReg.DefaultObjIsAntiClock) im.drawText("270", 10, 230, c = new Color(250, 250, 100))
+      else im.drawText("90", 10, 230, c = new Color(250, 250, 100))
+    }
+    im.drawText("0", 245,22, c= new Color(250,250,100))
 
-    if (zoom > 1.0) im.drawText("Zoom "+zoom+"x", 10,485, c= new Color(250,250,100))
-    if (zoom > 1.0) im.drawText("Zoom "+zoom+"x", 10,486, c= new Color(250,250,100))
+    if (zoom > 1.0) im.drawText(zoom+"x", 10,485, c= new Color(250,250,100))
+    if (zoom > 1.0) im.drawText(zoom+"x", 10,486, c= new Color(250,250,100))
 
     im.drawText(text, 6,20, c= new Color(250,250,100))
 
