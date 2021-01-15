@@ -69,9 +69,20 @@ case class QReg(val nbQbits : Int = 1) { //
   var renderConsoleIDEA = ! QReg.DefaultObjUseASCII
   var onlyAscii = QReg.DefaultObjUseASCII
 
+  var performsTraceFunction = ( idTrace : Int, thisRegister : QReg) => {  }
+
   def useOnlyASCII(v : Boolean): Unit = {
     this.renderConsoleIDEA = ! v
     this.onlyAscii = v
+  }
+
+  // you may use a function called for each step (0 = start, -1 = end)
+  def useTraceFunction( fct : (Int, QReg) => Unit): Unit = {
+    performsTraceFunction = fct
+  }
+  // no trace function
+  def resetTraceFunction(): Unit = {
+    performsTraceFunction = ( idTrace : Int, thisRegister : QReg) => {  }
   }
 
 
@@ -111,6 +122,7 @@ case class QReg(val nbQbits : Int = 1) { //
     traceIdx = 0
     traceSize = sizeOfTrace
     println("\n>VQS: Starting trace "+ (if (useASCII) " with ASCII output" else "") )
+    performsTraceFunction(0, this)
     println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
     println(this)
     this.resetChange()
@@ -381,6 +393,7 @@ case class QReg(val nbQbits : Int = 1) { //
     if (isTrace) {
       println("_"*60+"\n")
       println(" Step("+traceIdx+ ") after "+lastOp)
+      performsTraceFunction(traceIdx, this) // so you can get your trace function
       println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
       this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="("+traceIdx+ ") after "+lastOp, clist= condl)
@@ -673,6 +686,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
   /** inner Op : ends the processing on a register */
   def end(): Unit = {
+    if (this.isTrace) performsTraceFunction(-1, this)
     if (this.myPdf != null) {
       myPdf.allCircuit(this)
       this.myPdf.closePdf()
