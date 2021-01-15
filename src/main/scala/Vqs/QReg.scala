@@ -121,7 +121,7 @@ case class QReg(val nbQbits : Int = 1) { //
     isTrace = true
     traceIdx = 0
     traceSize = sizeOfTrace
-    println("\n>VQS: Starting trace "+ (if (useASCII) " with ASCII output" else "") )
+    println("\nVQS >- Starting trace "+ (if (useASCII) " with ASCII output" else "") )
     performsTraceFunction(0, this)
     println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
     println(this)
@@ -176,21 +176,6 @@ case class QReg(val nbQbits : Int = 1) { //
   }
 
 
-  /** Gets the measured state for a reg value (pure) - raises an internal error
-   *  @param idx_ of the value
-   *  @return 0, 1 or -1 (not measured)
-   */
-  def readMQbit(idx: Int) = { // reads a QBit value - should < before reading
-    val r = getMState(idx)
-    if (r == -1) {
-      notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try <())")
-      0
-    } else {
-      r
-    }
-  } // readQbit
-
-
   /** Gets the measured state for the full register (should < before)
    */
   def getMQbit: Int = { // Read the reg value - should < before
@@ -198,7 +183,31 @@ case class QReg(val nbQbits : Int = 1) { //
     rl.reverse.foldLeft(0)(
       (ac,v) => v + 2*ac
     )
+  } // getMQbit
+
+
+  /** Gets the measured state for a reg value (pure) - raises an internal error
+   *  @param idx_ of the value
+   *  @return 0, 1 or -1 (not measured)
+   */
+  def readMQbit(idx: Int) = { // reads a QBit value - should < before reading
+    if (idx == QReg.All)
+      getMQbit
+    else {
+      val r = getMState(idx)
+      if (r == -1) {
+        notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try <())")
+        0
+      } else {
+        r
+      }
+    }
   } // readQbit
+
+  def ?(idx: Int = QReg.All) : Int = readMQbit(idx)
+
+
+
 
   /** Sets the measured state for a value in the register
    */
@@ -710,9 +719,7 @@ object QReg {
 
   val MinNorm = 0.00001  // if norm < MinNorm, use 0 instead
 
-  val rn = new SecureRandom()
-  val randomS :  SecureRandom = new SecureRandom(rn.generateSeed((40+ 30*math.random()).toInt))
-
+  val randomS = new java.util.SplittableRandom()
   def flip(proba: Double): Boolean = {
     this.randomS.nextDouble() < proba
   } // flip

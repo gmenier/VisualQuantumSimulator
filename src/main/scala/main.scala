@@ -22,9 +22,9 @@ object main {
 
   def main(args : Array[String]): Unit = {
 
-    QUtils.removeImages
+    // QUtils.removeImages
 
-    QStudy.caseQFT()
+    QStudy.caseRandom8()
 
 /*
     // QReg.setDefaultDrawAll()

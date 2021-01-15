@@ -41,24 +41,14 @@ object QStudy {
 
     def threeBit(): Int = {
       val rr = QReg(3)
-      rr.drawAll()
-      // Hadamard + read QBit 0 1 2
-      rr - H(0) - H(1) - H(2) - <(0) - <(1) - <(2)
-      // println(rr)
-      // println(rr.render)
-
-      QUtils.binaryToInt(s"${rr.readMQbit(2)}${rr.readMQbit(1)}${rr.readMQbit(0)}")
-
+      rr - H() - <()
+      return rr.?()
     } // threeBit
 
     def test(): Unit = {
-      println(
-        """ Random 3
-          |""".stripMargin)
+      println("Random 3")
       val v = (for (i <- 0 until 20000) yield threeBit()).toList
       QUtils.drawIntHistogram(v, 3)
-
-      println()
     } // test
 
     test()
@@ -68,23 +58,14 @@ object QStudy {
 
     def eightBit(): Int = {
       val rr = QReg(8)
-
-      (0 until 8) foreach ( i => rr - H(i))
-      (0 until 8) foreach ( i => rr - <(i))
-     // println(rr)
-     // println(rr.render)
-      rr.getMQbit
+      rr - H() - <()
+      return rr.?()
     } //
 
     def test(): Unit = {
-      println(
-        """ Random 8
-          |""".stripMargin)
-      val v = (for (i <- 0 until 20000) yield eightBit()).toList
+      println("Random 8")
+      val v = (for (i <- 0 until 102400) yield eightBit()).toList
       QUtils.drawIntHistogram(v, 8)
-
-      println()
-
     } // test
 
     test()

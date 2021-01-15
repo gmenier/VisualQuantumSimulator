@@ -18,7 +18,9 @@ object QUtils {
   }
 
   /** helper to convert a number to a binary string */
-  def toBinary(n: Int, lg : Int): String = {
+  def toBinary(n: Int, lg_ : Int = -1): String = {
+    var lg : Int = lg_
+    if (lg == -1) lg = (math.ceil(math.log10(n)/math.log10(2.0)).toInt)
     @scala.annotation.tailrec
     def binary(acc: String, n: Int): String = {
       n match {
@@ -63,15 +65,20 @@ object QUtils {
   }
 
   /** helper to draw an histogr */
-  def drawIntHistogram( cl : List[Int], lg: Int) = {
+  def drawIntHistogram( cl : List[Int], length: Int, useASCII : Boolean = QReg.DefaultObjUseASCII) = {
     val l = cl.groupBy(identity).mapValues(_.size).toList.sortBy(_._1)
     val m:Int = (l.maxBy(_._2)._2)
     l.foreach(
       v => {
         val tot = 20; // nombre max de car
         val totp = (tot * v._2) / m;
+        if (useASCII)
+          println(
+            ("\t" + v._1 + "\t|" + toBinary(v._1, length) + ">" + "\t"+  "*" * totp + " " * (tot - totp)+ "\t"+ v._2 + " x"
+              ).replaceAllLiterally("*", s"${GREEN}*${RESET}"))
+        else
         println(
-          ("\t" + v._1 + "\t|" + toBinary(v._1, lg) + ">" + "\t"+  "▓" * totp + "▒" * (tot - totp)+ "\t"+ v._2 + " x"
+          ("\t" + v._1 + "\t|" + toBinary(v._1, length) + ">" + "\t"+  "▓" * totp + "▒" * (tot - totp)+ "\t"+ v._2 + " x"
             ).replaceAllLiterally("▓", s"${GREEN}▓${RESET}"))
       })
   }
