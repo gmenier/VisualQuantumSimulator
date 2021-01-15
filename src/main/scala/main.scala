@@ -24,7 +24,6 @@ object main {
 
     QUtils.removeImages
 
-    QReg.setDefaultDrawPhaseAntiClock()
     QStudy.caseQFT()
 
 /*
@@ -42,8 +41,6 @@ object main {
     rr.end()
 
  */
-
-
 
   } // main
 

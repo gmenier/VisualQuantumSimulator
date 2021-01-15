@@ -744,7 +744,7 @@ object QReg {
 
 
   // When states are depicted as circle, should the phase go counterWise or anticounterwise
-  var DefaultObjIsAntiClock = false
+  var DefaultObjIsAntiClock = true
   def setDefaultDrawPhaseAntiClock(): Unit = {
     DefaultObjIsAntiClock = true
   }

@@ -166,7 +166,7 @@ object QStudy {
       rr.pdf("qft.pdf","Quantum Fourier Transform")
       // rr.drawAll()
       rr.trace(8)
-      println("start")
+
       rr.init(1)
       rr - F("QFT",  QOperator.qft, "qft", expand = true, skipTrace = true)
       println(rr.renderWithoutAnsi)

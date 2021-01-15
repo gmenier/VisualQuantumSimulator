@@ -172,6 +172,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
           case rvb(255,100,80) /* hotRed */ => rvb(210,210,210)
           case rvb(255,255,255)   => rvb(0,0,0)
           case rvb(0,0,150)       => rvb(255,255,255)
+          case rvb(0,0,130)       => rvb(230,230,230) // deep blue -> gray (fills the circle)
           case rvb(r,v,b)         => rvb(r, v,  b)
         }
         col = new Color(r,v,b)
