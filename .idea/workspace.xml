@@ -4,7 +4,9 @@
     <option name="SCOPE_TYPE" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="" />
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -574,13 +576,17 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="352" y="82" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1610733716601" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1610733808307">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1610734246405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610733808307" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610734246405" />
     <state x="594" y="34" width="731" height="1011" key="find.popup" timestamp="1610731735331">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="594" y="34" width="731" height="1011" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1610731735331" />
+    <state x="596" y="284" key="git4idea.merge.GitPullDialog" timestamp="1610734166507">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="596" y="284" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610734166507" />
   </component>
 </project>
