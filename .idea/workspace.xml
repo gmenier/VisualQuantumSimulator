@@ -503,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610733480548</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;..">
+      <created>1610734258563</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1610734258563</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,7 +519,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Changed most of the (rare) comments to English" />
     <MESSAGE value="README Update" />
     <MESSAGE value="README Update2" />
     <MESSAGE value="General update" />
@@ -537,7 +543,8 @@
     <MESSAGE value="Added marks on all circle drawing to have a visual hint about the way the phases are drawn (left / right for counter clock wise and opposite)&#10;Added degree to the flower drawing.&#10;Minor fixes (mainly string size)" />
     <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible" />
     <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;." />
+    <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;.." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;.." />
   </component>
   <component name="WindowStateProjectService">
     <state x="695" y="288" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1610137028593">
@@ -556,22 +563,22 @@
       <screen x="62" y="0" width="1538" height="1200" />
     </state>
     <state x="612" y="262" key="FileChooserDialogImpl/62.0.1538.1200@62.0.1538.1200" timestamp="1602497526719" />
-    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1610733181633">
+    <state width="1228" height="188" key="GridCell.Tab.0.bottom" timestamp="1610734537345">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
-    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1610733181633">
+    <state width="1228" height="188" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610734537345" />
+    <state width="1228" height="188" key="GridCell.Tab.0.center" timestamp="1610734537345">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
-    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1610733181633">
+    <state width="1228" height="188" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610734537345" />
+    <state width="1228" height="188" key="GridCell.Tab.0.left" timestamp="1610734537344">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
-    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1610733181633">
+    <state width="1228" height="188" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610734537344" />
+    <state width="1228" height="188" key="GridCell.Tab.0.right" timestamp="1610734537345">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
+    <state width="1228" height="188" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610734537345" />
     <state x="352" y="82" key="SettingsEditor" timestamp="1610733716601">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -584,9 +591,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="594" y="34" width="731" height="1011" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1610731735331" />
-    <state x="596" y="284" key="git4idea.merge.GitPullDialog" timestamp="1610734166507">
+    <state x="596" y="284" key="git4idea.merge.GitPullDialog" timestamp="1610734453585">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="596" y="284" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610734166507" />
+    <state x="596" y="284" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610734453585" />
   </component>
 </project>
