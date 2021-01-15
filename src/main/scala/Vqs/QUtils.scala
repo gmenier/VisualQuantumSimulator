@@ -46,6 +46,16 @@ object QUtils {
     getListOfFiles("vqsimages/").foreach(_.delete)
   } // removeImages
 
+  /** helper to remove the temp image */
+  def removeImageTemp = {
+    getListOfFiles("vqsimages/temp").foreach(_.delete)
+    val d = new File("vqsimages/temp.png")
+    if (d.exists) {
+      d.delete
+    }
+  } // removeImages
+
+
   /** helper to create a dir for images */
   def createImagesDirectoryIfNecessary = {
     val file = new File("vqsimages")

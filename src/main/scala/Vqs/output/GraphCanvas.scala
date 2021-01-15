@@ -118,12 +118,13 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
 
     val g2 = g.asInstanceOf[Graphics2D]
-    g2.setPaint(new Color(255, 255, 240))
-    g2.setStroke(new BasicStroke(1))
+    g2.setPaint(new Color(255, 255, 240)); g2.setStroke(new BasicStroke(1))
 
-    if (isAnticlock_)
-      g2.draw(new Line2D.Float(x - osize - nb*s/2, y - osize+5 - nb*s/2, x - osize +5 - nb*s/2, y - osize - nb*s/2 ))
-    else g2.draw(new Line2D.Float(x + osize-5 + nb*s/2, y - osize - nb*s/2, x + osize + nb*s/2, y - osize+5 - nb*s/2))
+    if (isAnticlock_) {
+         g2.draw(new Line2D.Float(x - osize - nb*s/2, y - osize+5 - nb*s/2, x - osize +5 - nb*s/2, y - osize - nb*s/2))
+    } else {
+         g2.draw(new Line2D.Float(x + osize-5 + nb*s/2, y - osize - nb*s/2, x + osize + nb*s/2, y - osize+5 - nb*s/2))
+    }
 
 
     if (amplitude > 0.000001)
@@ -153,15 +154,17 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
       g2.setPaint(new Color(255, 255, 240))
       g2.setStroke(new BasicStroke(3))
       g2.draw(new Line2D.Float(x,y,cx,cy))
-      g2.setStroke(new BasicStroke(1))
 
+      g2.setPaint(new Color(253, 253, 253))
+      g2.setStroke(new BasicStroke(1))
+      g2.draw(new Line2D.Float(x,y+1,cx,cy+1))
+
+      g2.setStroke(new BasicStroke(1))
       g2.setPaint(new Color(0, 200, 240))
 
-
-      //drawLine(x, y, cx2, cy2, new Color(0, 0, 0))
-      //drawLine(cx2, cy2, cx, cy, new Color(0, 0, 0))
     }
-    // drawArc(x-(osize),y-(osize),osize*2, 180-45, 180+45, new Color(200,200,150))
+
+
     (0 until nb). foreach (
       v => {
         if (lcond contains v) {

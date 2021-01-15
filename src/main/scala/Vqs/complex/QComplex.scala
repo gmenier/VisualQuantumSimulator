@@ -106,9 +106,8 @@ case class QComplex(val re: Double, val im: Double) {
 
     if (abs(ang) < 0.0001) ang = 0
 
-    val angstr = formatAngle(isRadian, ang, ascii_)
-
-
+    var angstr = formatAngle(isRadian, ang, ascii_)
+    if (ang <0) angstr = angstr + " or "+ formatAngle(isRadian, ang + 2*math.Pi , ascii_)
 
     val res =
       if (abs((abs(r)-1.0))<0.0001) s"ei $angstr"

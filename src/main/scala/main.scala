@@ -24,13 +24,13 @@ object main {
 
     QUtils.removeImages
 
-    // QReg.setDefaultDrawPhaseAntiClock()
+    QReg.setDefaultDrawPhaseAntiClock()
     QStudy.caseQFT()
 
-
+/*
     // QReg.setDefaultDrawAll()
     // QReg.setDefaultUseASCII()
-/*
+
     val rr: QReg = QReg(1)
 
     rr.trace()
@@ -41,7 +41,9 @@ object main {
 
     rr.end()
 
-*/
+ */
+
+
 
   } // main
 

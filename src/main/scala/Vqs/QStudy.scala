@@ -159,6 +159,7 @@ object QStudy {
 
     def test(): Unit = {
 
+      // QReg.setDefaultRadians()
 
       val rr: QReg = QReg(4)
 

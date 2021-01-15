@@ -135,6 +135,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 
     this.document.save(this.fileName)
     this.document.close()
+    QUtils.removeImageTemp
   } // closePdf
 
   case class rvb(r: Int, v: Int, b: Int);
@@ -184,7 +185,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
       val pdImage = PDImageXObject.createFromFile(outputFile, document)
       val H = pdImage.getHeight()
       val W = pdImage.getWidth()
-      val ri : Double = (W / H.toDouble)
+      val ri : Double = (W  / H.toDouble )
       val re : Double = (w_ / h_.toDouble)
       var h = h_
       var w = (h_ * ri).toInt
