@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QUtils.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/PdfReport.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/PdfReport.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +63,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -241,7 +233,8 @@
       <workItem from="1610108636623" duration="9517000" />
       <workItem from="1610132539556" duration="7271000" />
       <workItem from="1610193259565" duration="639000" />
-      <workItem from="1610731205524" duration="1333000" />
+      <workItem from="1610731205524" duration="1748000" />
+      <workItem from="1610733072076" duration="108000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -481,7 +474,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610139894727</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible">
+      <created>1610732628800</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1610732628800</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible">
+      <created>1610732714155</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1610732714155</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +497,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="New Commit for SBT" />
     <MESSAGE value="README" />
     <MESSAGE value="Changed most of the (rare) comments to English" />
     <MESSAGE value="README Update" />
@@ -515,45 +521,50 @@
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
     <MESSAGE value="Added config for QReg.DefaultDrawAllState, &#10;QReg.DefaultObjIsAntiClock, &#10;QReg.DefaultObjIsInRadians, &#10;QReg.DefaultObjPhaseNormalization, QReg.DefaultObjUseASCII &#10;+ fixed ASCII&#10;+ added support for counterclockwise or clockwise phase&#10;+ added visual hints for the way it goes&#10;+ added support in the flower drawing&#10;+ fixed some bugs (offsets in display)" />
     <MESSAGE value="Added marks on all circle drawing to have a visual hint about the way the phases are drawn (left / right for counter clock wise and opposite)&#10;Added degree to the flower drawing.&#10;Minor fixes (mainly string size)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added marks on all circle drawing to have a visual hint about the way the phases are drawn (left / right for counter clock wise and opposite)&#10;Added degree to the flower drawing.&#10;Minor fixes (mainly string size)" />
+    <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible" />
   </component>
   <component name="WindowStateProjectService">
     <state x="695" y="288" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1610137028593">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="695" y="288" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610137028593" />
-    <state x="278" y="0" key="CommitChangelistDialog2" timestamp="1610732628029">
+    <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog" timestamp="1610733134404">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="278" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1610732628029" />
+    <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610733134404" />
+    <state x="278" y="0" key="CommitChangelistDialog2" timestamp="1610733417215">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="278" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1610733417215" />
     <state x="612" y="262" key="FileChooserDialogImpl" timestamp="1602497526719">
       <screen x="62" y="0" width="1538" height="1200" />
     </state>
     <state x="612" y="262" key="FileChooserDialogImpl/62.0.1538.1200@62.0.1538.1200" timestamp="1602497526719" />
-    <state width="1864" height="188" key="GridCell.Tab.0.bottom" timestamp="1610732692159">
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom" timestamp="1610733181633">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="188" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610732692159" />
-    <state width="1864" height="188" key="GridCell.Tab.0.center" timestamp="1610732692159">
+    <state width="1864" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
+    <state width="1864" height="189" key="GridCell.Tab.0.center" timestamp="1610733181633">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="188" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610732692159" />
-    <state width="1864" height="188" key="GridCell.Tab.0.left" timestamp="1610732692159">
+    <state width="1864" height="189" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
+    <state width="1864" height="189" key="GridCell.Tab.0.left" timestamp="1610733181633">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="188" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610732692159" />
-    <state width="1864" height="188" key="GridCell.Tab.0.right" timestamp="1610732692159">
+    <state width="1864" height="189" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
+    <state width="1864" height="189" key="GridCell.Tab.0.right" timestamp="1610733181633">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="188" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610732692159" />
-    <state x="352" y="82" key="SettingsEditor" timestamp="1609592491827">
+    <state width="1864" height="189" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610733181633" />
+    <state x="352" y="82" key="SettingsEditor" timestamp="1610733141376">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="352" y="82" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609592491827" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1610732632595">
+    <state x="352" y="82" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1610733141376" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1610732733070">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610732632595" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610732733070" />
     <state x="594" y="34" width="731" height="1011" key="find.popup" timestamp="1610731735331">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
