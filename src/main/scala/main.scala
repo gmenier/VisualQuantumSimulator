@@ -8,13 +8,6 @@
 import Vqs._
 import Vqs.operators._
 
-/*
-import Vqs.complex.QComplex.i
-import Vqs.complex.{QM, QV}
-import Vqs.operators._
-
-import scala.math.{cos, sin}
-*/
 
 
 
@@ -24,23 +17,22 @@ object main {
 
     // QUtils.removeImages
 
-    QStudy.caseRandom8()
+    QReg.setDefaultDrawNOPhaseNormalization()
 
-/*
     // QReg.setDefaultDrawAll()
     // QReg.setDefaultUseASCII()
 
-    val rr: QReg = QReg(1)
+    val rr: QReg = QReg(4)
 
     rr.trace()
 
     rr.init(1)
-    rr - H() - X() - Rz(0,45)- <() //- C(X(1),0)
+    rr - H(0) - X(0) - Ry(0,-145) - C(X(1),0) - Rz(3,-195.45) - C(X(1),0) - <() //- C(X(1),0)
 
 
     rr.end()
 
- */
+
 
   } // main
 

@@ -590,7 +590,7 @@ case class QReg(val nbQbits : Int = 1) { //
       im.drawFilledCircle(250-i,250-i,i*2, new Color(0,0,i))
 
     im.drawFilledCircle(250-4,250-4,4*2, new Color(241,192,13))
-   // im.drawFilledCircle(250-25,250-25,50, new Color(0,0,0))
+
 
     im.drawCircle((250-250*zoom/2).toInt,(250-250*zoom/2).toInt, (2*250*zoom*0.5).toInt, new Color(0,0,250))
     im.drawCircle((250-250*zoom/4).toInt,(250-250*zoom/4).toInt, (2*250*zoom/4).toInt, new Color(0,0,0))
@@ -672,7 +672,9 @@ case class QReg(val nbQbits : Int = 1) { //
     val qbs1 = qbs.filter(v => qbMstate(v) == 1).toList
 
       //indices.map(v => if qbitChanged(v) v else -1 ).filter(_ > -1).toList
-    val phaseOrg = findPhaseOrg
+    var phaseOrg = 0.0
+    if (phaseNormalization)  phaseOrg = findPhaseOrg
+
     (0 until nbValues).foreach(
       v => {
         val cx = bord+(2*osize+bord)*(v % coln)
