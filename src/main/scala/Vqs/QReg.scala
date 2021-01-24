@@ -407,7 +407,7 @@ case class QReg(val nbQbits : Int = 1) { //
       println(this)
       this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="("+traceIdx+ ") after "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
-          this.myPdf.writeReport(this, circuitSize, traceIdx)
+          this.myPdf.writeReport(this, circuitSize, traceIdx, text = "("+traceIdx+ ") after "+lastOp)
       }
       traceIdx = traceIdx + 1
     }
@@ -516,24 +516,22 @@ case class QReg(val nbQbits : Int = 1) { //
     */
   override def toString : String = {
 
-    var startAng : Double = 0.0
 
     val titrePhase =
       if (! this.onlyAscii)
                if (this.isInRadians) "Phase [-π 0 π]     " else "[-180°   0    180°]"
       else     if (this.isInRadians) "Phase [-Pi 0 Pi] "   else "[-180    0    180 ]"
 
-    if (phaseNormalization)
-        startAng = findPhaseOrg  // Normalizes
+    val startAng = if (phaseNormalization) findPhaseOrg  else 0.0 // Normalizes
 
     var elt : List[Int] = (0 until nbValues).toList
 
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
 
     var title = if (! this.onlyAscii)
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Bin\t\t\t   α\t\t\t\t\t\t\t\t|r|ei Θ"
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Ket\t\t\t   a+ib\t\t\t\t\t\t\t\t(r.ei Θ)"
     else
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*9+ "V\tBin\t\t   a\t\t\t\t        |r|ei Theta"
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*9+ "V\tKet\t\t   a+ib\t\t\t\t        (r.ei Theta)"
 
     var res = title +"\n"+
       elt.map(v => this(v).probaString(isEmpty = (this(v).norm < QReg.MinNorm), ascii = this.onlyAscii)+" "+
@@ -541,12 +539,12 @@ case class QReg(val nbQbits : Int = 1) { //
         else                               this(v).phaseString(startAng, ascii = this.onlyAscii)
         } +
         "\t\t"+
-        (v.toString+"     ").substring(0,5)+
+        (v.toString+"         ").substring(0,5)+
                               "\t|"+(QUtils.toBinary(v,nbQbits)+">\t"+" "*10).substring(0,12) +
         {
           if (this(v).norm < QReg.MinNorm)  "  ."+" "*29 else (this(v).toString+" "*30).substring(0,30)
         } + {
-        (if (this(v).norm < QReg.MinNorm) "\t= ." else "\t\t= "+this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii))
+        (if (this(v).norm < QReg.MinNorm) "\t." else "\t\t"+this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii))
         }
     ).mkString("\n")
 
@@ -672,8 +670,8 @@ case class QReg(val nbQbits : Int = 1) { //
     val qbs1 = qbs.filter(v => qbMstate(v) == 1).toList
 
       //indices.map(v => if qbitChanged(v) v else -1 ).filter(_ > -1).toList
-    var phaseOrg = 0.0
-    if (phaseNormalization)  phaseOrg = findPhaseOrg
+
+    val phaseOrg = if (phaseNormalization)  findPhaseOrg else 0.0
 
     (0 until nbValues).foreach(
       v => {

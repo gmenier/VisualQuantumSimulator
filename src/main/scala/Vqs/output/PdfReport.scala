@@ -39,12 +39,12 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
     this.contentStream.setFont(PDType1Font.COURIER_BOLD, fontSize)
 
     beginText()
-      this.contentStream.newLineAtOffset(650, -500)
+      this.contentStream.newLineAtOffset(650, -530)
       this.contentStream.showText(QReg.LabelInfo + " (" + numPage + ")")
       this.contentStream.newLineAtOffset(xpos, vpos)
     endText()
     beginText()
-      this.contentStream.newLineAtOffset(0, -500)
+      this.contentStream.newLineAtOffset(0, -530)
       this.contentStream.showText(docLabel)
       this.contentStream.newLineAtOffset(xpos, vpos)
     endText()
@@ -75,13 +75,14 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 
   var nbrp = 0
 
-  def writeReport(rr : QReg, lgcar: Int, idxImage: Int): Unit = {
+  def writeReport(rr : QReg, lgcar: Int, idxImage: Int, text: String =""): Unit = {
     if ((getPos < 100) || (nbrp>=2)) {
       this.contentStream.close()
       nbrp = 0;
       newPage();
     }
     beginText()
+    if (text != "") { writeLine(text); cr(); }
     rr.cutRenderWithoutAnsi(lgcar).split("\n").foreach(
       l => writeLine(l)
     )

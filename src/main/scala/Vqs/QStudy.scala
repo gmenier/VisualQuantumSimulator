@@ -146,10 +146,10 @@ object QStudy {
 
       rr.pdf("qft.pdf","Quantum Fourier Transform")
       // rr.drawAll()
-      rr.trace(8)
+      rr.trace(4)
 
       rr.init(1)
-      rr - F("QFT",  QOperator.qft, "qft", expand = true, skipTrace = true)
+      rr - F("QFT",  QOperator.qft, "qft", expand = true, skipTrace = false)
       println(rr.renderWithoutAnsi)
       rr.drawCircleImage("qft", zoom = 14, text = "my title")
       rr.end()

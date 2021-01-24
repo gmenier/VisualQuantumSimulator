@@ -112,7 +112,7 @@ case class QComplex(val re: Double, val im: Double) {
     val res =
       if (abs((abs(r)-1.0))<0.0001) s"ei $angstr"
       else if (abs(r) < 1E-20) "0"
-      else s"(| $rStr| ei $angstr)"
+      else s"( $rStr .ei $angstr)"
 
     res.replaceAll("0,70711","1/√2") // todo adds automatic symbolic reformating
   } // asEulerString

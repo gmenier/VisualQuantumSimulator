@@ -8,8 +8,18 @@
 import Vqs._
 import Vqs.operators._
 
+object main {
+
+      def main(args: Array[String]): Unit = {
+
+        QStudy.caseQFT()
+
+      }
+
+}
 
 
+/*
 
 object main {
 
@@ -22,7 +32,7 @@ object main {
     // QReg.setDefaultDrawAll()
     // QReg.setDefaultUseASCII()
 
-    val rr: QReg = QReg(4)
+    val rr: QReg = QReg(8)
 
     rr.trace()
 
@@ -37,3 +47,4 @@ object main {
   } // main
 
 } // Main
+*/

@@ -319,7 +319,8 @@ case class Rx(p:Int, angle :Double) extends QOperator {
   def render(pad: QPad): Unit = {
     pad.at(p, "Rx");
     val angleStr = ((angle.toString+" ").replaceAll(".0 ","")+" "*10).substring(0,5)
-    pad.infol(angleStr); if (p< thisR.nbQbits) pad.atAbs(p*2+1, angleStr);
+    pad.infol(angleStr);
+    if (p< thisR.nbQbits) pad.atAbs(p*2+1, angleStr);
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }
