@@ -463,6 +463,21 @@ case class QReg(val nbQbits : Int = 1) { //
         r = r.replaceAllLiterally(nbs, s"${c}${nbs}${RESET}")
     }
 
+    if (this.onlyAscii)
+      r.replaceAllLiterally("(0)", s" ${BOLD}0${RESET} ")
+        .replaceAllLiterally("(1)", s" ${BOLD}1${RESET} ")
+        .replaceAllLiterally("%0", s"${BOLD}0")
+        .replaceAllLiterally("%1", s"${BOLD}1")
+        .replaceAllLiterally("╓", s"${YELLOW}|${RESET}")
+        .replaceAllLiterally("║", s"${YELLOW}|${RESET}")
+        .replaceAllLiterally("╙", s"${YELLOW}|${RESET}")
+        .replaceAllLiterally("—", "-")
+        .replaceAllLiterally("•","o")
+        .replaceAllLiterally("╖", s"${YELLOW}|${RESET}")
+        .replaceAllLiterally("╜", s"${YELLOW}|${RESET}")  +"\n"
+
+      else
+
     r.replaceAllLiterally("(0)", s" ${BOLD}0${RESET} ")
       .replaceAllLiterally("(1)", s" ${BOLD}1${RESET} ")
       .replaceAllLiterally("%0", s"${BOLD}0")

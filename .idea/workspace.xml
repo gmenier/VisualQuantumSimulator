@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +253,8 @@
       <workItem from="1612468870678" duration="1439000" />
       <workItem from="1612470360159" duration="617000" />
       <workItem from="1612471005952" duration="280000" />
-      <workItem from="1613212680432" duration="34000" />
+      <workItem from="1613212680432" duration="151000" />
+      <workItem from="1613385468183" duration="1002000" />
     </task>
     <task id="LOCAL-00001" summary="New Commit for SBT">
       <created>1584122634088</created>
@@ -566,7 +571,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611515445481</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Fixed the pdf output">
+      <created>1613212762550</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1613212762551</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,38 +631,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1611515443946">
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1613212761722">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1611515443946" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1613212761722" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1612470305280">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1612470305280" />
-    <state width="1816" height="299" key="GridCell.Tab.0.bottom" timestamp="1611518454187">
+    <state width="1864" height="328" key="GridCell.Tab.0.bottom" timestamp="1613386486003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="299" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1611518454187" />
-    <state width="1816" height="299" key="GridCell.Tab.0.center" timestamp="1611518454187">
+    <state width="1864" height="328" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1613386486003" />
+    <state width="1864" height="328" key="GridCell.Tab.0.center" timestamp="1613386486003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="299" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1611518454187" />
-    <state width="1816" height="299" key="GridCell.Tab.0.left" timestamp="1611518454187">
+    <state width="1864" height="328" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1613386486003" />
+    <state width="1864" height="328" key="GridCell.Tab.0.left" timestamp="1613386486003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="299" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1611518454187" />
-    <state width="1816" height="299" key="GridCell.Tab.0.right" timestamp="1611518454187">
+    <state width="1864" height="328" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1613386486003" />
+    <state width="1864" height="328" key="GridCell.Tab.0.right" timestamp="1613386486003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="299" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1611518454187" />
+    <state width="1864" height="328" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1613386486003" />
     <state x="355" y="98" key="SettingsEditor" timestamp="1612470977834">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="355" y="98" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1612470977834" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1611515449593">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1613212767454">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1611515449593" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1613212767454" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1612470393766">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -667,16 +679,5 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="227" y="241" key="new project wizard/0.0.1920.1080@0.0.1920.1080" timestamp="1612471285838" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala</url>
-          <line>312</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
