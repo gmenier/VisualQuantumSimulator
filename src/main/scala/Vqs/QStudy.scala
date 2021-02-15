@@ -150,7 +150,7 @@ object QStudy {
 
       rr.init(1)
       rr - F("QFT",  QOperator.qft, "qft", expand = true, skipTrace = false)
-      println(rr.renderWithoutAnsi)
+      println(rr.render)
       rr.drawCircleImage("qft", zoom = 14, text = "my title")
       rr.end()
     }

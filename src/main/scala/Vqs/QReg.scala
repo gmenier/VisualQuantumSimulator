@@ -466,13 +466,15 @@ case class QReg(val nbQbits : Int = 1) { //
     if (this.onlyAscii)
       r.replaceAllLiterally("(0)", s" ${BOLD}0${RESET} ")
         .replaceAllLiterally("(1)", s" ${BOLD}1${RESET} ")
+        .replaceAllLiterally("x",s"${RED}x${RESET}")
         .replaceAllLiterally("%0", s"${BOLD}0")
         .replaceAllLiterally("%1", s"${BOLD}1")
+        .replaceAllLiterally("│",s"${RED}|${RESET}")
         .replaceAllLiterally("╓", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("║", s"${YELLOW}|${RESET}")
-        .replaceAllLiterally("╙", s"${YELLOW}|${RESET}")
+        .replaceAllLiterally("╙", s"${YELLOW}L${RESET}")
         .replaceAllLiterally("—", "-")
-        .replaceAllLiterally("•","o")
+        .replaceAllLiterally("•",s"${RED}o${RESET}")
         .replaceAllLiterally("╖", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("╜", s"${YELLOW}|${RESET}")  +"\n"
 
@@ -485,6 +487,9 @@ case class QReg(val nbQbits : Int = 1) { //
       .replaceAllLiterally("╓", s"${YELLOW}╓${RESET}")
       .replaceAllLiterally("║", s"${YELLOW}║${RESET}")
       .replaceAllLiterally("╙", s"${YELLOW}╙${RESET}")
+      .replaceAllLiterally("x",s"${RED}x${RESET}")
+      .replaceAllLiterally("│",s"${RED}│${RESET}")
+      .replaceAllLiterally("•",s"${RED}•${RESET}")
       .replaceAllLiterally("╖", s"${YELLOW}╖${RESET}")
       .replaceAllLiterally("╜", s"${YELLOW}╜${RESET}")  +"\n"
   }
