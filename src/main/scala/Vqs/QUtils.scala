@@ -4,6 +4,7 @@ package Vqs
 // 2020
 // gildas.menier@univ-ubs.fr
 import java.io.File
+import Vqs.complex.QComplex
 
 import scala.io.AnsiColor.{CYAN, GREEN, MAGENTA, RED, RESET, YELLOW}
 
@@ -16,6 +17,15 @@ object QUtils {
   def binaryToInt(binaryString : String): Int = {
     Integer.parseInt(binaryString, 2)
   }
+
+  /** returns a random state ._1 |0> + ._2 |1> for a QBit */
+  def randomState() : (QComplex, QComplex) = {
+     val dephase =  math.Pi * (1 - 2*math.random())
+     val pa = math.random()
+     var pb = math.sqrt(1 - pa *pa)
+    ( new QComplex(pa,0),  new QComplex(pb*math.cos(dephase), pb*math.sin(dephase)))
+  }
+
 
   /** helper to convert a number to a binary string */
   def toBinary(n: Int, lg_ : Int = -1): String = {

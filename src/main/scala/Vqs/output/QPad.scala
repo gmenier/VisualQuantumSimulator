@@ -60,12 +60,14 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
   }
 
   def label(s: String): Unit = {
-    atAbs((nbQbits/2)*2-1, s)
+    atAbs((nbQbits/2)*2-1, QPad.protectString(s))
   } // label
+
+
 
   def atAbs(p: Int, s:String) = {
     s.indices.foreach( v =>
-      if ( ((colonne+v) < lggrille-2) && (p < nbQbits*2+2) )screen(p)(colonne+v) = s(v).toString
+      if ( ((colonne+v) < (lggrille-2)) && (p < nbQbits*2+2) )screen(p)(colonne+v) = s(v).toString
     )
   } // atAbs
 
@@ -98,6 +100,24 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
     nextCol()
   } // writeValue
 
+  def writeStates(symb : Array[String]): Unit =  {
+    colonne = 0
+    (0 until nbQbits).foreach(
+      idx => at(idx, "  "+idx+": ")
+    )
+    for (i <- 0 until 5) nextCol()
+    (0 until nbQbits).foreach(
+      idx => at(idx, "%"+symb(idx))
+    )
+    nextCol(); nextCol()
+    (0 until nbQbits).foreach(
+      idx => at(idx, ">")
+    )
+    nextCol();
+    nextCol()
+  } // writeStates
+
+
   def toEnd(idx: Int, ch : Char): Unit = {
     if (idx != All) {
       for (i <- colonne until lggrille) screen(idx * 2)(i) = ch.toString
@@ -128,6 +148,11 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
 
   def getCol: Int = colonne;
 
+
+
+
+
+
   def render()= {
 
     colonne = 9
@@ -140,17 +165,36 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
     while ((last >0) && ((screen((nbQbits-1)*2+1)(last) == " ") && (screen((nbQbits-1)*2+2)(last) == " "))) last = last -1
     if (last >0) colonne = math.max(last+1, colonne)
 
-    "\n QBit\n  #  v\n"+(for( i <- 0 until nbQbits*2+1) yield {
+    val sep=""
 
-        (for (j <- 0 until colonne) yield screen(i)(j)(0).toString).mkString
+    QPad.unprotectString(
+      "\n"+sep+" QBit\n"+sep+"  #  v\n"+(for( i <- 0 until nbQbits*2+1) yield {
+
+        sep+(for (j <- 0 until colonne) yield screen(i)(j)(0).toString).mkString
 
     }).mkString("\n").replaceAllLiterally("—", s"${BLUE}—${RESET}")
       .replaceAllLiterally(">", s" ${BLUE}>${RESET}")
       .replaceAllLiterally("<", s"${BOLD}${BLUE}<${RESET}")
+    )
 
   } // render
 
 
 
 
+}
+
+object QPad {
+
+  def protectString(s : String) = {
+
+    s.replaceAllLiterally(">","ô")
+      .replaceAllLiterally("<","î")
+  }
+
+  def unprotectString(s : String) = {
+
+    s.replaceAllLiterally("ô",">")
+      .replaceAllLiterally("î","<")
+  }
 }

@@ -28,8 +28,11 @@ case class QReg(val nbQbits : Int = 1) { //
   // how many different values
   val nbValues : Int = scala.math.pow(2, nbQbits).toInt
 
-  // Array of states (each initialized to 0+0i)
+  // Array of states amp of proba (each initialized to 0+0i)
   val state: Array[QComplex] = Array.fill[QComplex](nbValues)(QComplex(0,0))
+
+  // Array of starting QBits ( 1.|0> + 0.|1> )
+  val QBitInit: Array[(QComplex, QComplex)] = Array.fill[(QComplex, QComplex)](nbValues)((1,0))
 
   // to keep track of the states that may have changed
   val changed: Array[Boolean] = Array.fill[Boolean](nbValues)(false)
@@ -40,9 +43,9 @@ case class QReg(val nbQbits : Int = 1) { //
   // by default, the first QBit is 1, so the only state if 0 with a full probability
   this.state(0) = QComplex(1,0) // valeur 000 par défaut
 
-  val NOPURESTATE = -1
+  val NOMEASURE = -1
   // a pure state is 0 or 1 (after measure)
-  val qbMstate = Array.fill[Int](nbQbits)(NOPURESTATE) // nostate, since no measure yet
+  val qbMState = Array.fill[Int](nbQbits)(NOMEASURE) // nostate, since no measure yet
 
 
   // by default, gets the value from Companion Object
@@ -80,10 +83,79 @@ case class QReg(val nbQbits : Int = 1) { //
   def useTraceFunction( fct : (Int, QReg) => Unit): Unit = {
     performsTraceFunction = fct
   }
+
   // no trace function
   def resetTraceFunction(): Unit = {
     performsTraceFunction = ( idTrace : Int, thisRegister : QReg) => {  }
   }
+
+
+  // Array of states amp of proba (each initialized to 0+0i)
+  // val state: Array[QComplex] = Array.fill[QComplex](nbValues)(QComplex(0,0))
+
+  // Array of starting QBit ( 1.|0> + 0.|1> )
+  // val QBitInit: Array[QComplex] = Array.fill[(QComplex, QComplex)](nbValues)((1,1))
+
+  //
+  def computeStateGivenQbits(): Unit = {
+    for( state <- 0 until nbValues)  {
+      val binary = QUtils.toBinary(state, nbQbits)
+      var amp = new QComplex(1)
+      for( qb <- 0 until binary.length) {
+          amp = amp * ( binary(binary.length -1 - qb) match {
+            case '0' => QBitInit(qb)._1
+            case '1' => QBitInit(qb)._2
+          })
+      }
+      this.state(state) = amp
+      // println(binary+"  "+amp)
+    }
+  } // computeStateGivenQbits
+
+
+  // sets the state of one QBit (use only at the beginning when no QBits are intricated)
+  def pokeQBitState(numQbit : Int, state: (QComplex, QComplex)): Unit = {
+    if ( math.abs(1- (state._1.norm2 + state._2.norm2)) < 0.000000001 ) { // check Born's rule
+      if ((numQbit >= 0) && (numQbit < nbQbits)) {
+        QBitInit(numQbit) = state
+        computeStateGivenQbits() // resets the state computation
+
+        pad.writeStates(QBitInit.map(
+          cp => {
+            if ( cp._1.norm2 < 0.00001) "1" else if (cp._2.norm2 < 0.00001) "0" else "*"
+          }
+        ))
+
+         this.lastOp = "#"+numQbit+" <- "+state.toString()
+        processTraceIfNecessary()
+
+      } else notifyError("In pokeQBitState, check the Qbit # number")
+    } else notifyError("In pokeQBitState, the state given for the Qbit state doesn't comply to the Born's rule")
+  } //
+
+
+
+
+  // Gets the state of one QBit : all other QBits have to be measured
+  def peekQBitState(numQbit : Int, phasenorm : Boolean = true) : (QComplex, QComplex) = {
+    // Check that all the QBits have been measured but this one
+    if ( (getMState(numQbit) == NOMEASURE)
+          && ( (0 until nbQbits).filter( _ != numQbit).forall( getMState(_) != NOMEASURE ))) {
+      // The first is for |0>, then for |1>
+      val collect = state.filter( _.norm2 > 0.0000000000000000001)
+      if (phasenorm) {
+             val fp = findPhaseOrg
+             (collect(0).phaseUnShift(fp), collect(1).phaseUnShift(fp))
+      } else (collect(0), collect(1))
+
+    } else {
+      notifyError("In peekQBitState, Check that only the QBit requested is left unmeasured for peek")
+      (0,0)
+    }
+
+  } //
+
+
 
 
   // Resets the system that keeps track of the changed Qbits and values
@@ -172,14 +244,14 @@ case class QReg(val nbQbits : Int = 1) { //
    *  @return 0, 1 or -1 (not measured)
    */
   def getMState(idx : Int) = {
-    qbMstate(idx)
+    qbMState(idx)
   }
 
 
   /** Gets the measured state for the full register (should < before)
    */
-  def getMQbit: Int = { // Read the reg value - should < before
-    val rl : List[Int] = (for (i <- 0 until nbQbits) yield readMQbit(i)).toList
+  def getMQBit: Int = { // Read the reg value - should < before
+    val rl : List[Int] = (for (i <- 0 until nbQbits) yield readMQBit(i)).toList
     rl.reverse.foldLeft(0)(
       (ac,v) => v + 2*ac
     )
@@ -190,13 +262,13 @@ case class QReg(val nbQbits : Int = 1) { //
    *  @param idx_ of the value
    *  @return 0, 1 or -1 (not measured)
    */
-  def readMQbit(idx: Int) = { // reads a QBit value - should < before reading
+  def readMQBit(idx: Int) = { // reads a QBit value - should < before reading
     if (idx == QReg.All)
-      getMQbit
+      getMQBit
     else {
       val r = getMState(idx)
-      if (r == -1) {
-        notifyError(s"Trying to read the Qbit #${idx} not fixed yet (try <())")
+      if (r == NOMEASURE) {
+        notifyError(s"in readMQbit Trying to read the Qbit #${idx} not measured yet (try <())")
         0
       } else {
         r
@@ -204,14 +276,14 @@ case class QReg(val nbQbits : Int = 1) { //
     }
   } // readQbit
 
-  def ?(idx: Int = QReg.All) : Int = readMQbit(idx)
+  def ?(idx: Int = QReg.All) : Int = readMQBit(idx)
 
 
 
 
   /** Sets the measured state for a value in the register
    */
-  def setMState(idx: Int, value: Int) { qbMstate(idx) = value }
+  def setMState(idx: Int, value: Int) { qbMState(idx) = value }
 
 
 
@@ -245,7 +317,7 @@ case class QReg(val nbQbits : Int = 1) { //
   // writes a value in the reg
   def write(value : Int) { // initialise the first register's value
     // TODO qbitchanged
-    this.state.indices.foreach( v => this(v)= QComplex(0,0))
+    this.state.indices.foreach( v => this(v)= QComplex(0,0) )
     this(value) = QComplex(1,0)
     pad.writeValue(value) // valeur courante
   } // write
@@ -317,7 +389,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
       qop match {
 
-        case <(idx)     => {lastOp = "< (measure)"; forceRead(idx)}
+        case <(idx)     => {lastOp = "< ("+idx+")"; forceRead(idx)}
 
         case F(_, fct, _, expand, skipTrace) =>
           var svgTrace = isTrace
@@ -371,17 +443,18 @@ case class QReg(val nbQbits : Int = 1) { //
               qop.setRegister(this)
               qop.init()
               condl = cond
+
             case _ =>
           }
 
           var idxQBit = qop.idxBit
 
-          if (idxQBit >= nbQbits) notifyError("Accessing a non existent Qbit (check the # in the operator)")
+          if (idxQBit >= nbQbits) notifyError("Accessing an unknown QBit (check the # in the operator)")
 
           if (idxQBit == All) { // Multiple QBits (all QBits)
             (0 until nbQbits). foreach( v => applyOp(v, masque, qop) )
           } else {
-            if (getMState(idxQBit) != -1) {
+            if (getMState(idxQBit) != NOMEASURE) {
               notifyError("QBit "+idxQBit+" is flat")
             } else {
               applyOp(idxQBit, masque, qop)
@@ -402,7 +475,7 @@ case class QReg(val nbQbits : Int = 1) { //
     if (isTrace) {
       println("_"*60+"\n")
       println(" Step("+traceIdx+ ") after "+lastOp)
-      performsTraceFunction(traceIdx, this) // so you can get your trace function
+      performsTraceFunction(traceIdx, this) // so you can get your own trace function
       println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
       this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="("+traceIdx+ ") after "+lastOp, clist= condl)
@@ -420,7 +493,12 @@ case class QReg(val nbQbits : Int = 1) { //
 
       qbitChanged(idxQBit) = true // tags this Qbit as changed
 
-      lastOp = qop.opLabel // last op applied (this one)
+      lastOp = if (mask > 0) {
+        val maskList = ((0 until nbQbits).filter(i => {
+          (((math.pow(2, i)).toInt) & mask) != 0
+        })).mkString(" "," "," ")
+        "Cond("+qop.opLabel+","+maskList+")"
+      } else qop.opLabel
 
       // Computes the couple of Qbits with only one V different
       val p = math.pow(2, idxQBit).toInt // 2^idxQbit
@@ -469,6 +547,7 @@ case class QReg(val nbQbits : Int = 1) { //
         .replaceAllLiterally("x",s"${RED}x${RESET}")
         .replaceAllLiterally("%0", s"${BOLD}0")
         .replaceAllLiterally("%1", s"${BOLD}1")
+        .replaceAllLiterally("%*", s"${RED}*${RESET}")
         .replaceAllLiterally("│",s"${RED}|${RESET}")
         .replaceAllLiterally("╓", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("║", s"${YELLOW}|${RESET}")
@@ -484,6 +563,7 @@ case class QReg(val nbQbits : Int = 1) { //
       .replaceAllLiterally("(1)", s" ${BOLD}1${RESET} ")
       .replaceAllLiterally("%0", s"${BOLD}0")
       .replaceAllLiterally("%1", s"${BOLD}1")
+      .replaceAllLiterally("%*", s"${RED}*${RESET}")
       .replaceAllLiterally("╓", s"${YELLOW}╓${RESET}")
       .replaceAllLiterally("║", s"${YELLOW}║${RESET}")
       .replaceAllLiterally("╙", s"${YELLOW}╙${RESET}")
@@ -564,8 +644,11 @@ case class QReg(val nbQbits : Int = 1) { //
         {
           if (this(v).norm < QReg.MinNorm)  "  ."+" "*29 else (this(v).toString+" "*30).substring(0,30)
         } + {
-        (if (this(v).norm < QReg.MinNorm) "\t." else "\t\t"+this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii))
-        }
+          if (this(v).norm < QReg.MinNorm) "\t." else "\t\t"+this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii)
+        } + {if (phaseNormalization) {
+        "\t-> " + this (v).asPhaseNormString(this.isInRadians, startAng, this.onlyAscii)
+                }
+            }
     ).mkString("\n")
 
     res = QUtils.colorizeBinary(nbQbits, res)
@@ -685,9 +768,9 @@ case class QReg(val nbQbits : Int = 1) { //
     im.drawText(text, 6,20, c= new Color(255,255,255))
     // List of the changed
     val lchanged = for( i <- qbitChanged.indices if (qbitChanged(i)) ) yield i
-    val qbs = qbMstate.indices.filter(v => qbMstate(v) != -1).toList
-    val qbs0 = qbs.filter(v => qbMstate(v) == 0).toList
-    val qbs1 = qbs.filter(v => qbMstate(v) == 1).toList
+    val qbs = qbMState.indices.filter(v => qbMState(v) != -1).toList
+    val qbs0 = qbs.filter(v => qbMState(v) == 0).toList
+    val qbs1 = qbs.filter(v => qbMState(v) == 1).toList
 
       //indices.map(v => if qbitChanged(v) v else -1 ).filter(_ > -1).toList
 

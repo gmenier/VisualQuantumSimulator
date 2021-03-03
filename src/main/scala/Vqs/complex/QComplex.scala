@@ -19,7 +19,7 @@ import scala.math._
  *  @param im imaginary value
  */
 
-case class QComplex(val re: Double, val im: Double) {
+case class QComplex(val re: Double=0, val im: Double=0) {
 
   /** conjugate (lazy)*/
   lazy val conj: QComplex = QComplex(re, -im)
@@ -92,6 +92,22 @@ case class QComplex(val re: Double, val im: Double) {
   def rot(thetac: Double): QComplex = this * QComplex(math.cos(thetac), math.sin(thetac))
 
   val sSize = 17 // toString : Size of the ascii / graphics
+
+
+  def asPhaseNormString(isRadian : Boolean, origin: Double = 0.0, ascii_ : Boolean = false): String = {
+    val (r, thetap) = asEuler
+    val rStr = formatNumber(r)
+
+    // Finds and angle between 0 and 2Pi with Phase offset
+    var ang_ = normalizeAngleOrigin(thetap, origin)
+    var ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
+
+    val res = (new QComplex( r*math.cos(ang), r*math.sin(ang) )).toString
+
+    if (abs(ang) < 0.0001) ang = 0
+
+    res.replaceAll("0,70711","1/√2") // todo adds automatic symbolic reformating
+  }
 
   /** returns a complex number as a string with Euler formatting
    *  @param origin phase shift (0.0 by default)
@@ -248,6 +264,23 @@ case class QComplex(val re: Double, val im: Double) {
 
     res.mkString
   } // blends the two drawing
+
+
+  /** returns a complex number with a phase correction
+   *  @param origin phase shift (0.0 by default, radian)
+   */
+  def phaseUnShift(origin: Double = 0.0): QComplex = { //
+    val (r, thetap) = asEuler
+
+    // Finds and angle between 0 and 2Pi with Phase offset
+    var ang_ = normalizeAngleOrigin(thetap, origin)
+    var ang = (if (ang_ <= math.Pi) ang_ else math.Pi - ang_)
+
+    if (abs(ang) < 0.0001) ang = 0
+
+    new QComplex(r*math.cos(ang), r*math.sin(ang))
+  } // asEulerString
+
 
 
   /** Complex as a 'a+ib' string */

@@ -53,12 +53,14 @@ case class Label(label:String) extends QOperator {
 
   def render(pad: QPad): Unit = {
     pad.label(label)
-    (label+"  ").indices.foreach( _ => pad.nextCol())
+    (label+" ").indices.foreach( _ => pad.nextCol())
   }
 
   def idxBit = NoIdx // label
 
 } // Label
+
+
 
 /** not an operator : inserts a vertical string in the rendering */
 case class VLabel(label:String) extends QOperator {
