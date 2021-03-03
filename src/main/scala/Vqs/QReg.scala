@@ -391,12 +391,13 @@ case class QReg(val nbQbits : Int = 1) { //
 
         case <(idx)     => {lastOp = "< ("+idx+")"; forceRead(idx)}
 
-        case F(_, fct, _, expand, skipTrace) =>
+        case F(name, fct, _, expand, skipTrace) =>
           var svgTrace = isTrace
           if (skipTrace) this.traceOff(); if (!expand) this.hideRender()
           fct(this);
           if (!expand) this.showRender(); this.isTrace = svgTrace
           this - VLabel("╖"+"║"*((nbQbits)*2-3)+"╜")
+          lastOp = name
 
         case Label(_)   =>
         case VLabel(_)  =>
@@ -423,6 +424,7 @@ case class QReg(val nbQbits : Int = 1) { //
                 qbitChanged(e2) = true
               }
             ) // foreach
+          lastOp = qop.opLabel
 
         case _ => {
 
@@ -798,7 +800,9 @@ case class QReg(val nbQbits : Int = 1) { //
 
   /** inner Op : ends the processing on a register */
   def end(): Unit = {
-    if (this.isTrace) performsTraceFunction(-1, this)
+    if (this.isTrace) {
+      performsTraceFunction(-1, this)
+    }
     if (this.myPdf != null) {
       myPdf.allCircuit(this)
       this.myPdf.closePdf()

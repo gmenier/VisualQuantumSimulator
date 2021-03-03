@@ -217,6 +217,20 @@ object QStudy {
 
 
 
+  def caseSwap(): Unit = {
+
+    def test(): Unit = {
+      val rr = new QReg(3)
+      rr.trace()
+      rr.pokeQBitState(0, QUtils.randomState())
+      rr.pokeQBitState(2, QUtils.randomState())
+      rr - Swap(0,2)
+      rr.end()
+    }
+
+    test()
+
+  }
 
   def caseDraft() {
     def bell(msg : String)(thisR: QReg): Unit = {
