@@ -673,7 +673,8 @@ case class QReg(val nbQbits : Int = 1) { //
 
 
   // creates an image and saves it
-  def drawCircleImage(filename : String ="registre", zoom : Double = 1.0, text: String = ""): Unit = {
+  // TODO autozoom
+  def drawCircleImage(filename : String ="registre", zoomparam : Double = 1.0, text: String = ""): Unit = {
     val im = GraphCanvas()
     var svg = this.drawAllState
 
@@ -684,6 +685,15 @@ case class QReg(val nbQbits : Int = 1) { //
 
     var elt : List[Int] = (0 until nbValues).toList
 
+    // auto zoom if zoom == 0
+    val zoom = if (zoomparam == 0) {
+      val mx = elt.map(v => {
+        val (norm_, _) = this (v).asEuler; norm_
+      }).max
+      if (mx > 0)   1/(mx*mx)
+      else 1.0
+    } else zoomparam
+
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
 
     im.drawFilledCircle(0,0,500, new Color(0,0,200))
@@ -693,7 +703,6 @@ case class QReg(val nbQbits : Int = 1) { //
       im.drawFilledCircle(250-i,250-i,i*2, new Color(0,0,i))
 
     im.drawFilledCircle(250-4,250-4,4*2, new Color(241,192,13))
-
 
     im.drawCircle((250-250*zoom/2).toInt,(250-250*zoom/2).toInt, (2*250*zoom*0.5).toInt, new Color(0,0,250))
     im.drawCircle((250-250*zoom/4).toInt,(250-250*zoom/4).toInt, (2*250*zoom/4).toInt, new Color(0,0,0))
@@ -715,7 +724,7 @@ case class QReg(val nbQbits : Int = 1) { //
     if (phaseNormalization)
       im.drawText("Phase norm", 380,20, c= new Color(200,200,200) )
 
-    elt.foreach(v => { // v est l'indice de la valeur
+    elt.foreach(v => { // v est l'indice de l'état
       val (norm_, phase_) = this(v).asEuler
       val proba = zoom*(norm_ * norm_)  // probability
       var phase = normalizeAngleOrigin(phase_, offset) - math.Pi/2 // phase
@@ -745,8 +754,8 @@ case class QReg(val nbQbits : Int = 1) { //
     }
     im.drawText("0", 245,22, c= new Color(250,250,100))
 
-    if (zoom > 1.0) im.drawText(zoom+"x", 10,485, c= new Color(250,250,100))
-    if (zoom > 1.0) im.drawText(zoom+"x", 10,486, c= new Color(250,250,100))
+    if (zoom > 1.0) im.drawText(f"$zoom%3.2f"+"x", 10,485, c= new Color(250,250,100))
+    if (zoom > 1.0) im.drawText(f"$zoom%3.2f"+"x", 10,486, c= new Color(250,250,100))
 
     im.drawText(text, 6,20, c= new Color(250,250,100))
 

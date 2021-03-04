@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
@@ -266,14 +266,7 @@
       <workItem from="1614717567425" duration="4253000" />
       <workItem from="1614756643259" duration="2528000" />
       <workItem from="1614780242567" duration="16590000" />
-      <workItem from="1614859810634" duration="3346000" />
-    </task>
-    <task id="LOCAL-00002" summary="README">
-      <created>1584122800158</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1584122800158</updated>
+      <workItem from="1614859810634" duration="6725000" />
     </task>
     <task id="LOCAL-00003" summary="Changed most of the (rare) comments to English">
       <created>1584194610243</created>
@@ -611,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614804959606</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Enhanced the trace of circle drawings. Now 8 QBits are possible, then the display switch to simple circles. Fixed the drivers for Conditionnal (CNot etc..) (a mini visual shift could occur for more than 6 Qbits).">
+      <created>1614866143189</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1614866143190</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +620,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Trace Labels" />
     <MESSAGE value="format number in output (Euler)" />
     <MESSAGE value="Advanced operators support (alias method in QOperator)" />
     <MESSAGE value="main with example" />
@@ -645,7 +644,8 @@
     <MESSAGE value="Added color in the render view for swap and cond" />
     <MESSAGE value="Many enhancements. Can Poke a new State to a QBit (and peek it) + new randomizer for random State. Fixed rendering with red color for conditionnal. Fixed Step display of operator (for confitionnal)" />
     <MESSAGE value="Fixed and enhanced the labels for the traces (Swap, Function etc). Added a standard display for global phase correction in the trace." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed and enhanced the labels for the traces (Swap, Function etc). Added a standard display for global phase correction in the trace." />
+    <MESSAGE value="Enhanced the trace of circle drawings. Now 8 QBits are possible, then the display switch to simple circles. Fixed the drivers for Conditionnal (CNot etc..) (a mini visual shift could occur for more than 6 Qbits)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhanced the trace of circle drawings. Now 8 QBits are possible, then the display switch to simple circles. Fixed the drivers for Conditionnal (CNot etc..) (a mini visual shift could occur for more than 6 Qbits)." />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="115" key="#Menus_and_Toolbars" timestamp="1613922731293">
@@ -668,30 +668,30 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1614804958641">
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1614871838978">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1614804958641" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1614871838978" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1613922660265">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1613922660265" />
-    <state width="1864" height="126" key="GridCell.Tab.0.bottom" timestamp="1614865709001">
+    <state width="1864" height="156" key="GridCell.Tab.0.bottom" timestamp="1614871805543">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="126" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1614865709001" />
-    <state width="1864" height="126" key="GridCell.Tab.0.center" timestamp="1614865709001">
+    <state width="1864" height="156" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1614871805543" />
+    <state width="1864" height="156" key="GridCell.Tab.0.center" timestamp="1614871805543">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="126" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1614865709001" />
-    <state width="1864" height="126" key="GridCell.Tab.0.left" timestamp="1614865709001">
+    <state width="1864" height="156" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1614871805543" />
+    <state width="1864" height="156" key="GridCell.Tab.0.left" timestamp="1614871805543">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="126" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1614865709001" />
-    <state width="1864" height="126" key="GridCell.Tab.0.right" timestamp="1614865709001">
+    <state width="1864" height="156" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1614871805543" />
+    <state width="1864" height="156" key="GridCell.Tab.0.right" timestamp="1614871805543">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1864" height="126" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1614865709001" />
+    <state width="1864" height="156" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1614871805543" />
     <state width="932" height="276" key="GridCell.Tab.1.bottom" timestamp="1614289857303">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -712,10 +712,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="355" y="98" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1612470977834" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1614804961340">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1614866145002">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1614804961340" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1614866145002" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1613922661923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
