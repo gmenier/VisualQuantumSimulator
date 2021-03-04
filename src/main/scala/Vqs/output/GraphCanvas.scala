@@ -76,7 +76,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
                 amplitude: Double, phase_ : Double,
                 osize: Int =20,
                 v_ : Int,
-                nb: Int,
+                nbm: Int,
                 lchanged : List[Int] = List(),
                 lcond: List[Int] = List(),
                 qbState : List[Int] = List(),
@@ -91,6 +91,8 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     var green = paleGreen;
     val s = 4
     var exclude = false
+
+    var nb = if (nbm < 9) nbm else 1;
 
     (0 until nb).reverse.foreach(
       v => {
@@ -167,13 +169,15 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
     (0 until nb). foreach (
       v => {
-        if (lcond contains v) {
-          drawFilledCircle(x - 3, y - (osize) - 3- 6*v, 6, Color.BLACK)
-          if ((v_ & (math.pow(2,v).toInt)) == 0) {
-            drawCircle(x - 3, y - (osize) - 3  - 6*v, 6, Color.WHITE)
-          } else {
-            drawFilledCircle(x - 3, y - (osize) - 3 - 6*v, 6, Color.WHITE)
-            drawCircle(x - 3 -1, y - (osize) - 3 -1  - 6*v, 6 +1, Color.BLACK)
+        if (nb > 1) {
+          if (lcond contains v) {
+            drawFilledCircle(x - 3, y - (osize) - 4 - 4 * v, 6, Color.BLACK)
+            if ((v_ & (math.pow(2, v).toInt)) == 0) {
+              drawCircle(x - 3, y - (osize) - 4 - 4 * v, 6, Color.WHITE)
+            } else {
+              drawFilledCircle(x - 3, y - (osize) - 4 - 4 * v, 6, Color.WHITE)
+              drawCircle(x - 3 - 1, y - (osize) - 4 - 1 - 4 * v, 6 + 1, Color.BLACK)
+            }
           }
         }
       })

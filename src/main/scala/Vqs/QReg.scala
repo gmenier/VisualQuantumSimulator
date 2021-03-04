@@ -476,13 +476,13 @@ case class QReg(val nbQbits : Int = 1) { //
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
-      println(" Step("+traceIdx+ ") after "+lastOp)
+      println(traceIdx+ ". after "+lastOp)
       performsTraceFunction(traceIdx, this) // so you can get your own trace function
       println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
-      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="("+traceIdx+ ") after "+lastOp, clist= condl)
+      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text=traceIdx+ ". after "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
-          this.myPdf.writeReport(this, circuitSize, traceIdx, text = "("+traceIdx+ ") after "+lastOp)
+          this.myPdf.writeReport(this, circuitSize, traceIdx, text = traceIdx+ ". after "+lastOp)
       }
       traceIdx = traceIdx + 1
     }

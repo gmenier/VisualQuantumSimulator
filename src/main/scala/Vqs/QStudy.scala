@@ -217,14 +217,15 @@ object QStudy {
 
 
 
+
   def caseSwap(): Unit = {
 
     def test(): Unit = {
-      val rr = new QReg(3)
+      val rr = new QReg(9)
       rr.trace()
-      rr.pokeQBitState(0, QUtils.randomState())
-      rr.pokeQBitState(2, QUtils.randomState())
-      rr - Swap(0,2)
+
+      for( i <- 0 until 9)  rr - C(Not(2),i)
+
       rr.end()
     }
 
