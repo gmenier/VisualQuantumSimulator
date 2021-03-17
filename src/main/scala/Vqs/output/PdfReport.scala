@@ -22,7 +22,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
   var xpos = 25
   var leading = 10
   var fontSize = 10
-  var numPage = 0
+  var numPage = 1
 
   val calcW = 550 // max size for the pictures
 
@@ -83,7 +83,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
     }
     beginText()
     if (text != "") { writeLine(text); cr(); }
-    rr.cutRenderWithoutAnsi(lgcar).split("\n").foreach(
+      rr.cutRenderWithoutAnsi(lgcar).split("\n").foreach(
       l => writeLine(l)
     )
     for( i <- 0 until 15) cr()
@@ -91,7 +91,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 
     // fix the image size TODO
     val calcH = 5*3*14 + 40 //
-    insertImage("trace_"+idxImage+".png", lgcar*7, getPos, calcW+40, calcH)
+    // insertImage("trace_"+idxImage+".png", lgcar*7, getPos, calcW+40, calcH)
 
   }
 

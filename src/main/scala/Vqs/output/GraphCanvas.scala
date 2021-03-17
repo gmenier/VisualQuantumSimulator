@@ -60,7 +60,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
 
   def drawLine(x: Int, y: Int, z: Int, t: Int, c: Color= new Color(0,0,0)): Unit = {
     g.setStroke(new BasicStroke()) // reset to default
-    g.setColor(c) // same as Color.BLUE
+    g.setColor(c)
     g.draw(new Line2D.Double(x,y, z, t))
   } // drawLine
 
@@ -92,28 +92,48 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     val s = 4
     var exclude = false
 
-    var nb = if (nbm < 9) nbm else 1;
+    var nb = if (nbm < 9) nbm else if (nbm <= 0) 1 else nbm;
 
     (0 until nb).reverse.foreach(
       v => {
         ante = true // false for real
-        if (lchanged.contains(v)) {
-          red = hotRed; green = hotGreen;
-        } else {
-          red = paleRed; green = paleGreen
+
+        if (nb > 1) {
+          if (lchanged.contains(v)) {
+            red = hotRed;
+            green = hotGreen;
+          } else {
+            red = paleRed;
+            green = paleGreen
+          }
+        } else { // todo change color by power of 2 of the changed QBit ?
+          red = hotRed;
+          green = hotGreen;
         }
 
-        val v1 = v+1
-        if ((v_ & (math.pow(2,v).toInt)) == 0) {
-          if (ante || (v==0))
-              drawFilledCircle(x-(osize)- v1*s,y-(osize)-v1*s,osize*s/2+v1*s*2, red)
-          if (qb1.contains(v)) exclude = true
-        } else {
-          ante = true
-          drawFilledCircle(x-(osize) -v1*s,y-(osize)-v1*s,osize*s/2+v1*s*2, green)
-          if (qb0.contains(v)) exclude = true
+        if (nb > 1) { // coloring scheme for multiple circles
+          val v1 = v + 1
+          if ((v_ & (math.pow(2, v).toInt)) == 0) {
+            if (ante || (v == 0))
+              drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, red)
+            if (qb1.contains(v)) exclude = true
+          } else {
+            ante = true
+            drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, green)
+            if (qb0.contains(v)) exclude = true
+          }
+          drawCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, new Color(0, 0, 0))
+        } else { // coloring Scheme for mono circle
+          val v1 = v + 1
+          if ((math.floor(v_ / (math.pow(2, 3).toInt))).toInt % 2 == 0) {
+            drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, green)
+          }else {
+            drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, red)
+          }
+
+
+
         }
-        drawCircle(x-(osize)- v1*s,y-(osize)-v1*s,osize*s/2+v1*s*2, new Color(0,0,0))
 
       }
     )
@@ -129,7 +149,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     }
 
 
-    if (amplitude > 0.000001)
+    if (amplitude > 1E-10)
       drawFilledCircle(x-(osize),y-(osize),osize*2, new Color(0,0,130))
     else
       drawFilledCircle(x-(osize),y-(osize),osize*2, Color.BLACK)
@@ -145,8 +165,8 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     val cx = (x+osize*math.cos(phase- math.Pi/2)).toInt
     val cy = (y+osize*math.sin(phase- math.Pi/2)).toInt
 
-    val cx2 = (x+amplitude*osize*math.cos(phase- math.Pi/2)).toInt
-    val cy2 = (y+amplitude*osize*math.sin(phase- math.Pi/2)).toInt
+    // val cx2 = (x+amplitude*osize*math.cos(phase- math.Pi/2)).toInt
+    // val cy2 = (y+amplitude*osize*math.sin(phase- math.Pi/2)).toInt
 
     if (amplitude > 1E-10) {
       import java.awt.geom.Line2D
@@ -183,7 +203,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
       })
 
     if (exclude == true)
-      drawFilledRectangle(x-(osize)- 7*s,y-(osize)-7*s,osize*s/2+7*s*2,(osize*s/2+7*s*2)/2 , Color.BLACK)
+     drawFilledRectangle(x-(osize)- 7*s,y-(osize)-7*s,osize*s/2+7*s*2,(osize*s/2+7*s*2)/2 , Color.BLACK)
 
   } // drawState
 

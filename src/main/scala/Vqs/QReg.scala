@@ -65,6 +65,8 @@ case class QReg(val nbQbits : Int = 1) { //
 
   var drawAllState : Boolean = QReg.DefaultDrawAllState; // if false only draw states with probability > 0
 
+  var drawBitCircle = QReg.DefaultDrawBitCircles
+
   var lastOp : String ="" // last operator used (trace)
 
   var phaseNormalization : Boolean = QReg.DefaultObjPhaseNormalization // if true normalize the phases
@@ -126,8 +128,8 @@ case class QReg(val nbQbits : Int = 1) { //
           }
         ))
 
-         this.lastOp = "#"+numQbit+" <- "+state.toString()
-        processTraceIfNecessary()
+         this.lastOp = LabelOf(numQbit)+" <- |> "+state.toString()
+         processTraceIfNecessary()
 
       } else notifyError("In pokeQBitState, check the Qbit # number")
     } else notifyError("In pokeQBitState, the state given for the Qbit state doesn't comply to the Born's rule")
@@ -193,15 +195,16 @@ case class QReg(val nbQbits : Int = 1) { //
     isTrace = true
     traceIdx = 0
     traceSize = sizeOfTrace
-    println("\nVQS >- Starting trace "+ (if (useASCII) " with ASCII output" else "") )
+    println(s"${BLUE}*${CYAN}*${GREEN}*${YELLOW}*${RED}*${MAGENTA}*${RESET} VQS > Starting trace "
+      + (if (useASCII) " with ASCII output" else "") )
     performsTraceFunction(0, this)
     println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
     println(this)
     this.resetChange()
     this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Starting trace")
-    if (this.myPdf != null) { // création d'un fichier pdf
-      this.myPdf.writeReport(this, circuitSize, traceIdx)
-    }
+   // if (this.myPdf != null) { // création d'un fichier pdf
+   //   this.myPdf.writeReport(this, circuitSize, traceIdx)
+   // }
     traceIdx = traceIdx+1
   }
 
@@ -371,6 +374,10 @@ case class QReg(val nbQbits : Int = 1) { //
     this.pad.infoline("  "+s)
   } //infoline
 
+  // label of a Qbit (with its name if possible)
+  def LabelOf(numQbit : Int): String = {
+    pad.getQbitLabel(numQbit)
+  } //
 
 // main op invocation system
   // - is the wire and the qop_p is applied on the current register
@@ -389,7 +396,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
       qop match {
 
-        case <(idx)     => {lastOp = "< ("+idx+")"; forceRead(idx)}
+        case <(idx)     => {lastOp = "<("+LabelOf(idx)+")"; forceRead(idx)}
 
         case F(name, fct, _, expand, skipTrace) =>
           var svgTrace = isTrace
@@ -402,6 +409,11 @@ case class QReg(val nbQbits : Int = 1) { //
         case Label(_)   =>
         case VLabel(_)  =>
         case |(_)       =>
+
+        case $(n,s) => this.setQBitLabel(n,s)
+
+        case |>(numQbit : Int, state: (QComplex, QComplex)) => this.pokeQBitState(numQbit, state)
+
 
         case Swap(e1, e2) =>
           val r = (0 until math.pow(2, nbQbits).toInt).
@@ -476,13 +488,13 @@ case class QReg(val nbQbits : Int = 1) { //
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
-      println(traceIdx+ ". after "+lastOp)
+      println(traceIdx+ ". "+lastOp)
       performsTraceFunction(traceIdx, this) // so you can get your own trace function
       println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
-      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text=traceIdx+ ". after "+lastOp, clist= condl)
+      this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text=traceIdx+ ". "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
-          this.myPdf.writeReport(this, circuitSize, traceIdx, text = traceIdx+ ". after "+lastOp)
+          this.myPdf.writeReport(this, circuitSize, traceIdx, text = traceIdx+ ". "+lastOp)
       }
       traceIdx = traceIdx + 1
     }
@@ -495,12 +507,12 @@ case class QReg(val nbQbits : Int = 1) { //
 
       qbitChanged(idxQBit) = true // tags this Qbit as changed
 
-      lastOp = if (mask > 0) {
+      lastOp =  if (mask > 0) {
         val maskList = ((0 until nbQbits).filter(i => {
           (((math.pow(2, i)).toInt) & mask) != 0
-        })).mkString(" "," "," ")
-        "Cond("+qop.opLabel+","+maskList+")"
-      } else qop.opLabel
+        })).map(elt => LabelOf(elt)).mkString(" "," ","")
+        "C("+qop.opLabel+","+maskList+")"
+      } else  qop.opLabel
 
       // Computes the couple of Qbits with only one V different
       val p = math.pow(2, idxQBit).toInt // 2^idxQbit
@@ -573,7 +585,7 @@ case class QReg(val nbQbits : Int = 1) { //
       .replaceAllLiterally("│",s"${RED}│${RESET}")
       .replaceAllLiterally("•",s"${RED}•${RESET}")
       .replaceAllLiterally("╖", s"${YELLOW}╖${RESET}")
-      .replaceAllLiterally("╜", s"${YELLOW}╜${RESET}")  +"\n"
+      .replaceAllLiterally("╜", s"${YELLOW}╜${RESET}") + "\n"
   }
 
 
@@ -603,21 +615,28 @@ case class QReg(val nbQbits : Int = 1) { //
       var lpos = 0;
       (for (line <- rend.split("\n")) yield ({
         lpos = lpos + 1
-        if (line.length > 10) {
+        if (line.length > 15) {
           if ((lpos > 1) && (lpos % 2 == 0) && (lpos < (nbQbits + 2) * 2))
-            line.substring(0, 9) + "..." + line.substring(from, line.length - 1)
+            line.substring(0, 12) + "..." + line.substring(from, line.length - 1)
           else
-            line.substring(0, 9) + "   " + line.substring(from, line.length - 1)
+            line.substring(0, 12) + "   " + line.substring(from, line.length - 1)
         } else line
       })).mkString("\n")
     }
   } // cutRender
 
+  /** sets a label for a # QBit
+   */
+  def setQBitLabel(numqb : Int, name : String): Unit = {
+    if (numqb < nbQbits) {
+      this.pad.setQbitLabel(numqb, name)
+    }
+  }
+
 
   /** outputs a string with the current state of the register
     */
   override def toString : String = {
-
 
     val titrePhase =
       if (! this.onlyAscii)
@@ -648,8 +667,10 @@ case class QReg(val nbQbits : Int = 1) { //
         } + {
           if (this(v).norm < QReg.MinNorm) "\t." else "\t\t"+this(v).asEulerString(this.isInRadians,startAng, this.onlyAscii)
         } + {if (phaseNormalization) {
-        "\t-> " + this (v).asPhaseNormString(this.isInRadians, startAng, this.onlyAscii)
-                }
+             if (startAng != 0.0 )
+               s"\t ${MAGENTA}-> " + this (v).asPhaseNormString(this.isInRadians, startAng, this.onlyAscii) +s" ${RESET}"
+               else ""
+              }
             }
     ).mkString("\n")
 
@@ -793,10 +814,14 @@ case class QReg(val nbQbits : Int = 1) { //
         val cy = bord+(2*osize+bord*2)*((v / coln).toInt)
         val amp = this(v).proba;
         val phase = this(v).phase(phaseOrg);
-        im.drawState(50+cx,50+cy,amp,phase,osize, v, nbQbits, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock)
+        val nbCircles = if (drawBitCircle) nbQbits else 1
+        im.drawState(50+cx,50+cy,amp,phase,osize, v, nbCircles, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock)
         im.drawText(text = v.toString, 50+cx-5,40+cy+osize+bord, c= new Color(255,255,255))
         if (this.changed(v)) {
           //im.drawFilledCircle(50+cx-5+3,48+cy+osize+bord, 5, c= new Color(250,250,250))
+          im.drawLine(50+cx-5+3-10,48+cy+osize+bord,
+            50+cx-5+3-10,48+cy+osize+bord-14, c= new Color(255,255,255))
+
           im.drawLine(50+cx-5+3-10,48+cy+osize+bord,
             50+cx-5+3+14,48+cy+osize+bord, c= new Color(255,255,255))
         }
@@ -902,6 +927,14 @@ object QReg {
 
   def setDefaultDrawOnlyPossible(): Unit = {
     DefaultDrawAllState = false
+  }
+
+  var DefaultDrawBitCircles : Boolean = false
+  def setDefaultDrawBitCircles(): Unit = {
+    DefaultDrawBitCircles = true
+  }
+  def setDefaultDontDrawBitCircles(): Unit = {
+    DefaultDrawBitCircles = false
   }
 
 } // QReg

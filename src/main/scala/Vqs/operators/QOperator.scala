@@ -61,6 +61,29 @@ case class Label(label:String) extends QOperator {
 } // Label
 
 
+case class $(nm : Int, label:String) extends QOperator {
+
+  leaveATrace = false
+
+  def render(pad: QPad): Unit = {}
+
+  def idxBit = NoIdx // label
+
+} // Label
+
+
+case class |>(numQbit : Int, state: (QComplex, QComplex)) extends QOperator {
+
+  leaveATrace = false
+
+  def render(pad: QPad): Unit = {}
+
+  def idxBit = NoIdx // label
+
+} // Label
+
+
+
 
 /** not an operator : inserts a vertical string in the rendering */
 case class VLabel(label:String) extends QOperator {
@@ -97,7 +120,7 @@ case class H(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for H")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in H("+idx+") Incorrect #QBit")
   }
 
   val sq2 = sqrt(2)
@@ -107,7 +130,7 @@ case class H(idx:Int = QReg.All) extends QOperator {
     pad.nextCol2()
   }
 
-  override def opLabel = "H("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "H"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def idxBit = idx;
 
@@ -122,10 +145,10 @@ case class X(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for X")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in X("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "X("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "X"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
 
   def render(pad: QPad): Unit = {
@@ -146,10 +169,10 @@ case class Not(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Not")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in Not("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "Not("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "Not"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
 
   def render(pad: QPad): Unit = {
@@ -170,10 +193,10 @@ case class Y(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Y")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in Y("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "Y("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "Y"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def render(pad: QPad): Unit = {
     pad.at(idx, "Y")
@@ -193,10 +216,10 @@ case class Z(idx:Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Z")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in Z("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "Z("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "Z"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def render(pad: QPad): Unit = {
     pad.at(idx, "Z")
@@ -216,10 +239,10 @@ case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for S")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in S("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "S("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "S"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def render(pad: QPad): Unit = {
     pad.at(idx, "S")
@@ -239,10 +262,10 @@ case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for mS")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in mS("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "mS("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "mS"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
 
   def render(pad: QPad): Unit = {
@@ -263,10 +286,10 @@ case class T(idx:Int = QReg.All) extends QOperator { // Z45
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for T")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in T("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "T("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "T"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def render(pad: QPad): Unit = {
     pad.at(idx, "T")
@@ -286,10 +309,10 @@ case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
 
   override def init(): Unit = {
     if ( ((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for mT")
+      (idx >= thisR.nbQbits))  QReg.notifyError("in mT("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "mT("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "mT"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def render(pad: QPad): Unit = {
     pad.at(idx, "mT")
@@ -312,11 +335,11 @@ case class Rx(p:Int, angle :Double) extends QOperator {
 
   override def init(): Unit = {
     if ( ((p < 0) && (p != QReg.All)) ||
-      (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Rx")
+      (p >= thisR.nbQbits))  QReg.notifyError("in Rx("+p+",...) Incorrect #QBit")
     o = thisR.angle(angle)
   }
 
-  override def opLabel = "Rx("+ p+","+angle +")"
+  override def opLabel = "Rx"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +")") +","+angle +")"
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Rx");
@@ -344,11 +367,11 @@ case class Ry(p:Int, angle :Double) extends QOperator {
 
   override def init(): Unit = {
     if ( ((p < 0) && (p != QReg.All)) ||
-      (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Ry")
+      (p >= thisR.nbQbits))  QReg.notifyError("in Ry("+p+",...) Incorrect #QBit")
     o = thisR.angle(angle)
   }
 
-  override def opLabel = "Ry("+ p+","+angle +")"
+  override def opLabel = "Ry"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +")") +","+angle +")"
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Ry");
@@ -375,11 +398,11 @@ case class Rz(p:Int, angle : Double) extends QOperator {
 
   override def init(): Unit = {
     if ( ((p < 0) && (p != QReg.All)) ||
-      (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for Rz")
+      (p >= thisR.nbQbits))  QReg.notifyError("in Rz("+p+",...) Incorrect #QBit")
     o = thisR.angle(angle)
   }
 
-  override def opLabel = "Rz("+ p+","+angle +")"
+  override def opLabel = "Rz"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +")") +","+angle +")"
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Rz");
@@ -412,10 +435,10 @@ case class CL(Qop: QOperator, condList_ : List[Int]) extends QOperator {
   val condList: List[Int] = condList_.distinct
 
   override def init(): Unit = {
-    condList.foreach ( p => if ( (p < 0) || (p >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for CL( op, list(#))") )
+    condList.foreach ( p => if ( (p < 0) || (p >= thisR.nbQbits))  QReg.notifyError("in CL(...,"+p+") Incorrect control #QBit") )
   }
 
-  override def opLabel = "CL( "+ Qop.opLabel +" ,List("+ condList.mkString(",") +") )"
+  override def opLabel = "CL( "+ Qop.opLabel +" , List("+ condList.map(idx => thisR.LabelOf(idx)).mkString(",") +") )"
 
   def render(pad: QPad): Unit = {
     val ll = idxBit :: condList
@@ -433,10 +456,10 @@ case class CL(Qop: QOperator, condList_ : List[Int]) extends QOperator {
 case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C(Not(Idx), idxp) -> C (X(idx), idxp)
 
   override def init(): Unit = {
-    if ( (cond < 0) || (cond >= thisR.nbQbits))  QReg.notifyError("Incorrect #QBit for C( op, #)")
+    if ( (cond < 0) || (cond >= thisR.nbQbits))  QReg.notifyError("in CL(...,"+cond+") Incorrect control #QBit")
   }
 
-  override def opLabel = "C( "+ Qop.opLabel +" , "+ cond +") )"
+  override def opLabel = "C( "+ Qop.opLabel +" , "+ thisR.LabelOf(cond) +")"
 
   def render(pad: QPad): Unit = {
     val condList = List(cond)
@@ -458,10 +481,10 @@ case class Swap(e1: Int, e2: Int) extends QOperator {
 
   override def init(): Unit = {
     if ((e1 == e2) || (e1 < 0) || (e2 < 0) ||
-      (e1 >= thisR.nbQbits) || (e2 >= thisR.nbQbits)) QReg.notifyError("Incorrect #QBit for Swap Gate")
+      (e1 >= thisR.nbQbits) || (e2 >= thisR.nbQbits)) QReg.notifyError("in Swap("+e1+","+e2+") Incorrect control #QBit")
   }
 
-  override def opLabel = "Swap( "+ e1 +","+ e2 +" )"
+  override def opLabel = "Swap("+  thisR.LabelOf(e1) +","+  thisR.LabelOf(e2) +")"
 
   def render(pad: QPad): Unit = {
     if (e1 < e2) for(i <- e1*2 to e2*2) pad.atAbs(i,"│")
@@ -480,10 +503,10 @@ case class <(idx: Int = QReg.All) extends QOperator {
 
   override def init(): Unit = {
     if (((idx < 0) && (idx != QReg.All)) ||
-      (idx >= thisR.nbQbits)) QReg.notifyError("Incorrect #QBit for Measurement <()")
+      (idx >= thisR.nbQbits)) QReg.notifyError("in <("+idx+") Incorrect #QBit")
   }
 
-  override def opLabel = "<("+ (if (idx == QReg.All) "" else idx) +")"
+  override def opLabel = "<" + (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
   def render(pad: QPad): Unit = {
     pad.DRenderAt(idx)

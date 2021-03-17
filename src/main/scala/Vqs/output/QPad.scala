@@ -149,6 +149,17 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
   def getCol: Int = colonne;
 
 
+  // the User can bind a Qbit to a label
+  // this shows in render and in the trace messages
+  var qbLabels: mutable.HashMap[Int, String] = new mutable.HashMap[Int, String]()
+  def setQbitLabel(numQbit : Int, nameQbit : String): Unit = {
+    this.qbLabels(numQbit) = nameQbit
+  } // setQbitLabel
+
+  def getQbitLabel(numQbit: Int): String = {
+    val nm = qbLabels.getOrElse(numQbit, "")
+    if (nm == "") "#"+numQbit else nm+"#"+numQbit
+  } // getQbitLabel
 
 
 
@@ -165,12 +176,18 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
     while ((last >0) && ((screen((nbQbits-1)*2+1)(last) == " ") && (screen((nbQbits-1)*2+2)(last) == " "))) last = last -1
     if (last >0) colonne = math.max(last+1, colonne)
 
-    val sep=""
+    val lgth  = 8 ;
+    val sep=" "*lgth
 
     QPad.unprotectString(
       "\n"+sep+" QBit\n"+sep+"  #  v\n"+(for( i <- 0 until nbQbits*2+1) yield {
 
-        sep+(for (j <- 0 until colonne) yield screen(i)(j)(0).toString).mkString
+        { if ((i % 2 == 0) && ( i< (nbQbits*2))) {
+            val labelQbit = qbLabels.getOrElse(i / 2, "")
+          (labelQbit + " "*lgth).substring(0, lgth)
+        } else " "*lgth } +
+            (for (j <- 0 until colonne) yield screen(i)(j)(0).toString).mkString
+
 
     }).mkString("\n").replaceAllLiterally("—", s"${BLUE}—${RESET}")
       .replaceAllLiterally(">", s" ${BLUE}>${RESET}")
