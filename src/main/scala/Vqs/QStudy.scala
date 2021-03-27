@@ -161,20 +161,37 @@ object QStudy {
   }
 
   def caseDraft() {
-    def bell(msg : String)(thisR: QReg): Unit = {
-      thisR - H(0) - C(X(1) , 0)
-    }
+
 
     def test(): Unit = {
       val rr: QReg = QReg(3)
-      rr.pdf("test.pdf", "test")
+      // rr.pdf("test.pdf", "test")
       rr.trace(2)
+      rr.pokeQBitState(1, (0,1))
 
-      //rr.init(0)
-      rr - F("Bell",  bell("?"), "0 and 1 intricated", true, false)
+      rr - CL(Not(0),List(1,2))
+      println(rr.render)
       rr.end()
     }
     test()
   } // caseDraft
+
+
+  def caseAdd() {
+
+    def test(): Unit = {
+      val rr: QReg = QReg(3)
+      // rr.pdf("test.pdf", "test")
+      rr.trace(2)
+      rr.pokeQBitState(1, (0,1))
+
+      rr - CL(Not(0),List(1,2))
+      println(rr.render)
+      rr.end()
+    }
+    test()
+
+  } // caseAdd
+
 
 }

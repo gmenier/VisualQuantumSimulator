@@ -376,6 +376,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
   // label of a Qbit (with its name if possible)
   def LabelOf(numQbit : Int): String = {
+    if (numQbit == QReg.All) "All" else
     pad.getQbitLabel(numQbit)
   } //
 
@@ -521,7 +522,7 @@ case class QReg(val nbQbits : Int = 1) { //
       val ri = s(false).flatMap(c => c._2.toList)
       var vr = rp.zip(ri)
 
-      if (mask > 0) vr = vr.filter(v => (v._1 & mask) > 0)
+      if (mask > 0) vr = vr.filter(v => (v._1 & mask) == mask)
 
       // Applies the op on these states
       var f: QV => QV = qop.op _
