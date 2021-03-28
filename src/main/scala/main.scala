@@ -12,6 +12,7 @@ object main {
 
       def main(args: Array[String]): Unit = {
         // QReg.setDefaultUseASCII()
+        // QReg.setDefaultDrawBitCircles()
         QStudy.caseQFT()
 
       }

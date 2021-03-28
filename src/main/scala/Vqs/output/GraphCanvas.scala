@@ -111,6 +111,8 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
           green = hotGreen;
         }
 
+
+
         if (nb > 1) { // coloring scheme for multiple circles
           val v1 = v + 1
           if ((v_ & (math.pow(2, v).toInt)) == 0) {
@@ -125,12 +127,23 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
           drawCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, new Color(0, 0, 0))
         } else { // coloring Scheme for mono circle
           val v1 = v + 1
+
+           val res1 = if (qb1.size >0)
+                           qb1.map( bt1 => if ( (v_ & (math.pow(2,bt1).toInt)) > 0) 1 else 0  ).product
+                       else 1
+
+           val res2 = if (qb0.size > 0)
+                           qb0.map( bt0 => if ( (~v_ & (math.pow(2,bt0).toInt) ) >0) 1 else 0).product
+                      else 1
+
+          //  print(v_ +" :"+res1+" "+res2+"\n")
+          if (res1*res2 == 0) exclude = true
+
           if ((math.floor(v_ / (math.pow(2, 3).toInt))).toInt % 2 == 0) {
             drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, green)
           }else {
             drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, red)
           }
-
 
 
         }
@@ -187,7 +200,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
     }
 
 
-    (0 until nb). foreach (
+    (0 until nb). foreach ( // conditionals (enhance the bits used by the cond)
       v => {
         if (nb > 1) {
           if (lcond contains v) {
@@ -202,7 +215,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
         }
       })
 
-    if (exclude == true)
+    if (exclude == true) // cuts the excluded states
      drawFilledRectangle(x-(osize)- 7*s,y-(osize)-7*s,osize*s/2+7*s*2,(osize*s/2+7*s*2)/2 , Color.BLACK)
 
   } // drawState

@@ -8,10 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,14 +277,8 @@
       <workItem from="1615963821019" duration="950000" />
       <workItem from="1616483254026" duration="1242000" />
       <workItem from="1616488081496" duration="2592000" />
-      <workItem from="1616847873403" duration="4122000" />
-    </task>
-    <task id="LOCAL-00005" summary="README Update">
-      <created>1584378669922</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1584378669922</updated>
+      <workItem from="1616847873403" duration="8110000" />
+      <workItem from="1616943085647" duration="6220000" />
     </task>
     <task id="LOCAL-00006" summary="README Update2">
       <created>1584378800796</created>
@@ -620,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615964077705</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Toffoli Bug Corrected">
+      <created>1616859053334</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1616859053334</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +632,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="main with example" />
     <MESSAGE value="Building Scaladoc&#10;Cleaning the code" />
     <MESSAGE value="Scaladoc in progress&#10;Cleaning up the code" />
     <MESSAGE value="Scaladoc still in progress&#10;Fixed bug in Phase display&#10;Cleaning up code" />
@@ -654,7 +656,8 @@
     <MESSAGE value="Enhanced the trace of circle drawings. Now 8 QBits are possible, then the display switch to simple circles. Fixed the drivers for Conditionnal (CNot etc..) (a mini visual shift could occur for more than 6 Qbits)." />
     <MESSAGE value="Enhancement. Drawcircleimage : added zoomparam = 0 : request an auto zoom for the drawing." />
     <MESSAGE value="Update V.Ensibs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update V.Ensibs" />
+    <MESSAGE value="Toffoli Bug Corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Toffoli Bug Corrected" />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="115" key="#Menus_and_Toolbars" timestamp="1613922731293">
@@ -677,58 +680,58 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1615964075537">
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1616859051399">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1615964075537" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1616859051399" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1613922660265">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1613922660265" />
-    <state width="1864" height="400" key="GridCell.Tab.0.bottom" timestamp="1616858991330">
+    <state width="1864" height="260" key="GridCell.Tab.0.bottom" timestamp="1616949373923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.bottom/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="400" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616858991330" />
-    <state width="1864" height="400" key="GridCell.Tab.0.center" timestamp="1616858991330">
+    <state width="1864" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616949373923" />
+    <state width="1864" height="260" key="GridCell.Tab.0.center" timestamp="1616949373923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.center/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="400" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616858991330" />
-    <state width="1864" height="400" key="GridCell.Tab.0.left" timestamp="1616858991330">
+    <state width="1864" height="260" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616949373923" />
+    <state width="1864" height="260" key="GridCell.Tab.0.left" timestamp="1616949373923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.left/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="400" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616858991330" />
-    <state width="1864" height="400" key="GridCell.Tab.0.right" timestamp="1616858991330">
+    <state width="1864" height="260" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616949373923" />
+    <state width="1864" height="260" key="GridCell.Tab.0.right" timestamp="1616949373923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.right/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="400" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616858991330" />
-    <state width="932" height="273" key="GridCell.Tab.1.bottom" timestamp="1616858444304">
+    <state width="1864" height="260" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616949373923" />
+    <state width="932" height="273" key="GridCell.Tab.1.bottom" timestamp="1616865766209">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616858444304" />
-    <state width="932" height="273" key="GridCell.Tab.1.center" timestamp="1616858444304">
+    <state width="932" height="273" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
+    <state width="932" height="273" key="GridCell.Tab.1.center" timestamp="1616865766209">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616858444304" />
-    <state width="932" height="273" key="GridCell.Tab.1.left" timestamp="1616858444304">
+    <state width="932" height="273" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
+    <state width="932" height="273" key="GridCell.Tab.1.left" timestamp="1616865766209">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616858444304" />
-    <state width="932" height="273" key="GridCell.Tab.1.right" timestamp="1616858444304">
+    <state width="932" height="273" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
+    <state width="932" height="273" key="GridCell.Tab.1.right" timestamp="1616865766209">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616858444304" />
+    <state width="932" height="273" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
     <state x="355" y="98" key="SettingsEditor" timestamp="1612470977834">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="355" y="98" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1612470977834" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1615964085340">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1616859055910">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1615964085340" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1616859055910" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1613922661923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -745,5 +748,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="227" y="241" key="new project wizard/0.0.1920.1080@0.0.1920.1080" timestamp="1612471285838" />
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1616947356831">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1616947356831" />
   </component>
 </project>

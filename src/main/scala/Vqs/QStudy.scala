@@ -144,7 +144,6 @@ object QStudy {
 
 
 
-
   def caseSwap(): Unit = {
 
     def test(): Unit = {
@@ -164,12 +163,12 @@ object QStudy {
 
 
     def test(): Unit = {
-      val rr: QReg = QReg(3)
+      val rr: QReg = QReg(4)
       // rr.pdf("test.pdf", "test")
-      rr.trace(2)
+      rr.trace(4)
       rr.pokeQBitState(1, (0,1))
 
-      rr - CL(Not(0),List(1,2))
+      rr - CL(Not(0),List(1,2,3))
       println(rr.render)
       rr.end()
     }
@@ -179,14 +178,21 @@ object QStudy {
 
   def caseAdd() {
 
+
     def test(): Unit = {
-      val rr: QReg = QReg(3)
+      val rr: QReg = QReg(4)
       // rr.pdf("test.pdf", "test")
       rr.trace(2)
-      rr.pokeQBitState(1, (0,1))
 
-      rr - CL(Not(0),List(1,2))
-      println(rr.render)
+      rr.init(1)
+
+      rr - H(2) - Rz(2, 45)
+ //     rr - H(3) - Rz(3, 90)
+      rr - CL( Not(3), List(0,1,2))
+      rr - CL( Not(2), List(0,1))
+      rr - C( Not(1), 0)
+      rr - Not(0)
+
       rr.end()
     }
     test()

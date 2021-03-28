@@ -801,15 +801,22 @@ case class QReg(val nbQbits : Int = 1) { //
     im.drawText(text, 6,20, c= new Color(255,255,255))
     // List of the changed
     val lchanged = for( i <- qbitChanged.indices if (qbitChanged(i)) ) yield i
+    // qbMState(i) is the value measured for the # state i (res is 0 or 1 or -1)
     val qbs = qbMState.indices.filter(v => qbMState(v) != -1).toList
+    // qbs is the set of QBits read
     val qbs0 = qbs.filter(v => qbMState(v) == 0).toList
+    // qbs0 is the set of Qbit to 0
     val qbs1 = qbs.filter(v => qbMState(v) == 1).toList
+    // qbs1 is the set of Qbit measured to 1
 
       //indices.map(v => if qbitChanged(v) v else -1 ).filter(_ > -1).toList
 
     val phaseOrg = if (phaseNormalization)  findPhaseOrg else 0.0
 
-    (0 until nbValues).foreach(
+    // print("QB0 : "+ qbs0.mkString(" ")+"\n")
+    // print("QB1 : "+ qbs1.mkString(" ")+"\n")
+
+    (0 until nbValues).foreach( // for each state
       v => {
         val cx = bord+(2*osize+bord)*(v % coln)
         val cy = bord+(2*osize+bord*2)*((v / coln).toInt)
