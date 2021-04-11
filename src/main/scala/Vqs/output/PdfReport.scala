@@ -136,7 +136,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 
     this.document.save(this.fileName)
     this.document.close()
-    QUtils.removeImageTemp
+    QUtils.rmImageTemp
   } // closePdf
 
   case class rvb(r: Int, v: Int, b: Int);

@@ -191,7 +191,7 @@ case class QReg(val nbQbits : Int = 1) { //
   def trace(sizeOfTrace : Int = 2, useASCII : Boolean = this.onlyAscii): Unit = {
     this.useOnlyASCII(useASCII)
     QUtils.createImagesDirectoryIfNecessary
-    QUtils.removeImages
+    QUtils.rmImages
     isTrace = true
     traceIdx = 0
     traceSize = sizeOfTrace
@@ -237,7 +237,7 @@ case class QReg(val nbQbits : Int = 1) { //
    *  @param idx_ of the value (binary)
    *  @return 0, 1 or -1 (not measured)
    */
-  def apply(idx : String) : QComplex = this(QUtils.binaryToInt(idx))
+  def apply(idx : String) : QComplex = this(QUtils.binToInt(idx))
 
 
 
@@ -312,17 +312,19 @@ case class QReg(val nbQbits : Int = 1) { //
 
   // updates with binary idx
   def update(idx : String, value: QComplex) {
-    this.update(QUtils.binaryToInt(idx), value)
+    this.update(QUtils.binToInt(idx), value)
   } // update
 
 
 
   // writes a value in the reg
   def write(value : Int) { // initialise the first register's value
-    // TODO qbitchanged
-    this.state.indices.foreach( v => this(v)= QComplex(0,0) )
-    this(value) = QComplex(1,0)
-    pad.writeValue(value) // valeur courante
+    if ( (value > this.nbValues) || (value <0) )
+      notifyError("trying to write or init to a bigger value than possible : check the number of QBits") else {
+      this.state.indices.foreach(v => this (v) = QComplex(0, 0))
+      this (value) = QComplex(1, 0)
+      pad.writeValue(value) // valeur courante
+    }
   } // write
 
 
@@ -428,11 +430,12 @@ case class QReg(val nbQbits : Int = 1) { //
             }).
             foreach(
               v => {
-                val s1 = QUtils.binaryToInt(v._2(0));
-                val s2 = QUtils.binaryToInt(v._2(1))
+                val s1 = QUtils.binToInt(v._2(0));
+                val s2 = QUtils.binToInt(v._2(1))
                 val tempC = this (s2);
                 this (s2) = this (s1);
                 this (s1) = tempC // swap
+                // println("swap "+s1+ " and "+s2)
                 qbitChanged(e1) = true
                 qbitChanged(e2) = true
               }
@@ -462,18 +465,19 @@ case class QReg(val nbQbits : Int = 1) { //
             case _ =>
           }
 
-          var idxQBit = qop.idxBit
+          var idxQBits = qop.idxBit
 
-          if (idxQBit >= nbQbits) notifyError("Accessing an unknown QBit (check the # in the operator)")
+          if ((idxQBits.size >0) && (idxQBits.max >= nbQbits)) notifyError("Accessing an unknown QBit (check the # in the operator)")
 
-          if (idxQBit == All) { // Multiple QBits (all QBits)
-            (0 until nbQbits). foreach( v => applyOp(v, masque, qop) )
+          if ((idxQBits.size>0) && (idxQBits(0) == All)) { // Multiple QBits (all QBits)
+            (0 until nbQbits). foreach( v => applyOp(List(v), masque, qop) )
           } else {
-            if (getMState(idxQBit) != NOMEASURE) {
-              notifyError("QBit "+idxQBit+" is flat")
-            } else {
-              applyOp(idxQBit, masque, qop)
+            if ((idxQBits.size > 0) && (idxQBits(0) != Index )) {
+              if (!idxQBits.exists( getMState(_) != NOMEASURE )) {
+                applyOp(idxQBits, masque, qop)
+              } else notifyError("check "+idxQBits+" some are already measured QBits")
             }
+
           }
 
         }
@@ -502,11 +506,11 @@ case class QReg(val nbQbits : Int = 1) { //
   }
 
 // performs an op
-  def applyOp(idxQBit : Int, mask : Int, qop : QOperator ) {
-    // applies the qop on the Qbit idxQBit
+  def applyOp(idxQBits : List[Int], mask : Int, qop : QOperator ) {
+    // applies the qop on the Qbits idxQBits
     // conditionnal to the idxQbit in  the mask (if mask >0)
 
-      qbitChanged(idxQBit) = true // tags this Qbit as changed
+    idxQBits.foreach( nbQb => if ( nbQb >=0 )  qbitChanged(nbQb) = true) // tags this Qbit as changed )
 
       lastOp =  if (mask > 0) {
         val maskList = ((0 until nbQbits).filter(i => {
@@ -516,7 +520,7 @@ case class QReg(val nbQbits : Int = 1) { //
       } else  qop.opLabel
 
       // Computes the couple of Qbits with only one V different
-      val p = math.pow(2, idxQBit).toInt // 2^idxQbit
+      val p = math.pow(2, idxQBits(0)).toInt // 2^idxQbit
       val s = (0 until nbValues).groupBy(_ / p).toList.sortBy(_._1).groupBy(_._1 % 2 == 0)
       val rp = s(true).flatMap(c => c._2.toList)
       val ri = s(false).flatMap(c => c._2.toList)
@@ -524,14 +528,43 @@ case class QReg(val nbQbits : Int = 1) { //
 
       if (mask > 0) vr = vr.filter(v => (v._1 & mask) == mask)
 
-      // Applies the op on these states
-      var f: QV => QV = qop.op _
+      qop match {
+        case Swap(e1,e2) => {
+            val r = (0 until math.pow(2, nbQbits).toInt).
+              filter( (r: Int) => ((r & mask) == mask)).
+              map(v => QUtils.toBinary(v, nbQbits)).
+              filter(v => v(nbQbits - e1 - 1) != v(nbQbits - e2 - 1)).
+              groupBy(v => {
+                val a: Array[Char] = v.toCharArray;
+                a(nbQbits - e1 - 1) = '*';
+                a(nbQbits - e2 - 1) = '*';
+                a.mkString
+              }).
+              foreach(
+                v => {
+                  val s1 = QUtils.binToInt(v._2(0));
+                  val s2 = QUtils.binToInt(v._2(1))
+                  val tempC = this (s2);
+                  this (s2) = this (s1);
+                  this (s1) = tempC // swap
+                  println("swap "+s1+ " and "+s2)
+                  qbitChanged(e1) = true
+                  qbitChanged(e2) = true
+                }
+              ) // foreach
+        }
 
-      vr.foreach {
-        case (i1, i2) =>
-          val v = f(QV(this (i1), this (i2))) // matrix *
-          this (i1) = v(0);
-          this (i2) = v(1)
+        case _ => { // Applies the op on these states with matrix
+          var f: QV => QV = qop.op _
+
+          vr.foreach {
+            case (i1, i2) =>
+              val v = f(QV(this (i1), this (i2))) // matrix *
+              this (i1) = v(0);
+              this (i2) = v(1)
+          }
+        }
+
       }
     } // applyOp
 
@@ -690,7 +723,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
   // convert an angle to Deg if needed
   def angle(a :Double) = { // converts angle - all the computations are in Radians
-      if (this.isInRadians) a else convertDegToRad(a)
+      if (this.isInRadians) a else cvtDegToRad(a)
   }
 
 

@@ -4,7 +4,7 @@
 		module="vqs_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20200313165110"
+		publication="20210411183139"
 	>
 		<description>
 		vqs
@@ -35,5 +35,6 @@
 		<dependency org="commons-logging" name="commons-logging" rev="1.2" conf="compile->default(compile)"/>
 		<dependency org="org.apache.pdfbox" name="fontbox" rev="2.0.18" conf="compile->default(compile)"/>
 		<dependency org="org.apache.pdfbox" name="pdfbox" rev="2.0.18" conf="compile->default(compile)"/>
+		<dependency org="org.scalatest" name="scalatest-funsuite_2.12" rev="3.2.7" conf="test->default(compile)"/>
 	</dependencies>
 </ivy-module>

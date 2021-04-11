@@ -19,7 +19,7 @@ trait QOperator {
   var thisR : QReg = _ // pointer to the current QRegister
 
   def render(pad: QPad); // dedicated renderer
-  def idxBit : Int;
+  def idxBit : List[Int];
 
   def op(qbit: QV) : QV = Id.mult(qbit) // identity
 
@@ -56,7 +56,7 @@ case class Label(label:String) extends QOperator {
     (label+" ").indices.foreach( _ => pad.nextCol())
   }
 
-  def idxBit = NoIdx // label
+  def idxBit = List() // label
 
 } // Label
 
@@ -67,7 +67,7 @@ case class $(nm : Int, label:String) extends QOperator {
 
   def render(pad: QPad): Unit = {}
 
-  def idxBit = NoIdx // label
+  def idxBit = List() // label
 
 } // Label
 
@@ -78,7 +78,7 @@ case class |>(numQbit : Int, state: (QComplex, QComplex)) extends QOperator {
 
   def render(pad: QPad): Unit = {}
 
-  def idxBit = NoIdx // label
+  def idxBit =  List() // label
 
 } // Label
 
@@ -95,7 +95,7 @@ case class VLabel(label:String) extends QOperator {
     pad.nextCol2();
   }
 
-  def idxBit = NoIdx // label
+  def idxBit =  List() // label
 
 } // Label
 
@@ -108,7 +108,7 @@ case class |(nb : Int = 4) extends QOperator {
     for (i <- (0 until nb)) pad.nextCol();
   }
 
-  def idxBit = NoIdx // label
+  def idxBit =  List() // label
 
 } // Label
 
@@ -132,7 +132,7 @@ case class H(idx:Int = QReg.All) extends QOperator {
 
   override def opLabel = "H"+ (if (idx == QReg.All) "" else "("+thisR.LabelOf(idx) +")")
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override def op(qbit: QV) : QV = QM(
     QV(1/sq2,1/sq2),
@@ -156,7 +156,7 @@ case class X(idx:Int = QReg.All) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override   def op(qbit: QV) : QV = QM(
     QV(0,1),
@@ -180,7 +180,7 @@ case class Not(idx:Int = QReg.All) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override   def op(qbit: QV) : QV = QM(
     QV(0,1),
@@ -203,7 +203,7 @@ case class Y(idx:Int = QReg.All) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override  def op(qbit: QV) : QV = QM(
     QV(0, -i),
@@ -226,7 +226,7 @@ case class Z(idx:Int = QReg.All) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override   def op(qbit: QV) : QV = QM(
     QV(1, 0),
@@ -249,7 +249,7 @@ case class S(idx:Int = QReg.All) extends QOperator { // Z90 , S = T2
     pad.nextCol2()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override  def op(qbit: QV) : QV = QM(
     QV(1, 0),
@@ -273,7 +273,7 @@ case class mS(idx:Int = QReg.All) extends QOperator { // Z-90
     pad.nextCol2(); pad.nextCol()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override  def op(qbit: QV) : QV = QM(
     QV(1, 0),
@@ -296,7 +296,7 @@ case class T(idx:Int = QReg.All) extends QOperator { // Z45
     pad.nextCol2()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override   def op(qbit: QV) : QV = QM(
     QV(1, 0),
@@ -319,7 +319,7 @@ case class mT(idx:Int = QReg.All) extends QOperator { // Z-45
     pad.nextCol2(); pad.nextCol()
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override  def op(qbit: QV) : QV = QM(
     QV(1, 0),
@@ -350,7 +350,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit: Int = p;
+  def idxBit: List[Int] = List(p);
 
   override  def op(qbit : QV):QV = { // Rx
     QM(
@@ -381,7 +381,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit: Int = p;
+  def idxBit: List[Int] = List(p);
 
   override  def op(qbit : QV):QV = { // Ry
     QM(
@@ -412,7 +412,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
     pad.nextCol2()
   }
 
-  def idxBit: Int = p;
+  def idxBit:  List[Int] = List(p);
 
   override   def op(qbit : QV):QV = { // Rz
     /*
@@ -441,14 +441,14 @@ case class CL(Qop: QOperator, condList_ : List[Int]) extends QOperator {
   override def opLabel = "CL( "+ Qop.opLabel +" , List("+ condList.map(idx => thisR.LabelOf(idx)).mkString(",") +") )"
 
   def render(pad: QPad): Unit = {
-    val ll = idxBit :: condList
+    val ll = idxBit ::: condList
     val mn = ll.min
     val mx = ll.max
     for(i <- mn*2 to mx*2) pad.atAbs(i,"│")
     for(i <- condList) pad.at(i,"•")
     Qop.render(pad)
   }
-  def idxBit: Int = Qop.idxBit;
+  def idxBit:  List[Int] = Qop.idxBit;
   override   def op( qbit : QV):QV = Qop.op(qbit)
 } // C
 
@@ -463,14 +463,14 @@ case class C(Qop: QOperator, cond: Int) extends QOperator { // C as in CNOT -> C
 
   def render(pad: QPad): Unit = {
     val condList = List(cond)
-    val ll = idxBit :: condList
+    val ll = idxBit ::: condList
     val mn = ll.min
     val mx = ll.max
     for(i <- mn*2 to mx*2) pad.atAbs(i,"│")
     for(i <- condList) pad.at(i,"•")
     Qop.render(pad)
   }
-  def idxBit: Int = Qop.idxBit;
+  def idxBit:  List[Int] = Qop.idxBit;
   override   def op( qbit : QV):QV = Qop.op(qbit)
 } // C
 
@@ -493,7 +493,7 @@ case class Swap(e1: Int, e2: Int) extends QOperator {
     pad.at(e2,"x")
     pad.nextCol2()
   }
-  def idxBit: Int = NoIdx;
+  def idxBit:  List[Int] = List(e1,e2);
   override   def op( qbit : QV):QV = Id.mult(qbit)
 } // Swap
 
@@ -514,7 +514,7 @@ case class <(idx: Int = QReg.All) extends QOperator {
     pad.toEnd(idx, ' '/* '═' */)
   }
 
-  def idxBit = idx;
+  def idxBit = List(idx);
 
   override   def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
@@ -532,7 +532,7 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 
   override def opLabel = "F( "+ name + " , "+ msg +" )"
 
-  def idxBit = 0
+  def idxBit = List(0)
 
   override   def op(qbit: QV) : QV = Id.mult(qbit)
 } // Label
@@ -544,7 +544,7 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 case class QFT(name:String="QFT", msg : String ="", expand : Boolean = false, skipTrace : Boolean = true) extends QOperator {
   override def alias = F(msg,  QOperator.qft, msg, expand = expand, skipTrace = skipTrace)
   def render(pad: QPad): Unit = {}
-  def idxBit = NoIdx
+  def idxBit = List()
 } // Label
 
 

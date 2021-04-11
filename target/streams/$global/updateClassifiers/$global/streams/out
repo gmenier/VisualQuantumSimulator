@@ -240,6 +240,28 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [runtime->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [runtime->compile(*)]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [runtime->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile]
+[debug] sbt-chain: Checking cache for: dependency: org.scalactic#scalactic_2.12;3.2.7 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.scalactic#scalactic_2.12;3.2.7
+[debug] 	found org.scalactic#scalactic_2.12;3.2.7 in sbt-chain
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile]
+[debug] sbt-chain: Checking cache for: dependency: org.scalatest#scalatest-compatible;3.2.7 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.scalatest#scalatest-compatible;3.2.7
+[debug] 	found org.scalatest#scalatest-compatible;3.2.7 in sbt-chain
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test->default]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test->runtime]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test->compile]
@@ -268,6 +290,29 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test->compile]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile]
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.12;1.3.0 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.12;1.3.0
+[debug] 	found org.scala-lang.modules#scala-xml_2.12;1.3.0 in sbt-chain
+[debug] 	[1.3.0] org.scala-lang.modules#scala-xml_2.12;1.3.0
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile]
+[debug] sbt-chain: Checking cache for: dependency: org.scalatest#scalatest-core_2.12;3.2.7 {test=[compile, runtime(*), master(compile), runtime, compile(*), master], test-internal=[compile, runtime(*), master(compile), runtime, compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.scalatest#scalatest-core_2.12;3.2.7
+[debug] 	found org.scalatest#scalatest-core_2.12;3.2.7 in sbt-chain
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->default]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->runtime]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->compile]
@@ -284,6 +329,21 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->compile(*)]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->default]
+[debug] sbt-chain: Checking cache for: dependency: org.scalatest#scalatest-funsuite_2.12;3.2.7 {test=[default, compile, runtime, default(compile), master], test-internal=[default, compile, runtime, default(compile), master]}
+[debug] sbt-chain: module revision found in cache: org.scalatest#scalatest-funsuite_2.12;3.2.7
+[debug] 	found org.scalatest#scalatest-funsuite_2.12;3.2.7 in sbt-chain
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->default(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->master]
 [debug] resolving dependencies for configuration 'provided'
 [debug] == resolving dependencies for default#vqs$sources;0.1 [provided]
 [debug] resolving dependencies for configuration 'optional'
@@ -611,6 +671,22 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [runtime->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [runtime->compile(*)]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [runtime->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test->default]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test->runtime]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test->compile]
@@ -639,6 +715,22 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test->compile]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->default]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->runtime]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->compile]
@@ -655,8 +747,36 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->compile(*)]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->default]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->default(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test->master]
 [debug] == resolving dependencies for default#vqs$sources;0.1 [optional]
 [debug] == resolving dependencies for default#vqs$sources;0.1 [provided]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalactic#scalactic_2.12;3.2.7 [test-internal->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-compatible;3.2.7 [test-internal->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test-internal->default]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test-internal->runtime]
 [debug] == resolving dependencies default#vqs$sources;0.1->commons-logging#commons-logging;1.2 [test-internal->compile]
@@ -685,6 +805,22 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test-internal->compile]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test-internal->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#pdfbox;2.0.18 [test-internal->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scala-lang.modules#scala-xml_2.12;1.3.0 [test-internal->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->runtime(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->master(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->compile(*)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-core_2.12;3.2.7 [test-internal->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test-internal->default]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test-internal->runtime]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test-internal->compile]
@@ -701,6 +837,18 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test-internal->master]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test-internal->compile(*)]
 [debug] == resolving dependencies default#vqs$sources;0.1->org.apache.pdfbox#fontbox;2.0.18 [test-internal->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->default]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->default(compile)]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->runtime]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->compile]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->master]
+[debug] == resolving dependencies default#vqs$sources;0.1->org.scalatest#scalatest-funsuite_2.12;3.2.7 [test-internal->master]
 [debug] resolving dependencies for configuration 'plugin'
 [debug] == resolving dependencies for default#vqs$sources;0.1 [plugin]
 [debug] resolving dependencies for configuration 'pom'
@@ -727,12 +875,47 @@
 [debug] == resolving dependencies default#vqs$sources;0.1->jline#jline;2.14.6 [scala-tool->master]
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
-[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(src)
-[debug] 	[NOT REQUIRED] org.apache.pdfbox#fontbox;2.0.18!fontbox.jar(src)
-[debug] 	[NOT REQUIRED] org.apache.pdfbox#pdfbox;2.0.18!pdfbox.jar(src)
 [debug] 	[NOT REQUIRED] commons-logging#commons-logging;1.2!commons-logging.jar(src)
+[debug] 	[NOT REQUIRED] org.apache.pdfbox#pdfbox;2.0.18!pdfbox.jar(src)
+[debug] 	[NOT REQUIRED] org.apache.pdfbox#fontbox;2.0.18!fontbox.jar(src)
+[debug] 		tried C:\Users\menier\.ivy2\local\org.scalactic\scalactic_2.12\3.2.7\srcs\scalactic_2.12-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.2.7/scalactic_2.12-3.2.7-sources.jar
+[debug] 		tried C:\Users\menier\.ivy2\local\org.scalatest\scalatest-compatible\3.2.7\srcs\scalatest-compatible-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.7/scalatest-compatible-3.2.7-sources.jar
+[debug] 		tried C:\Users\menier\.ivy2\local\org.scala-lang.modules\scala-xml_2.12\1.3.0\srcs\scala-xml_2.12-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0-sources.jar
+[debug] 		tried C:\Users\menier\.ivy2\local\org.scalatest\scalatest-funsuite_2.12\3.2.7\srcs\scalatest-funsuite_2.12-sources.jar
+[debug] 		tried C:\Users\menier\.ivy2\local\org.scalatest\scalatest-core_2.12\3.2.7\srcs\scalatest-core_2.12-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest-core_2.12/3.2.7/scalatest-core_2.12-3.2.7-sources.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.12/3.2.7/scalatest-funsuite_2.12-3.2.7-sources.jar
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(src)
 [debug] 	[NOT REQUIRED] jline#jline;2.14.6!jline.jar(src)
-[debug] :: resolution report :: resolve 98ms :: artifacts dl 20ms
+[info] downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.2.7/scalactic_2.12-3.2.7-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.2.7/scalactic_2.12-3.2.7-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.12/3.2.7/scalatest-funsuite_2.12-3.2.7-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.12/3.2.7/scalatest-funsuite_2.12-3.2.7-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.7/scalatest-compatible-3.2.7-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.7/scalatest-compatible-3.2.7-sources.jar
+[info] downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-core_2.12/3.2.7/scalatest-core_2.12-3.2.7-sources.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-core_2.12/3.2.7/scalatest-core_2.12-3.2.7-sources.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.2.7/scalactic_2.12-3.2.7-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.7/scalatest-compatible-3.2.7-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0-sources.jar.sha1
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.12/3.2.7/scalatest-funsuite_2.12-3.2.7-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.7/scalatest-compatible-3.2.7-sources.jar
+[info] 	[SUCCESSFUL ] org.scalatest#scalatest-compatible;3.2.7!scalatest-compatible.jar(src) (474ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.12/3.2.7/scalatest-funsuite_2.12-3.2.7-sources.jar
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0-sources.jar
+[info] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(src) (484ms)
+[info] 	[SUCCESSFUL ] org.scalatest#scalatest-funsuite_2.12;3.2.7!scalatest-funsuite_2.12.jar(src) (484ms)
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scalatest/scalatest-core_2.12/3.2.7/scalatest-core_2.12-3.2.7-sources.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.2.7/scalactic_2.12-3.2.7-sources.jar
+[info] 	[SUCCESSFUL ] org.scalactic#scalactic_2.12;3.2.7!scalactic_2.12.jar(src) (494ms)
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scalatest/scalatest-core_2.12/3.2.7/scalatest-core_2.12-3.2.7-sources.jar
+[info] 	[SUCCESSFUL ] org.scalatest#scalatest-core_2.12;3.2.7!scalatest-core_2.12.jar(src) (534ms)
+[debug] :: resolution report :: resolve 60ms :: artifacts dl 554ms
 [debug] 	report for default#vqs$sources;0.1 compile produced in D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\target\scala-2.12\resolution-cache\reports\default-vqs$sources-compile.xml
 [debug] 	report for default#vqs$sources;0.1 runtime produced in D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\target\scala-2.12\resolution-cache\reports\default-vqs$sources-runtime.xml
 [debug] 	report for default#vqs$sources;0.1 test produced in D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\target\scala-2.12\resolution-cache\reports\default-vqs$sources-test.xml
@@ -744,4 +927,4 @@
 [debug] 	report for default#vqs$sources;0.1 plugin produced in D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\target\scala-2.12\resolution-cache\reports\default-vqs$sources-plugin.xml
 [debug] 	report for default#vqs$sources;0.1 pom produced in D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\target\scala-2.12\resolution-cache\reports\default-vqs$sources-pom.xml
 [debug] 	report for default#vqs$sources;0.1 scala-tool produced in D:\users\menier\Documents\_Doc_\_Doc_Prog\scala\vqs\target\scala-2.12\resolution-cache\reports\default-vqs$sources-scala-tool.xml
-[debug] 	resolve done (98ms resolve - 20ms download)
+[debug] 	resolve done (60ms resolve - 554ms download)

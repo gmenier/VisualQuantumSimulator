@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="scala-tool"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20200313165111"/>
+		date="20210411183143"/>
 	<dependencies>
 		<module organisation="jline" name="jline">
 			<revision name="2.14.6" status="release" pubdate="20180326111840" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="master(*), compile, compile(*), master" position="1">

@@ -371,7 +371,7 @@ object QComplex {
       }
       if (math.abs(ang / Pi) < 0.00001) strAng = "0"
     } else {
-      val cvt = convertRadToDeg(ang)
+      val cvt = cvtRadToDeg(ang)
       val df2 = if (!ascii) new java.text.DecimalFormat("##.##°") else new java.text.DecimalFormat("##.##")
       val thetapStr = df2.format(cvt)
       strAng = thetapStr.replaceAll("-0°","0°")

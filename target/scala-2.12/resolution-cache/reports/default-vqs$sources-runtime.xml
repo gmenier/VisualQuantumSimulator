@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="runtime"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20200313165111"/>
+		date="20210411183143"/>
 	<dependencies>
 		<module organisation="org.apache.pdfbox" name="pdfbox">
 			<revision name="2.0.18" status="release" pubdate="20191220185837" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="1">

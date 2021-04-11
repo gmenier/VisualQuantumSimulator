@@ -14,7 +14,7 @@ import scala.io.AnsiColor.{CYAN, GREEN, MAGENTA, RED, RESET, YELLOW}
 object QUtils {
 
   /** helper to convert a binary string to a number */
-  def binaryToInt(binaryString : String): Int = {
+  def binToInt(binaryString : String): Int = {
     Integer.parseInt(binaryString, 2)
   }
 
@@ -54,12 +54,12 @@ object QUtils {
   } // getListOfFiles
 
   /** helper to remove images from vqsimges dir */
-  def removeImages = {
+  def rmImages = {
     getListOfFiles("vqsimages/").foreach(_.delete)
   } // removeImages
 
   /** helper to remove the temp image */
-  def removeImageTemp = {
+  def rmImageTemp = {
     getListOfFiles("vqsimages/temp").foreach(_.delete)
     val d = new File("vqsimages/temp.png")
     if (d.exists) {
@@ -121,15 +121,32 @@ object QUtils {
   } // normalizeAngleOrigin
 
   /** utility to convert deg to rad */
-  def convertDegToRad(v: Double) = (v*Math.PI)/180
+  def cvtDegToRad(v: Double) = (v*Math.PI)/180
 
   /** utility to convert rad to deg */
-  def convertRadToDeg(v: Double) = (v*180)/Math.PI
+  def cvtRadToDeg(v: Double) = (v*180)/Math.PI
+
+  /** utility to compare phases */
+  def equPhases(v1: Double, v2 : Double, deg: Boolean  = false ) = {
+    var dv1=v1
+    var dv2=v2
+    if (!deg) {
+      dv1 = (v1 / 2*Math.PI)*360
+      dv2 = (v2 / 2*Math.PI)*360
+    }
+    // println((Math.floor(v1+ 10*360)).toInt % 360)
+    // println((Math.floor(v2+ 10*360)).toInt % 360)
+    dv1 = Math.floor(dv1 * 100000)*100000
+    dv2 = Math.floor(dv2 * 100000)*100000
+
+    ( ((v1+ 10*360)).toInt % 360 == ((v2+ 10*360)).toInt % 360 )
+  }
+
 
   /** utility to (try to) convert a Dec to a fraction */
-  def convertDecimalToFraction(x: Double): (Int, Int) = {
+  def cvtDecimalToFraction(x: Double): (Int, Int) = {
     if (x < 0) {
-      val r = convertDecimalToFraction(-x)
+      val r = cvtDecimalToFraction(-x)
       (-r._1, r._2)
     } else {
       val tolerance = 1.0E-6
