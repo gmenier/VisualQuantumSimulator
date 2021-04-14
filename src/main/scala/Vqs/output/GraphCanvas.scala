@@ -4,6 +4,8 @@ import java.awt.geom.{Arc2D, Ellipse2D, Line2D}
 import java.awt.image.BufferedImage
 import java.awt.{BasicStroke, Color, Font, Graphics2D}
 
+import Vqs.QReg
+
 case class GraphCanvas(w: Int=500, h: Int=500) {
 
   var size : (Int, Int) = (w, h)
@@ -19,6 +21,11 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
   val magenta    = new Color(150,0,150)
   val palemagenta= new Color(50,5,50)
   val paleblue   = new Color(0,0,180)
+
+
+  val GreenColoringScheme = 0
+  val RedColoringScheme   = 1
+  val JumpColoringScheme  = 2
 
   // clear background
   g.setColor(Color.BLACK)
@@ -82,7 +89,9 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
                 qbState : List[Int] = List(),
                 qb0 : List[Int] = List(),
                 qb1 : List[Int] = List(),
-                isAnticlock_ : Boolean = false
+                isAnticlock_ : Boolean = false,
+                coloringScheme : Int = GreenColoringScheme,
+                coloringPow : Int = 3
                ): Unit = { // draws a state as a picture
 
     var phase: Double = if (isAnticlock_) -phase_ else phase_
@@ -106,7 +115,7 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
             red = paleRed;
             green = paleGreen
           }
-        } else { // todo change color by power of 2 of the changed QBit ?
+        } else {
           red = hotRed;
           green = hotGreen;
         }
@@ -139,12 +148,24 @@ case class GraphCanvas(w: Int=500, h: Int=500) {
           //  print(v_ +" :"+res1+" "+res2+"\n")
           if (res1*res2 == 0) exclude = true
 
-          if ((math.floor(v_ / (math.pow(2, 3).toInt))).toInt % 2 == 0) {
-            drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, green)
-          }else {
-            drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, red)
-          }
+          coloringScheme match {
 
+            case GreenColoringScheme => {
+              drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, green)
+            }
+
+            case RedColoringScheme => {
+              drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, red)
+            }
+
+            case JumpColoringScheme => { // see coloringPox
+              if ((math.floor(v_ / (math.pow(2, coloringPow).toInt))).toInt % 2 == 0) {
+                drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, green)
+              } else {
+                drawFilledCircle(x - (osize) - v1 * s, y - (osize) - v1 * s, osize * s / 2 + v1 * s * 2, red)
+              }
+            }
+          }
 
         }
 

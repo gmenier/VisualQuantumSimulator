@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/output/GraphCanvas.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +162,7 @@
       <list>
         <item itemvalue="Application.main" />
         <item itemvalue="ScalaTest.VqsTests" />
+        <item itemvalue="ScalaTest.VqsTests" />
       </list>
     </recent_temporary>
   </component>
@@ -186,6 +193,7 @@
     </option>
     <option name="modificationStamps">
       <map>
+        <entry key="$PROJECT_DIR$" value="3202270742862" />
         <entry key="$PROJECT_DIR$/build.sbt" value="2588721108" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="1396028727" />
       </map>
@@ -311,14 +319,9 @@
       <workItem from="1616943085647" duration="8088000" />
       <workItem from="1617011781375" duration="1522000" />
       <workItem from="1617262249529" duration="1739000" />
-      <workItem from="1618155306719" duration="3719000" />
-    </task>
-    <task id="LOCAL-00008" summary="README Update2">
-      <created>1584379087783</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1584379087783</updated>
+      <workItem from="1618155306719" duration="3827000" />
+      <workItem from="1618337672023" duration="3894000" />
+      <workItem from="1618384087592" duration="7868000" />
     </task>
     <task id="LOCAL-00009" summary="General update">
       <created>1584524801226</created>
@@ -656,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618159476189</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="updated sbt &amp; test file">
+      <created>1618159720486</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1618159720486</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +675,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Scaladoc still in progress&#10;Fixed bug in Phase display&#10;Cleaning up code" />
     <MESSAGE value="Fixed setRadians/setDegrees&#10;Scaladoc still in progress" />
     <MESSAGE value="Back to dev&#10;Maintenance fixes" />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. (Windows for instance) This outputs only ascii characters..." />
@@ -690,7 +699,8 @@
     <MESSAGE value="Toffoli Bug Corrected" />
     <MESSAGE value="Added read exclusion for mono circle display (when you perform a measure, the discarded states are half circle for mono circle display : this has been fixed)" />
     <MESSAGE value="Fixed bug : Swap with both conditionnals C and CL&#10;Added Tests with the Scalatest Library (see the test directory)&#10; (regressions ahoy !)&#10;Added some utils in QUtils (to compare two phases for instance)&#10;Added a test for init and write" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug : Swap with both conditionnals C and CL&#10;Added Tests with the Scalatest Library (see the test directory)&#10; (regressions ahoy !)&#10;Added some utils in QUtils (to compare two phases for instance)&#10;Added a test for init and write" />
+    <MESSAGE value="updated sbt &amp; test file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated sbt &amp; test file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="115" key="#Menus_and_Toolbars" timestamp="1613922731293">
@@ -701,6 +711,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="695" y="288" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610137028593" />
+    <state x="92" y="92" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1618339019472">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="92" y="92" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1618339019472" />
     <state x="680" y="325" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1611480939129">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -713,66 +727,66 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1618159474690">
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1618159719862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618159474690" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618159719862" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1613922660265">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1613922660265" />
-    <state width="1823" height="257" key="GridCell.Tab.0.bottom" timestamp="1618159261554">
+    <state width="1864" height="310" key="GridCell.Tab.0.bottom" timestamp="1618426674517">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.bottom/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1823" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1618159261554" />
-    <state width="1823" height="257" key="GridCell.Tab.0.center" timestamp="1618159261554">
+    <state width="1864" height="310" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1618426674517" />
+    <state width="1864" height="310" key="GridCell.Tab.0.center" timestamp="1618426674517">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.center/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1823" height="257" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1618159261554" />
-    <state width="1823" height="257" key="GridCell.Tab.0.left" timestamp="1618159261554">
+    <state width="1864" height="310" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1618426674517" />
+    <state width="1864" height="310" key="GridCell.Tab.0.left" timestamp="1618426674517">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.left/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1823" height="257" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1618159261554" />
-    <state width="1823" height="257" key="GridCell.Tab.0.right" timestamp="1618159261554">
+    <state width="1864" height="310" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1618426674517" />
+    <state width="1864" height="310" key="GridCell.Tab.0.right" timestamp="1618426674517">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.right/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1823" height="257" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618159261554" />
-    <state width="932" height="273" key="GridCell.Tab.1.bottom" timestamp="1616865766209">
+    <state width="1864" height="310" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618426674517" />
+    <state width="932" height="354" key="GridCell.Tab.1.bottom" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
-    <state width="932" height="273" key="GridCell.Tab.1.center" timestamp="1616865766209">
+    <state width="932" height="354" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1618346398503" />
+    <state width="932" height="354" key="GridCell.Tab.1.center" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
-    <state width="932" height="273" key="GridCell.Tab.1.left" timestamp="1616865766209">
+    <state width="932" height="354" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1618346398503" />
+    <state width="932" height="354" key="GridCell.Tab.1.left" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
-    <state width="932" height="273" key="GridCell.Tab.1.right" timestamp="1616865766209">
+    <state width="932" height="354" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1618346398503" />
+    <state width="932" height="354" key="GridCell.Tab.1.right" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="932" height="273" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616865766209" />
+    <state width="932" height="354" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618346398503" />
     <state x="237" y="21" key="SettingsEditor" timestamp="1618158838801">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="237" y="21" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1618158838801" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1618159479343">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1618159722388">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618159479343" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618159722388" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1613922661923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1613922661923" />
-    <state x="594" y="34" width="731" height="1011" key="find.popup" timestamp="1616951357842">
+    <state x="594" y="34" width="731" height="1011" key="find.popup" timestamp="1618426633590">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="594" y="34" width="731" height="1011" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1616951357842" />
+    <state x="594" y="34" width="731" height="1011" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1618426633590" />
     <state x="596" y="284" key="git4idea.merge.GitPullDialog" timestamp="1610734453585">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

@@ -91,6 +91,13 @@ case class QReg(val nbQbits : Int = 1) { //
     performsTraceFunction = ( idTrace : Int, thisRegister : QReg) => {  }
   }
 
+  // true if the states are about the same
+  def sameStatesAs( r : QReg) : Boolean = {
+    (this.nbQbits == r.nbQbits) &&
+    (0 until nbValues).forall(
+      v => this(v) == r(v)
+    )
+  }
 
   // Array of states amp of proba (each initialized to 0+0i)
   // val state: Array[QComplex] = Array.fill[QComplex](nbValues)(QComplex(0,0))
@@ -826,7 +833,8 @@ case class QReg(val nbQbits : Int = 1) { //
                      text: String="", // text to draw
                      numLines: Int = 1, // how many lines
                      osize:Int = 30, // size of one circle
-                     clist : List[Int] = List() // Cond QBit list
+                     clist : List[Int] = List(),
+                     coloringScheme : Int = ColoringSchemeChanged// Cond QBit list
                     ): Unit = {
     val coln = nbValues/numLines // number of col
     val bord = 60
@@ -856,13 +864,21 @@ case class QReg(val nbQbits : Int = 1) { //
         val amp = this(v).proba;
         val phase = this(v).phase(phaseOrg);
         val nbCircles = if (drawBitCircle) nbQbits else 1
-        im.drawState(50+cx,50+cy,amp,phase,osize, v, nbCircles, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock)
-        im.drawText(text = v.toString, 50+cx-5,40+cy+osize+bord, c= new Color(255,255,255))
-        if (this.changed(v)) {
-          //im.drawFilledCircle(50+cx-5+3,48+cy+osize+bord, 5, c= new Color(250,250,250))
-          im.drawLine(50+cx-5+3-10,48+cy+osize+bord,
-            50+cx-5+3-10,48+cy+osize+bord-14, c= new Color(255,255,255))
 
+        if (coloringScheme == ColoringSchemeChanged) {
+          if (this.changed(v)) {
+            im.drawState(50 + cx, 50 + cy, amp, phase, osize, v, nbCircles, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock, QReg.DrawRed)
+          } else {
+            im.drawState(50 + cx, 50 + cy, amp, phase, osize, v, nbCircles, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock, QReg.DrawGreen)
+          }
+        }
+
+        //im.drawState(50+cx,50+cy,amp,phase,osize, v, nbCircles, lchanged.toList, clist, qbs, qbs0, qbs1, QReg.DefaultObjIsAntiClock, QReg.DrawGreen)
+        im.drawText(text = v.toString, 50+cx-5,40+cy+osize+bord, c= new Color(255,255,255))
+        if ((drawBitCircle && this.changed(v)) || ( (this.changed(v)) ) ) {
+          //im.drawFilledCircle(50+cx-5+3,48+cy+osize+bord, 5, c= new Color(250,250,250))
+         // im.drawLine(50+cx-5+3-10,48+cy+osize+bord,
+         //   50+cx-5+3-10,48+cy+osize+bord-14, c= new Color(255,255,255))
           im.drawLine(50+cx-5+3-10,48+cy+osize+bord,
             50+cx-5+3+14,48+cy+osize+bord, c= new Color(255,255,255))
         }
@@ -898,10 +914,19 @@ object QReg {
   val All = -2 // For All QBits
   val Index = -1 // Idx for labels
 
-
   val MinNorm = 0.00001  // if norm < MinNorm, use 0 instead
 
   val randomS = new java.util.SplittableRandom()
+
+  // Coloring Schemes for circledrawing (in GraphCanvas)
+  val DrawGreen = 0
+  val DrawRed = 1
+  val DrawJump = 3
+
+  val ColoringSchemeChanged = 0
+  val ColoringSchemeAllGreen = 1
+
+
   def flip(proba: Double): Boolean = {
     this.randomS.nextDouble() < proba
   } // flip

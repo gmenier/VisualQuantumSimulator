@@ -1,5 +1,6 @@
 package tests
 
+import Vqs.complex.QComplex
 import Vqs.{QReg, QUtils}
 import Vqs.operators._
 import org.scalatest.funsuite.AnyFunSuite
@@ -140,6 +141,70 @@ class VqsTests extends AnyFunSuite {
   }
 
 
+
+  test("swap() first test") {
+    val rr = QReg(2)
+    rr.init(1)
+    rr - H(0)
+    rr - Swap(0,1)
+    rr - H(1)
+    rr - <()
+    assert( rr.?() == 2)
+  }
+
+
+  test("swap() second test") {
+    val rr = QReg(4)
+    rr.init(1)
+    rr - Swap(0,1) - Swap(1,2) - Swap(2,3) - Swap(3,0)
+    rr - <()
+    assert( rr.?() == 1)
+  }
+
+  test( "swap() third test") {
+    val rr = QReg(4)
+    val v0 = QUtils.randomState()
+    val v3 = QUtils.randomState()
+    rr.pokeQBitState(0, v0)
+    rr.pokeQBitState(3, v3)
+    rr - Swap(0,3)
+    rr - <(1) - <(2) - <(3)
+    assert( ((rr.peekQBitState(0)).toString == v3.toString))
+  }
+
+
+  test("cswap() equals op test : true") {
+    val rr = QReg(3)
+    val v0 = QUtils.randomState()
+    rr.pokeQBitState(0, v0)
+    rr.pokeQBitState(1, v0)
+    rr.pokeQBitState( 2, (new QComplex(1),0) )
+    rr - H(2) - C(Swap(0,1), 2) - H(2) - X(2)
+    rr - <(2)
+    assert( rr.?(2) == 1)
+  }
+
+  test(" C(Z(0), 1) == C(Z(1), 0)") {
+    val rr1 = QReg(2)
+    val rr2 = QReg(2)
+
+    val v0 = QUtils.randomState()
+    val v1 = QUtils.randomState()
+
+    rr1.pokeQBitState(0, v0)
+    rr1.pokeQBitState(1, v1)
+
+    rr2.pokeQBitState(0, v0)
+    rr2.pokeQBitState(1, v1)
+
+    rr1 - C(Z(0), 1)
+    rr2 - C(Z(1), 0)
+
+    assert( rr1.sameStatesAs( rr2) )
+
+  }
+
+
   test("QFT test") {
     val rr: QReg = QReg(4)
     rr.init(1)
@@ -165,5 +230,12 @@ class VqsTests extends AnyFunSuite {
         QUtils.equPhases( QUtils.cvtRadToDeg(rr(15).bphase), 337.5, deg = true)
     )
   }
+
+
+
+
+
+
+
 
 }
