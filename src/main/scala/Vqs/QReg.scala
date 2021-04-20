@@ -395,6 +395,8 @@ case class QReg(val nbQbits : Int = 1) { //
   def -(qop_p : QOperator): QReg =  {
 
     var qop_ = qop_p.alias
+
+
     this.resetChange() // keeps a trace of the states
 
     var condl = List[Int]() // Conditionnal QBit list
@@ -410,11 +412,17 @@ case class QReg(val nbQbits : Int = 1) { //
 
         case F(name, fct, _, expand, skipTrace) =>
           var svgTrace = isTrace
-          if (skipTrace) this.traceOff(); if (!expand) this.hideRender()
+          if (skipTrace) this.traceOff();
+          if (!expand)  this.hideRender()
           fct(this);
           if (!expand) this.showRender(); this.isTrace = svgTrace
-          this - VLabel("╖"+"║"*((nbQbits)*2-3)+"╜")
-          lastOp = name
+          this - VLabel("╖"+"║"*((nbQbits)*2-3)+"╜") - |(2)
+          if (expand == false) {
+            this - |(name.size)
+          }
+          lastOp = qop_p.opLabel //
+
+
 
         case Label(_)   =>
         case VLabel(_)  =>
@@ -470,6 +478,7 @@ case class QReg(val nbQbits : Int = 1) { //
               condl = cond
 
             case _ =>
+
           }
 
           var idxQBits = qop.idxBit
@@ -500,7 +509,13 @@ case class QReg(val nbQbits : Int = 1) { //
   def processTraceIfNecessary(condl : List[Int] = List()): Unit = {
     if (isTrace) {
       println("_"*60+"\n")
-      println(traceIdx+ ". "+lastOp)
+
+      if (onlyAscii) {
+        println(traceIdx + ". " + lastOp)
+      } else {
+        println( s"${REVERSED}"+traceIdx+"."+ lastOp+s"  ${RESET} ▶")
+      }
+
       performsTraceFunction(traceIdx, this) // so you can get your own trace function
       println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
       println(this)
@@ -518,6 +533,7 @@ case class QReg(val nbQbits : Int = 1) { //
     // conditionnal to the idxQbit in  the mask (if mask >0)
 
     idxQBits.foreach( nbQb => if ( nbQb >=0 )  qbitChanged(nbQb) = true) // tags this Qbit as changed )
+
 
       lastOp =  if (mask > 0) {
         val maskList = ((0 until nbQbits).filter(i => {
@@ -599,7 +615,9 @@ case class QReg(val nbQbits : Int = 1) { //
     if (this.onlyAscii)
       r.replaceAllLiterally("(0)", s" ${BOLD}0${RESET} ")
         .replaceAllLiterally("(1)", s" ${BOLD}1${RESET} ")
+        .replaceAllLiterally("Rx","svg768")
         .replaceAllLiterally("x",s"${RED}x${RESET}")
+        .replaceAllLiterally("svg768","Rx")
         .replaceAllLiterally("%0", s"${BOLD}0")
         .replaceAllLiterally("%1", s"${BOLD}1")
         .replaceAllLiterally("%*", s"${RED}*${RESET}")
@@ -622,7 +640,9 @@ case class QReg(val nbQbits : Int = 1) { //
       .replaceAllLiterally("╓", s"${YELLOW}╓${RESET}")
       .replaceAllLiterally("║", s"${YELLOW}║${RESET}")
       .replaceAllLiterally("╙", s"${YELLOW}╙${RESET}")
+      .replaceAllLiterally("Rx","svg768")
       .replaceAllLiterally("x",s"${RED}x${RESET}")
+      .replaceAllLiterally("svg768","Rx")
       .replaceAllLiterally("│",s"${RED}│${RESET}")
       .replaceAllLiterally("•",s"${RED}•${RESET}")
       .replaceAllLiterally("╖", s"${YELLOW}╖${RESET}")
@@ -736,7 +756,7 @@ case class QReg(val nbQbits : Int = 1) { //
 
   // creates an image and saves it
   // TODO autozoom
-  def drawCircleImage(filename : String ="registre", zoomparam : Double = 1.0, text: String = ""): Unit = {
+  def drawCircleImage(filename : String ="registre", zoomparam : Double = 0, text: String = ""): Unit = {
     val im = GraphCanvas()
     var svg = this.drawAllState
 

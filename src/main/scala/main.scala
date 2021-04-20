@@ -3,15 +3,15 @@
 // 2020
 // gildas.menier@univ-ubs.fr
 
-
-
 import Vqs._
-import Vqs.operators._
+
+
+
 
 object main {
 
       def main(args: Array[String]): Unit = {
-         QReg.setDefaultUseASCII()
+         // QReg.setDefaultUseASCII()
         // QReg.setDefaultDrawBitCircles()
         QStudy.caseQFT()
 

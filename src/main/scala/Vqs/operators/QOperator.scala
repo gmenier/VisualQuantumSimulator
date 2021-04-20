@@ -345,7 +345,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
     pad.at(p, "Rx");
     val angleStr = ((angle.toString+" ").replaceAll(".0 ","")+" "*10).substring(0,5)
     pad.infol(angleStr);
-    if (p< thisR.nbQbits) pad.atAbs(p*2+1, angleStr);
+    if (p< thisR.nbQbits) { pad.nextCol(); pad.atAbs(p*2+1, angleStr); pad.previousCol() }
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }
@@ -376,7 +376,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
   def render(pad: QPad): Unit = {
     pad.at(p, "Ry");
     val angleStr = ((angle.toString+" ").replaceAll(".0 ","")+" "*10).substring(0,5)
-    pad.infol(angleStr); if (p< thisR.nbQbits) pad.atAbs(p*2+1, angleStr);
+    if (p< thisR.nbQbits) { pad.nextCol(); pad.atAbs(p*2+1, angleStr); pad.previousCol() }
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }
@@ -407,7 +407,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
   def render(pad: QPad): Unit = {
     pad.at(p, "Rz");
     val angleStr = ((angle.toString+" ").replaceAll(".0 ","")+" "*10).substring(0,5)
-    pad.infol(angleStr); if (p< thisR.nbQbits) pad.atAbs(p*2+1, angleStr);
+    if (p< thisR.nbQbits) { pad.nextCol(); pad.atAbs(p*2+1, angleStr); pad.previousCol() }
     pad.nextCol2();     pad.nextCol2()
     pad.nextCol2()
   }
@@ -528,9 +528,10 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 
     pad.atAbs((thisR.nbQbits-1)*2+2, "╙")
     pad.nextCol(); pad.nextCol2();
+
   }
 
-  override def opLabel = "F( "+ name + " , "+ msg +" )"
+  override def opLabel = "F( "+ name + " "+ msg +" )"
 
   def idxBit = List(0)
 
@@ -541,9 +542,10 @@ case class F(name: String, fun: QReg => Unit, msg : String ="", expand : Boolean
 // Alias based operators (mostly Functions)
 
 /**  Quantum Fourier Transform */
-case class QFT(name:String="QFT", msg : String ="", expand : Boolean = false, skipTrace : Boolean = true) extends QOperator {
+case class QFT(name:String="", msg : String ="", expand : Boolean = false, skipTrace : Boolean = true) extends QOperator {
   override def alias = F(msg,  QOperator.qft, msg, expand = expand, skipTrace = skipTrace)
   def render(pad: QPad): Unit = {}
+  override def opLabel = "QFT("+ name+" "+  msg +")"
   def idxBit = List()
 } // Label
 
