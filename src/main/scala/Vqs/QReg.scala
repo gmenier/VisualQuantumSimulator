@@ -513,7 +513,7 @@ case class QReg(val nbQbits : Int = 1) { //
       if (onlyAscii) {
         println(traceIdx + ". " + lastOp)
       } else {
-        println( s"${REVERSED}"+traceIdx+"."+ lastOp+s"  ${RESET} ▶")
+        println( traceIdx+".  "+s"${YELLOW}"+ lastOp+s"  ${RESET} ") //▶
       }
 
       performsTraceFunction(traceIdx, this) // so you can get your own trace function

@@ -26,14 +26,14 @@ class VqsTests extends AnyFunSuite {
   test("H to superpose + read 1 or 0 with the same probability") {
     var one = 0
     var zero = 0
-    for (i <- 0 to 2000) {
+    for (i <- 0 to 3000) {
       val rr = QReg()
       rr - H()
       rr - <()
       if (rr.?() == 0) zero = zero + 1 else one = one + 1
     }
     val prop = one / zero.toDouble
-    assert((prop < 1.1) && (prop > 0.9))
+    assert((prop < 1.2) && (prop > 0.8))
   }
 
 
@@ -135,7 +135,7 @@ class VqsTests extends AnyFunSuite {
     val v34 = rr.peekQBitState(0, false)
     val pp1 = QUtils.cvtRadToDeg(v34._1.bphase)
     val pp2 = QUtils.cvtRadToDeg(v34._2.bphase)
-    println(" (" + p1 + "," + p2 + ")  " + " (" + pp1 + "," + pp2 + ")  ")
+    // println(" (" + p1 + "," + p2 + ")  " + " (" + pp1 + "," + pp2 + ")  ")
 
     assert(QUtils.equPhases(p1, pp1, deg = true) && QUtils.equPhases(pp2, p2 + 45, deg = true))
   }

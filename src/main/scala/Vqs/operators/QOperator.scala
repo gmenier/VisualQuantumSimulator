@@ -339,7 +339,7 @@ case class Rx(p:Int, angle :Double) extends QOperator {
     o = thisR.angle(angle)
   }
 
-  override def opLabel = "Rx"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +")") +","+angle +")"
+  override def opLabel = "Rx"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +","+angle +")")
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Rx");
@@ -371,7 +371,7 @@ case class Ry(p:Int, angle :Double) extends QOperator {
     o = thisR.angle(angle)
   }
 
-  override def opLabel = "Ry"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +")") +","+angle +")"
+  override def opLabel = "Ry"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +","+angle +")")
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Ry");
@@ -402,7 +402,7 @@ case class Rz(p:Int, angle : Double) extends QOperator {
     o = thisR.angle(angle)
   }
 
-  override def opLabel = "Rz"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +")") +","+angle +")"
+  override def opLabel = "Rz"+ (if (p == QReg.All) "" else "("+thisR.LabelOf(p) +","+angle +")")
 
   def render(pad: QPad): Unit = {
     pad.at(p, "Rz");

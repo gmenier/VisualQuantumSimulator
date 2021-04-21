@@ -4,14 +4,12 @@
     <option name="SCOPE_TYPE" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="Enhanced Regression testing - Enhanced the coloring Scheme of the circle states for simple display : now the changed state are colored in red.">
+    <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +163,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.main" />
+        <item itemvalue="ScalaTest.VqsTests" />
+        <item itemvalue="ScalaTest.VqsTests" />
         <item itemvalue="ScalaTest.VqsTests" />
         <item itemvalue="ScalaTest.VqsTests" />
       </list>
@@ -332,14 +332,9 @@
       <workItem from="1618759843816" duration="5889000" />
       <workItem from="1618766149843" duration="140000" />
       <workItem from="1618920591299" duration="941000" />
-      <workItem from="1618921578685" duration="2374000" />
-    </task>
-    <task id="LOCAL-00010" summary="Changed operators s to mS and t to mT">
-      <created>1584984034032</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1584984034032</updated>
+      <workItem from="1618921578685" duration="2503000" />
+      <workItem from="1618951120270" duration="637000" />
+      <workItem from="1618997119009" duration="1105000" />
     </task>
     <task id="LOCAL-00011" summary="Added Tests of the #QBit in the Gate's calls + abort when error">
       <created>1584995775155</created>
@@ -677,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618426820278</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Fixed Display of Label for QFT/F()">
+      <created>1618924053890</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1618924053890</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -686,7 +688,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Back to dev&#10;Maintenance fixes" />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. (Windows for instance) This outputs only ascii characters..." />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
     <MESSAGE value="Added config for QReg.DefaultDrawAllState, &#10;QReg.DefaultObjIsAntiClock, &#10;QReg.DefaultObjIsInRadians, &#10;QReg.DefaultObjPhaseNormalization, QReg.DefaultObjUseASCII &#10;+ fixed ASCII&#10;+ added support for counterclockwise or clockwise phase&#10;+ added visual hints for the way it goes&#10;+ added support in the flower drawing&#10;+ fixed some bugs (offsets in display)" />
@@ -711,7 +712,8 @@
     <MESSAGE value="Fixed bug : Swap with both conditionnals C and CL&#10;Added Tests with the Scalatest Library (see the test directory)&#10; (regressions ahoy !)&#10;Added some utils in QUtils (to compare two phases for instance)&#10;Added a test for init and write" />
     <MESSAGE value="updated sbt &amp; test file" />
     <MESSAGE value="Enhanced Regression testing - Enhanced the coloring Scheme of the circle states for simple display : now the changed state are colored in red." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhanced Regression testing - Enhanced the coloring Scheme of the circle states for simple display : now the changed state are colored in red." />
+    <MESSAGE value="Fixed Display of Label for QFT/F()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Display of Label for QFT/F()" />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="115" key="#Menus_and_Toolbars" timestamp="1613922731293">
@@ -738,34 +740,34 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1618760079050">
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1618924053032">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618760079050" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618924053032" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1618560559526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1618560559526" />
-    <state width="1818" height="151" key="GridCell.Tab.0.bottom" timestamp="1618924008810">
+    <state width="1864" height="467" key="GridCell.Tab.0.bottom" timestamp="1618998535948">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.bottom/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1818" height="151" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1618924008810" />
-    <state width="1818" height="151" key="GridCell.Tab.0.center" timestamp="1618924008810">
+    <state width="1864" height="467" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
+    <state width="1864" height="467" key="GridCell.Tab.0.center" timestamp="1618998535948">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.center/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1818" height="151" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1618924008810" />
-    <state width="1818" height="151" key="GridCell.Tab.0.left" timestamp="1618924008810">
+    <state width="1864" height="467" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
+    <state width="1864" height="467" key="GridCell.Tab.0.left" timestamp="1618998535948">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.left/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1818" height="151" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1618924008810" />
-    <state width="1818" height="151" key="GridCell.Tab.0.right" timestamp="1618924008810">
+    <state width="1864" height="467" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
+    <state width="1864" height="467" key="GridCell.Tab.0.right" timestamp="1618998535948">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.right/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1818" height="151" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618924008810" />
+    <state width="1864" height="467" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
     <state width="932" height="354" key="GridCell.Tab.1.bottom" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -786,10 +788,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="237" y="21" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1618560532430" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1618426822815">
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1618924055856">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618426822815" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618924055856" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1613922661923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
