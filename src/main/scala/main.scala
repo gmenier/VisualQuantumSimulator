@@ -11,7 +11,7 @@ import Vqs._
 object main {
 
       def main(args: Array[String]): Unit = {
-         // QReg.setDefaultUseASCII()
+         QReg.setDefaultUseASCII()
         // QReg.setDefaultDrawBitCircles()
         QStudy.caseQFT()
 

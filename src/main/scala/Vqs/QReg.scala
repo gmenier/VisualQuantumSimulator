@@ -517,8 +517,10 @@ case class QReg(val nbQbits : Int = 1) { //
       }
 
       performsTraceFunction(traceIdx, this) // so you can get your own trace function
-      println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
+      // println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
+      println(this.render)
       println(this)
+
       this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text=traceIdx+ ". "+lastOp, clist= condl)
       if (this.myPdf != null) { // Creates a pdf file
           this.myPdf.writeReport(this, circuitSize, traceIdx, text = traceIdx+ ". "+lastOp)

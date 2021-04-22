@@ -3,13 +3,21 @@
   <component name="AnalysisUIOptions">
     <option name="SCOPE_TYPE" value="4" />
   </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="vqs:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/operators/QOperator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/tests/VqsTests.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QStudy.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QStudy$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,13 +90,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="vqs" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="last_opened_file_path" value="D:/vqs/wiki/VisualQuantumSimulator.wiki/Introduction.md" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -335,13 +347,8 @@
       <workItem from="1618921578685" duration="2503000" />
       <workItem from="1618951120270" duration="637000" />
       <workItem from="1618997119009" duration="1105000" />
-    </task>
-    <task id="LOCAL-00011" summary="Added Tests of the #QBit in the Gate's calls + abort when error">
-      <created>1584995775155</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1584995775155</updated>
+      <workItem from="1618998626762" duration="91000" />
+      <workItem from="1619083065800" duration="3853000" />
     </task>
     <task id="LOCAL-00012" summary="Added Tests of the #QBit in the Gate's calls + abort when error">
       <created>1584995895321</created>
@@ -679,7 +686,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618924053890</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Display of Rz, Rx, Ry in console trace">
+      <created>1618998665932</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1618998665942</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +702,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. (Windows for instance) This outputs only ascii characters..." />
     <MESSAGE value="Use rr.trace(useASCII = true) to avoid the console problems. &#10;FIX 1 : Pi, degre, and tab" />
     <MESSAGE value="Added config for QReg.DefaultDrawAllState, &#10;QReg.DefaultObjIsAntiClock, &#10;QReg.DefaultObjIsInRadians, &#10;QReg.DefaultObjPhaseNormalization, QReg.DefaultObjUseASCII &#10;+ fixed ASCII&#10;+ added support for counterclockwise or clockwise phase&#10;+ added visual hints for the way it goes&#10;+ added support in the flower drawing&#10;+ fixed some bugs (offsets in display)" />
     <MESSAGE value="Added marks on all circle drawing to have a visual hint about the way the phases are drawn (left / right for counter clock wise and opposite)&#10;Added degree to the flower drawing.&#10;Minor fixes (mainly string size)" />
@@ -713,7 +726,8 @@
     <MESSAGE value="updated sbt &amp; test file" />
     <MESSAGE value="Enhanced Regression testing - Enhanced the coloring Scheme of the circle states for simple display : now the changed state are colored in red." />
     <MESSAGE value="Fixed Display of Label for QFT/F()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Display of Label for QFT/F()" />
+    <MESSAGE value="Display of Rz, Rx, Ry in console trace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Display of Rz, Rx, Ry in console trace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="115" key="#Menus_and_Toolbars" timestamp="1613922731293">
@@ -736,38 +750,46 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="773" y="187" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1613922724156" />
+    <state x="808" y="288" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1619083693429">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="808" y="288" key="#com.intellij.ide.util.TreeClassChooserDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1619083693429" />
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog" timestamp="1612468638979">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1618924053032">
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1618998662066">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618924053032" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618998662066" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1618560559526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1618560559526" />
-    <state width="1864" height="467" key="GridCell.Tab.0.bottom" timestamp="1618998535948">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1802" height="351" key="GridCell.Tab.0.bottom" timestamp="1619094169207">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.bottom/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
     <state width="1864" height="467" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
-    <state width="1864" height="467" key="GridCell.Tab.0.center" timestamp="1618998535948">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1802" height="351" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1619094169207" />
+    <state width="1802" height="351" key="GridCell.Tab.0.center" timestamp="1619094169207">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.center/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
     <state width="1864" height="467" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
-    <state width="1864" height="467" key="GridCell.Tab.0.left" timestamp="1618998535948">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1802" height="351" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1619094169207" />
+    <state width="1802" height="351" key="GridCell.Tab.0.left" timestamp="1619094169207">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.left/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
     <state width="1864" height="467" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
-    <state width="1864" height="467" key="GridCell.Tab.0.right" timestamp="1618998535948">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1802" height="351" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1619094169207" />
+    <state width="1802" height="351" key="GridCell.Tab.0.right" timestamp="1619094169207">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.right/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
     <state width="1864" height="467" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618998535948" />
+    <state width="1802" height="351" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1619094169207" />
     <state width="932" height="354" key="GridCell.Tab.1.bottom" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -784,14 +806,15 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="932" height="354" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1618346398503" />
-    <state x="237" y="21" key="SettingsEditor" timestamp="1618560532430">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="496" y="18" key="SettingsEditor" timestamp="1619083719168">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="237" y="21" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1618560532430" />
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1618924055856">
+    <state x="496" y="18" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1619083719168" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1618998669214">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618924055856" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618998669214" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1613922661923">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
