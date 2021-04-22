@@ -713,9 +713,9 @@ case class QReg(val nbQbits : Int = 1) { //
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
 
     var title = if (! this.onlyAscii)
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t    Ket\t\t\t   a+ib\t\t\t\t\t\t\t\t(r.ei Θ)"
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t\tBasis\t\t\ta+ib\t\t\t\t\t\t\t\t(r.ei Θ)"
     else
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*9+ "V\tKet\t\t   a+ib\t\t\t\t        (r.ei Theta)"
+      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "\tV\tBasis\t\ta+ib\t\t\t\t\t(r.ei O)"
 
     var res = title +"\n"+
       elt.map(v => this(v).probaString(isEmpty = (this(v).norm < QReg.MinNorm), ascii = this.onlyAscii)+" "+

@@ -144,15 +144,14 @@ case class QComplex(val re: Double=0, val im: Double=0) {
     var nb = (sSize*proba).toInt
     if ((proba >0)&&(nb==0))  nb = 1
     val res = if (proba < 1E-10) {
-
       if (!ascii) {
         ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
           .replaceAllLiterally("█", s"${MAGENTA}▓${RESET}")
           .replaceAllLiterally("│", s"${BLUE}│${RESET}")
       } else {
         ("|" + ("*" * (nb)) + " " * (sSize - nb) + "|")
-          .replaceAllLiterally("*", s"${MAGENTA}*${RESET}")
-          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+          .replaceAllLiterally("*", s"${MAGENTA_B} ${RESET}")
+          .replaceAllLiterally("│", s"${CYAN_B}│${RESET}")
       }
 
     } else {
@@ -162,8 +161,8 @@ case class QComplex(val re: Double=0, val im: Double=0) {
           .replaceAllLiterally("│", s"${BLUE}│${RESET}")
       } else {
         ("|" + ("*" * (nb)) + " " * (sSize - nb) + "|")
-          .replaceAllLiterally("*", s"${BLUE}*${RESET}")
-          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+          .replaceAllLiterally("*", s"${CYAN_B} ${RESET}")
+          .replaceAllLiterally("│", s"${CYAN_B}│${RESET}")
       }
     }
     val result = if (proba < 1E-20) res.replaceAllLiterally("▒", " ")  else res
@@ -225,9 +224,9 @@ case class QComplex(val re: Double=0, val im: Double=0) {
         tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA}$charS${RESET}").replaceAllLiterally("║", s"${YELLOW}║${RESET}")
     } else {
       if (!miniA)
-        tabC.mkString.replaceAllLiterally(charS.toString, s"${YELLOW}$charS${RESET}").replaceAllLiterally("|", s"${YELLOW}|${RESET}")
+        tabC.mkString.replaceAllLiterally(charS.toString, s"${YELLOW_B} ${RESET}").replaceAllLiterally("|", s"${YELLOW}|${RESET}")
       else
-        tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA}$charS${RESET}").replaceAllLiterally("|", s"${YELLOW}|${RESET}")
+        tabC.mkString.replaceAllLiterally(charS.toString, s"${MAGENTA_B} ${RESET}").replaceAllLiterally("|", s"${YELLOW}|${RESET}")
     }
 
 

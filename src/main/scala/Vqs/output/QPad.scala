@@ -189,7 +189,7 @@ class QPad(nbQbits : Int, Qreg_ : QReg) { // graphical pad
             (for (j <- 0 until colonne) yield screen(i)(j)(0).toString).mkString
 
 
-    }).mkString("\n").replaceAllLiterally("—", s"${BLUE}—${RESET}")
+    }).mkString("\n").replaceAllLiterally("—", s"${CYAN}—${RESET}")
       .replaceAllLiterally(">", s" ${BLUE}>${RESET}")
       .replaceAllLiterally("<", s"${BOLD}${BLUE}<${RESET}")
     )
