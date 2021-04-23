@@ -205,7 +205,7 @@ case class QReg(val nbQbits : Int = 1) { //
     println(s"${BLUE}*${CYAN}*${GREEN}*${YELLOW}*${RED}*${MAGENTA}*${RESET} VQS > Starting trace "
       + (if (useASCII) " with ASCII output" else "") )
     performsTraceFunction(0, this)
-    println(if (this.renderConsoleIDEA) this.render else this.renderWithoutAnsiClean)
+    println(this.render)
     println(this)
     this.resetChange()
     this.drawStateImage(filename = "trace_"+traceIdx, numLines = traceSize, text="Starting trace")
@@ -627,7 +627,7 @@ case class QReg(val nbQbits : Int = 1) { //
         .replaceAllLiterally("╓", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("║", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("╙", s"${YELLOW}L${RESET}")
-        .replaceAllLiterally("—", "-")
+        .replaceAllLiterally("—", "_")
         .replaceAllLiterally("•",s"${RED}o${RESET}")
         .replaceAllLiterally("╖", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("╜", s"${YELLOW}|${RESET}")  +"\n"
@@ -713,9 +713,9 @@ case class QReg(val nbQbits : Int = 1) { //
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
 
     var title = if (! this.onlyAscii)
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "V\t\tBasis\t\t\ta+ib\t\t\t\t\t\t\t\t(r.ei Θ)"
+      "Probability   "+" "*6+"\t\t"+titrePhase+" "*5+ "V\t\tBasis\t\t\ta+ib\t\t\t\t\t\t\t\t(r.ei Θ)"
     else
-      "Proba [0 -> 1]"+" "*6+titrePhase+" "*5+ "\tV\tBasis\t\ta+ib\t\t\t\t\t(r.ei O)"
+      "Probability   "+" "*6+"\t    "+titrePhase+" "*5+ "\tV\tBasis\t\ta+ib\t\t\t\t\t(r.ei O)"
 
     var res = title +"\n"+
       elt.map(v => this(v).probaString(isEmpty = (this(v).norm < QReg.MinNorm), ascii = this.onlyAscii)+" "+

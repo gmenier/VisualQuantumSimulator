@@ -143,13 +143,14 @@ case class QComplex(val re: Double=0, val im: Double=0) {
   def probaString(isEmpty : Boolean = false, ascii : Boolean = false):String = { // Drawing of proba
     var nb = (sSize*proba).toInt
     if ((proba >0)&&(nb==0))  nb = 1
-    val res = if (proba < 1E-10) {
+    val res = if (proba < 0.1) {
+      val nbP = (sSize*proba*10).toInt
       if (!ascii) {
-        ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
+        ("│" + ("█" * (nbP)) + "▒" * (sSize - nbP) + "│")
           .replaceAllLiterally("█", s"${MAGENTA}▓${RESET}")
           .replaceAllLiterally("│", s"${BLUE}│${RESET}")
       } else {
-        ("|" + ("*" * (nb)) + " " * (sSize - nb) + "|")
+        ("|" + ("*" * (nbP)) + " " * (sSize - nbP) + "|")
           .replaceAllLiterally("*", s"${MAGENTA_B} ${RESET}")
           .replaceAllLiterally("│", s"${CYAN_B}│${RESET}")
       }
@@ -166,9 +167,10 @@ case class QComplex(val re: Double=0, val im: Double=0) {
       }
     }
     val result = if (proba < 1E-20) res.replaceAllLiterally("▒", " ")  else res
-    if (! isEmpty) result else {
-      ("." + ("." * (sSize)) + ".")
-    }
+
+    val p: String = (" "+proba+" "*6).substring(0,7)
+
+    p +" " + (if (! isEmpty) result else { ("." + ("." * (sSize)) + ".") })
   } // probaString
 
   /** (quantum) draws the complex as a string depicting the phase
@@ -216,6 +218,7 @@ case class QComplex(val re: Double=0, val im: Double=0) {
       if (! ascii) tabC(sSize/2+1) = '█' else tabC(sSize/2+1) = '*'
     else
       if (! ascii) tabC(sSize/2+1) = '*' else tabC(sSize/2+1) = ' '
+
 
     if (!ascii) {
       if (!miniA)
