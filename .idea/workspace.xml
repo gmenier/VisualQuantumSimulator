@@ -10,11 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1842509-b2e8-4dc3-903e-adf956dd850e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Apache_licence2.0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notice.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/vqs_jar/vqs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/vqs_jar/vqs.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/QReg.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Vqs/complex/QComplex.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/Vqs/QReg.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/main$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -347,14 +347,8 @@
       <workItem from="1618997119009" duration="1105000" />
       <workItem from="1618998626762" duration="91000" />
       <workItem from="1619083065800" duration="10255000" />
-      <workItem from="1619158856159" duration="2329000" />
-    </task>
-    <task id="LOCAL-00015" summary="updated gitignore">
-      <created>1585237669498</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1585237669498</updated>
+      <workItem from="1619158856159" duration="2558000" />
+      <workItem from="1619342039210" duration="522000" />
     </task>
     <task id="LOCAL-00016" summary="updated gitignore">
       <created>1585238937173</created>
@@ -692,7 +686,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619106892821</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Enhancements : Two new Scales for probability (Cyan = 0 -&gt; 1 and Magenta for w 0.1). The probability is displayed near the bar. Enhanced colors for the console output.">
+      <created>1619161318508</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1619161318518</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,7 +702,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible" />
     <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;." />
     <MESSAGE value="Removed the temp.png file for pdf output&#10;fixed the phase display in pdf to (much) more visible&#10;.." />
     <MESSAGE value="Added &#10;performsTraceFunction = ( idTrace : Int, thisRegister : QReg) =&gt; {  }&#10;In QReg : useTraceFunction to set, or resetTraceFunction. If set this will call the callback for each step of trace, and provides the step # (as an Int - 0 = start, -1 = end) : idTrace, and thisRegister as a ref to the current register." />
@@ -726,7 +726,8 @@
     <MESSAGE value="Reinsert Color in (ascii) console output" />
     <MESSAGE value="Added precompiled vqs.jar to project (see documentation)" />
     <MESSAGE value="Adapted color skin to the standard console" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adapted color skin to the standard console" />
+    <MESSAGE value="Enhancements : Two new Scales for probability (Cyan = 0 -&gt; 1 and Magenta for w 0.1). The probability is displayed near the bar. Enhanced colors for the console output." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhancements : Two new Scales for probability (Cyan = 0 -&gt; 1 and Magenta for w 0.1). The probability is displayed near the bar. Enhanced colors for the console output." />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="115" key="#Menus_and_Toolbars" timestamp="1613922731293">
@@ -757,38 +758,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="655" y="242" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1612468638979" />
-    <state x="62" y="24" key="CommitChangelistDialog2" timestamp="1619106887887">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="0" y="24" key="CommitChangelistDialog2" timestamp="1619161312804">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1618998662066" />
+    <state x="0" y="24" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1619161312804" />
     <state x="62" y="24" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1619106887887" />
     <state x="687" y="218" key="FileChooserDialogImpl" timestamp="1618560559526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="218" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1618560559526" />
-    <state width="1864" height="389" key="GridCell.Tab.0.bottom" timestamp="1619161191624">
+    <state width="1864" height="638" key="GridCell.Tab.0.bottom" timestamp="1619161442988">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.bottom/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="389" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1619161191624" />
+    <state width="1864" height="638" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1619161442988" />
     <state width="1802" height="431" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1619114037460" />
-    <state width="1864" height="389" key="GridCell.Tab.0.center" timestamp="1619161191624">
+    <state width="1864" height="638" key="GridCell.Tab.0.center" timestamp="1619161442988">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.center/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="389" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1619161191624" />
+    <state width="1864" height="638" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1619161442988" />
     <state width="1802" height="431" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1619114037460" />
-    <state width="1864" height="389" key="GridCell.Tab.0.left" timestamp="1619161191624">
+    <state width="1864" height="638" key="GridCell.Tab.0.left" timestamp="1619161442988">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.left/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="389" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1619161191624" />
+    <state width="1864" height="638" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1619161442988" />
     <state width="1802" height="431" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1619114037460" />
-    <state width="1864" height="389" key="GridCell.Tab.0.right" timestamp="1619161191624">
+    <state width="1864" height="638" key="GridCell.Tab.0.right" timestamp="1619161442988">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1528" height="232" key="GridCell.Tab.0.right/0.0.1600.1200@0.0.1600.1200" timestamp="1615212433263" />
-    <state width="1864" height="389" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1619161191624" />
+    <state width="1864" height="638" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1619161442988" />
     <state width="1802" height="431" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1619114037460" />
     <state width="932" height="354" key="GridCell.Tab.1.bottom" timestamp="1618346398503">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -811,10 +812,10 @@
     </state>
     <state x="237" y="21" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1618560532430" />
     <state x="496" y="18" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1619083719168" />
-    <state x="499" y="208" key="Vcs.Push.Dialog.v2" timestamp="1619106894881">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2" timestamp="1619161324426">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1618998669214" />
+    <state x="452" y="208" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1619161324426" />
     <state x="499" y="208" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1619106894881" />
     <state x="835" y="466" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1613922661923">
       <screen x="0" y="0" width="1920" height="1080" />
