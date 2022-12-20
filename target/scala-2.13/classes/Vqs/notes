@@ -1,0 +1,6 @@
+Refactor the pad (beware of type size limit)
+Refactor the pdf output (so it fits better given the trace size)
+See the normalize for Born Rule (only for measurement)
+Check the origin choice for the phase offset (not so obvious) with CAS
+
+TuProlog & Rx / Rh
