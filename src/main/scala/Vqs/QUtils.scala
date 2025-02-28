@@ -43,6 +43,8 @@ object QUtils {
     else res
   } // toBinary
 
+
+
   /** helper to get a list of files from a dir */
   def getListOfFiles(dir: String):List[File] = {
     val d = new File(dir)
@@ -97,14 +99,20 @@ object QUtils {
   }
 
   /** utility to insert ansi colors in a QBit string */
-  def colorizeBinary(nb: Int, r: String) : String = {
+  def colorizeBinary(nb: Int, r: String, bigS : Boolean) : String = {
     val colorBits = Array( RED, GREEN, MAGENTA, YELLOW,  CYAN )
     var res = r
     for (i <- 0 until math.pow(2,nb).toInt) {
       val n = toBinary(i,nb)
       val nl = n.zipWithIndex.map(
         v => {
-          val c = colorBits((n.length - v._2 -1) % colorBits.length)
+          var c: String = "";
+
+          if (bigS)
+              c = colorBits(( (v._2 ) ) % colorBits.length)
+            else
+              c = colorBits((n.length - v._2 -1) % colorBits.length)
+
           s"${c}${v._1}"
         }
       ).mkString+s"${RESET}"

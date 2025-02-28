@@ -5,7 +5,7 @@ val fontbox = "org.apache.pdfbox" % "fontbox" % "2.0.18"
 val pdfbox = "org.apache.pdfbox" % "pdfbox" % "2.0.18"
 val funtest = "org.scalatest" %% "scalatest-funsuite" % "3.2.7"
 
-ThisBuild / scalaVersion := "2.13.10"
+ThisBuild / scalaVersion := "2.13.15"
 
 lazy val root = (project in file("."))
   .settings(

@@ -91,7 +91,7 @@ class PdfReport(fileName : String = "file.pdf", docLabel : String="") {
 
     // fix the image size TODO
     val calcH = 5*3*14 + 40 //
-    // insertImage("trace_"+idxImage+".png", lgcar*7, getPos, calcW+40, calcH)
+     insertImage("trace_"+idxImage+".png", lgcar*7, getPos, calcW+40, calcH)
 
   }
 

@@ -106,7 +106,8 @@ case class QComplex(val re: Double=0, val im: Double=0) {
 
     if (abs(ang) < 0.0001) ang = 0
 
-    res.replaceAll("0,70711","1/√2") // todo adds automatic symbolic reformating
+    val nres = res.replaceAll("0.70711","1/√2") // todo adds automatic symbolic reformating
+    if (nres ==" -0 ") "0" else nres;
   }
 
   /** returns a complex number as a string with Euler formatting
@@ -147,30 +148,40 @@ case class QComplex(val re: Double=0, val im: Double=0) {
       val nbP = (sSize*proba*10).toInt
       if (!ascii) {
         ("│" + ("█" * (nbP)) + "▒" * (sSize - nbP) + "│")
-          .replaceAllLiterally("█", s"${MAGENTA}▓${RESET}")
-          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+          .replaceAll("█", s"${MAGENTA}▓${RESET}")
+          .replaceAll("│", s"${BLUE}│${RESET}")
       } else {
         ("|" + ("*" * (nbP)) + " " * (sSize - nbP) + "|")
-          .replaceAllLiterally("*", s"${MAGENTA_B} ${RESET}")
-          .replaceAllLiterally("│", s"${CYAN_B}│${RESET}")
+          .replaceAll("\\*", s"${MAGENTA_B} ${RESET}")
+          .replaceAll("│", s"${CYAN_B}│${RESET}")
       }
 
     } else {
       if (!ascii) {
         ("│" + ("█" * (nb)) + "▒" * (sSize - nb) + "│")
-          .replaceAllLiterally("█", s"${BLUE}█${RESET}")
-          .replaceAllLiterally("│", s"${BLUE}│${RESET}")
+          .replaceAll("█", s"${BLUE}█${RESET}")
+          .replaceAll("│", s"${BLUE}│${RESET}")
       } else {
         ("|" + ("*" * (nb)) + " " * (sSize - nb) + "|")
-          .replaceAllLiterally("*", s"${CYAN_B} ${RESET}")
-          .replaceAllLiterally("│", s"${CYAN_B}│${RESET}")
+          .replaceAll("\\*", s"${CYAN_B} ${RESET}")
+          .replaceAll("│", s"${CYAN_B}│${RESET}")
       }
     }
     val result = if (proba < 1E-20) res.replaceAllLiterally("▒", " ")  else res
 
     val p: String = (" "+proba+" "*6).substring(0,7)
 
-    p +" " + (if (! isEmpty) result else { ("." + ("." * (sSize)) + ".") })
+    (p +" " + (if (! isEmpty) result else { ("." + ("." * (sSize)) + ".") })
+      ).replaceAll(" 0.4999 ", "1/2    "
+      ).replaceAll(" 0.0    ", "    0  "
+      ).replaceAll(" 1.0    ", "1      "
+      ).replaceAll(" 0.1249 ", "1/8    "
+      ).replaceAll(" 0.2499 ", "1/4    "
+      ).replaceAll(" 0.0624 ", "1/16   "
+      ).replaceAll(" 0.0312 ", "1/32   "
+      ).replaceAll(" 0.0156",  "1/64   "
+      ).replaceAll(" 0.0078 ", "1/128  "
+      ).replaceAll(" 0.0039 ", "1/256  ")
   } // probaString
 
   /** (quantum) draws the complex as a string depicting the phase

@@ -51,6 +51,11 @@ case class QReg(val nbQbits : Int = 1) { //
   // by default, gets the value from Companion Object
   var isInRadians = QReg.DefaultObjIsInRadians // true if this reg is in radian
 
+  var bigStart = 0; // true if the left op is on top
+  // 0: 0>------------    should be the left op for tensor product if bigStart = 1
+  //
+
+  def setBigStart(s: Int) {this.bigStart = s};
   def setRadians() { this.isInRadians = true }
   def setDegrees() { this.isInRadians = false }
 
@@ -151,11 +156,21 @@ case class QReg(val nbQbits : Int = 1) { //
     if ( (getMState(numQbit) == NOMEASURE)
           && ( (0 until nbQbits).filter( _ != numQbit).forall( getMState(_) != NOMEASURE ))) {
       // The first is for |0>, then for |1>
-      val collect = state.filter( _.norm2 > 0.0000000000000000001)
+      val collect = state.zipWithIndex.filter( _._1.norm2 > 0.0000000000000000001)
+
+      val resCollect : (QComplex, QComplex) = if (collect.size > 1) {
+           (collect(0)._1, collect(1)._1)
+      } else {
+        if ((collect(0)._2.toInt & ((math.pow(2,numQbit)).toInt))==1) { // |1>
+           (0, collect(0)._1 )
+         } else { // |0>
+           (collect(0)._1, 0)
+         }
+      }
+      val fp = findPhaseOrg
       if (phasenorm) {
-             val fp = findPhaseOrg
-             (collect(0).phaseUnShift(fp), collect(1).phaseUnShift(fp))
-      } else (collect(0), collect(1))
+           (resCollect._1.phaseUnShift(fp), resCollect._2.phaseUnShift(fp))
+      } else (resCollect._1, resCollect._2)
 
     } else {
       notifyError("In peekQBitState, Check that only the QBit requested is left unmeasured for peek")
@@ -633,7 +648,7 @@ case class QReg(val nbQbits : Int = 1) { //
         .replaceAllLiterally("║", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("╙", s"${YELLOW}L${RESET}")
         .replaceAllLiterally("—", "_")
-        .replaceAllLiterally("•",s"${RED}o${RESET}")
+        .replaceAllLiterally("•",s"${RED}.${RESET}")
         .replaceAllLiterally("╖", s"${YELLOW}|${RESET}")
         .replaceAllLiterally("╜", s"${YELLOW}|${RESET}")  +"\n"
 
@@ -722,18 +737,19 @@ case class QReg(val nbQbits : Int = 1) { //
     if (!this.drawAllState) elt = elt.filter( n => Math.abs(this(n).asEuler._1) > 1E-10 )
 
     var title = if (! this.onlyAscii)
-      "Probability   "+" "*6+"\t\t"+titrePhase+" "*5+ "V\t\tBasis\t\t\ta+ib\t\t\t\t\t\t\t\t(r.ei Θ)"
+      "Probability   "+" "*6+"\t\t"+titrePhase+" "*5+ " \t\tBasis\t\t\t\t\ta+ib\t\t\t\t\t\t\t r.ei Θ "
     else
-      "Probability   "+" "*6+"\t    "+titrePhase+" "*5+ "\tV\tBasis\t\ta+ib\t\t\t\t\t(r.ei O)"
+      "Probability   "+" "*6+"\t    "+titrePhase+" "*5+ "\t \tBasis\t\t\t\ta+ib\t\t\t\t\t\t\t\t r.ei theta "
 
     var res = title +"\n"+
-      elt.map(v => this(v).probaString(isEmpty = (this(v).norm < QReg.MinNorm), ascii = this.onlyAscii)+" "+
+      elt.map(v => this(v).probaString(isEmpty = (this(v).norm < QReg.MinNorm), ascii = this.onlyAscii)+"  "+
         { if (this(v).norm < QReg.MinNorm) this(v).phaseString(startAng,0, ascii = this.onlyAscii)
         else                               this(v).phaseString(startAng, ascii = this.onlyAscii)
         } +
         "\t\t"+
         (v.toString+"         ").substring(0,5)+
-                              "\t|"+(QUtils.toBinary(v,nbQbits)+">\t"+" "*10).substring(0,12) +
+                              "\t|"+( ( if (this.bigStart ==1) QUtils.toBinary(v,nbQbits).reverse
+                                                          else QUtils.toBinary(v,nbQbits)         )+">\t"+" "*10).substring(0,12) +
         {
           if (this(v).norm < QReg.MinNorm)  "  ."+" "*29 else (this(v).toString+" "*30).substring(0,30)
         } + {
@@ -746,7 +762,7 @@ case class QReg(val nbQbits : Int = 1) { //
             }
     ).mkString("\n")
 
-    res = QUtils.colorizeBinary(nbQbits, res)
+    res = QUtils.colorizeBinary(nbQbits, res ,(bigStart == 1))
     res+"\n"
   } // toString
 
